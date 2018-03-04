@@ -145,3 +145,5 @@ begin
 	blu_o <= (others => '1') when (blu_i = '1' and vidon = '1') else (others => '0');
 
 end vga_ctrl_arq;
+
+--- Agregar un modo arcoiris

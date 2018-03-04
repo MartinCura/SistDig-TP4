@@ -5,17 +5,18 @@
 package cordic_lib is
 
     constant N_PF : natural := 32;
-    constant PI_PF : std_logic_vector := "01000000010010010000111111011011";
+    constant PI_PF      : std_logic_vector := "01000000010010010000111111011011";
     constant HALF_PI_PF : std_logic_vector := "00111111110010010000111111011011";
 
     type t_float is std_logic_vector(N_PF-1 downto 0);
-    type t_coordenada is t_float;                   -- tipo coordenada (x o y z)
+    type t_coordenada is t_float;                   -- tipo coordenada (x o y o z)
     type t_pos is array(1 to 3) of t_coordenada;    -- tipo posición (x,y,z)
     type t_vec is array(1 to 2) of t_coordenada;    -- tipo posición (x,y)
     type t_mat_r is array(1 to 2) of t_coordenada;
     type t_mat is array(1 to 2) of t_mat_r;         -- tipo matriz 2x2 de coordenadas
 
 end package cordic_lib;
+
 
 package body cordic_lib is
 
@@ -53,7 +54,7 @@ package body cordic_lib is
 
     begin
         -- if (beta < -pi/2 or beta > pi/2) then
-        if ( (beta + HALF_PI_PF)(0) == '1' or (beta - HALF_PI_PF)(0) == '1' )
+        if ( (beta + HALF_PI_PF)(0) == '1' or (beta - HALF_PI_PF)(0) == '0' )
             -- if (beta < 0) then
             if (beta(0) == '1') then
                 v <= cordic(vector, beta + PI_PF);
@@ -63,12 +64,6 @@ package body cordic_lib is
             v(1) <= -1 * v(1);
             v(2) <= -1 * v(2);
             return v;
-        end if;
-
-        if (P > K_VALUES'length) then
-            Kn := K_VALUES(K_VALUES'length - 1);
-        else
-            Kn := K_VALUES(P - 1);
         end if;
 
         for i in 0 to P-1 loop
@@ -95,7 +90,13 @@ package body cordic_lib is
             beta = beta - sigma * angle_i;
         end loop;
 
-        -- Ajusto magnitud
+        if (P > K_VALUES'length) then
+            Kn := K_VALUES(K_VALUES'length - 1);
+        else
+            Kn := K_VALUES(P - 1);
+        end if;
+
+        -- Ajusto magnitud del vector
         for i in 1 to 2 loop
             v(i) <= Kn * v(i);
         end loop;
