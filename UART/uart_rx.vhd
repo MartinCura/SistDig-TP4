@@ -35,12 +35,24 @@ architecture arch of uart_rx  is
 				data_out <= (others => '0');
 				rx_reg <= (others => '0');
 
-		else if rising_edge(CLK) then
-			
-			
+			else if rising_edge(CLK) then
+				--aca determino en que estado estoy y opero
+				case RxFSM is
+					when Idle => -- espero el bit de start que me indica que empezo al transmicion
+						
+					when Start_Rx => -- wait on first data bit
+						
+					when Edge_Rx => -- should be near Rx edge
+						
+					when Shift_Rx => -- Sample data !
+						
+					when Stop_Rx => -- during Stop bit
+					
+				
+				end case;
+			end if;
 
 		end if ;
-		end if;
 
 	end process;
 end;
