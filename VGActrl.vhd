@@ -2,7 +2,7 @@
 -- Modulo: Controlador VGA
 -- Descripción:
 -- Autor: Sistemas Digitales (66.17)
---        Universidad de Buenos Aires - Facultad de Ingenier�a
+--        Universidad de Buenos Aires - Facultad de Ingeniería
 --        www.campus.fi.uba.ar
 -- Fecha: 16/04/13
 --------------------------------------------------------------------------
@@ -146,4 +146,4 @@ begin
 
 end vga_ctrl_arq;
 
---- Agregar un modo arcoiris
+--- Opcional: Agregar un modo arcoiris, donde va cambiando el color de la salida
