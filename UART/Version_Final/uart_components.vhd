@@ -25,12 +25,11 @@
   component timing is
     generic (
       F : natural;
-      min_baud : natural
+      baud_rate : natural
     );
     port (
             CLK : in std_logic;
             RST : in std_logic;
-            divisor : in std_logic_vector;
             ClrDiv : in std_logic;
             Top16 : buffer std_logic;
             TopTx : out std_logic;
