@@ -8,7 +8,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 --library work; 
-use work.uart_components.all;
+--use work.uart_comps.all;
+use work.uart_comps.all;
 
 entity uart is
 	generic (
