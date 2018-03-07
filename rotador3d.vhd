@@ -13,6 +13,7 @@ entity rotador3d is
 		N: integer:= 32
 	);
 	port(
+        clk: in std_logic;  -- Clock
         pos: in t_coordenada;  -- Posición de un píxel a rotar a la pos correcta
 		alfa, beta, gama: in t_float  -- Ángulo de rotación en x, y, z
 	);
@@ -57,6 +58,7 @@ begin
 
     gen_dir: entity work.gen_dirs
 		port map(
+            clk => clk,
 			pos => pix
 		);
 
