@@ -6,41 +6,41 @@ use ieee.numeric_std.all;
 entity dual_port_ram is
   generic(
     data_width : natural := 1;
-    add_width : natural := 18
-);
+    addr_width : natural := 18
+  );
 
-port(
+  port(
     clock: in std_logic;
     write_enable : in std_logic;
-    add_A : in std_logic_vector(add_width-1 downto 0);
-    add_B : in std_logic_vector(add_width-1 downto 0);
+    addr_A : in  std_logic_vector(addr_width-1 downto 0);
+    addr_B : in  std_logic_vector(addr_width-1 downto 0);
     data_A : in  std_logic_vector(data_width-1 downto 0);
     data_B : out std_logic_vector(data_width-1 downto 0)
-	);
+  );
 end entity dual_port_ram;
 
 architecture dual_port_ram_arch of dual_port_ram is
-	--Creo un array donde tengo 2^(add_width) vectores de largo data_width (posiciones en la memoria).
-	constant memo_size : natural := 2**(add_width) -1;
-	type  ram_type is array(0 to memo_size) 
-		of std_logic_vector(data_width-1 downto 0) ; 
+	--Creo un array donde tengo 2^(addr_width) vectores de largo data_width (posiciones en la memoria).
+	constant memo_size : natural := 2**(addr_width) -1;
+	type  ram_type is array(0 to memo_size)
+		of std_logic_vector(data_width-1 downto 0) ;
 	signal ram: ram_type;
-	signal add_A_int : integer := 0;
-	signal add_B_int : integer := 0;
-	
-	begin
-	--Paso a integer los vectores add_A y add_B para ubicarme en la posicion de la memoria ram deseada 
+	signal addr_A_int : integer := 0;
+	signal addr_B_int : integer := 0;
+
+begin
+	--Paso a integer los vectores addr_A y addr_B para ubicarme en la posicion de la memoria ram deseada
 	--y escribir (si clock=1 y write_enable=1) o leer (si clock=1 y write_enable=0)
-	add_A_int <= to_integer(unsigned(add_A));
-	add_B_int <= to_integer(unsigned(add_B));
-	
+	addr_A_int <= to_integer(unsigned(addr_A));
+	addr_B_int <= to_integer(unsigned(addr_B));
+
 	process(clock)
 		begin
 			if (clock'event and clock = '1') then
 				if(write_enable = '1') then
-				ram(add_A_int) <= data_A;
+					ram(addr_A_int) <= data_A;
 				end if;
-			data_B <= ram(add_B_int);
+			data_B <= ram(addr_B_int);
 			end if;
 	end process;
 
