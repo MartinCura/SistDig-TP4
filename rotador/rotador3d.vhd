@@ -10,7 +10,7 @@ use work.cordic_lib.all;
 
 entity rotador3d is
     generic(
-		N: integer:= 32
+		N: integer := 32
 	);
 	port(
         clk: in std_logic;  -- Clock
