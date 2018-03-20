@@ -14,18 +14,16 @@ entity rotador3d is
 	);
 	port(
         clk: in std_logic;  -- Clock
-        pos: in t_coordenada;  -- Posición de un píxel a rotar a la pos correcta
-		alfa, beta, gama: in t_float  -- Ángulo de rotación en x, y, z
+        pos: in t_pos;      -- Posición de un píxel a rotar a la pos correcta
+		alfa, beta, gama: in t_float;  -- Ángulo de rotación en x, y, z
+        pos_rotada: out t_pos
 	);
 end;
 
 architecture rotador3d_arq of rotador3d is
     variable aux_1, aux_2, aux_3: t_pos;
-    variable pix: t_vec;
 
 begin
-    --for pos in posiciones loop  -- Mover cada píxel a la posición rotada
-
     -- Rotación en x
     aux_1(3) <= pos(1);
     if (alfa /= 0) then
@@ -53,14 +51,5 @@ begin
         aux_3(1 to 2) <= aux_2(2 to 3);
     end if;
 
-    -- Aplana a ejes (y,z)
-    pix <= aux(2 to 3);
-
-    gen_dir: entity work.gen_dirs
-		port map(
-            clk => clk,
-			pos => pix
-		);
-
-    --end loop;
+    pos_rotada <= aux_3;
 end;

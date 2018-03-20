@@ -12,7 +12,8 @@ entity gen_dirs is
 
 	port(
         clk: in std_logic;
-        pos: in t_coordenada
+        pos: in t_coordenada;
+		dir: out t_dir
 	);
 
 end entity;
@@ -23,25 +24,12 @@ architecture gen_dirs_arq of gen_dirs is
     constant SCR_H : natural := 480;
     constant SIZE  : natural := 160;
 
-    integer x, y, dir : integer;
+    integer x, y : integer;
 
 begin
-    --for pos in posiciones loop / end loop;
-
     x := SCR_W / 2 + to_integer( SIZE * pos(1) );
     y := SCR_H / 2 + to_integer( SIZE * pos(2) );
-    ---dir := x + SCR_W * y;
-
-    -- Prendo el bit para la posición apropiada
-    escrit_dpram: entity work.video_ram
-        port map (
-            clock => clk,
-            write_enable => '1',
-            A_row => std_logic_vector(to_unsigned(x)),
-            B_row => open,
-            A_col => std_logic_vector(to_unsigned(y)),
-            B_col => open,
-            data_A => '1',
-            data_B => open
-        );
+    ---dir := x + SCR_W * y; 						!!!
+	dir(1) <= std_logic_vector(to_unsigned(x));
+	dir(2) <= std_logic_vector(to_unsigned(y));
 end;
