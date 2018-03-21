@@ -134,7 +134,7 @@ begin
     vs <= '1' when (vc < "0000000011") else '0';   -- Generaci�n de la se�al de sincronismo vertical
 
     pixel_col <= std_logic_vector(hc - 144) when (vidon = '1') else std_logic_vector(hc);
-    pixel_row <= std_logic_vector(vc - 31) when (vidon = '1') else std_logic_vector(vc);
+    pixel_row <= std_logic_vector(vc -  31) when (vidon = '1') else std_logic_vector(vc);
 
 	-- Habilitaci�n de la salida de datos por el display cuando se encuentra entre los porches
     vidon <= '1' when (((hc < hfp) and (hc > hbp)) and ((vc < vfp) and (vc > vbp))) else '0';

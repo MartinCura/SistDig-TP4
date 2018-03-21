@@ -6,7 +6,6 @@ entity tp4 is
 
 	port(
 		clk_i: in std_logic;	-- Clock general
-		-- data_volt_in_p, data_volt_in_n: in std_logic;
 
 		data_volt_out: out std_logic;
 		hs, vs: out std_logic;
@@ -23,12 +22,27 @@ entity tp4 is
 	attribute iostandard: string;
 
 	-- Mapeo de pines para el kit Nexys 2 (spartan 3E)
+	-- https://reference.digilentinc.com/_media/nexys:nexys2:nexys2_rm.pdf
 	attribute loc of clk_i: signal is "B8";
 	attribute loc of hs: signal is "T4";
 	attribute loc of vs: signal is "U3";
 	attribute loc of red_o: signal is "R8 T8 R9";
 	attribute loc of grn_o: signal is "P6 P8 N8";
 	attribute loc of blu_o: signal is "U4 U5";
+	-- Switches
+	-- attribute loc of rot_on: signal is "R17";	-- Prender rotación constante
+	-- attribute loc of rot_vel: signal is "N17";	-- Velocidad lenta o rápida
+	-- attribute loc of rot_x_on: signal is "L13";	-- Rotación en x
+	attribute loc of rot_x_ng: signal is "L14";	-- Rotación negativa en x
+	-- attribute loc of rot_y_on: signal is "K17";	-- Rotación en y
+	attribute loc of rot_y_ng: signal is "K18";	-- Rotación negativa en y
+	-- attribute loc of rot_z_on: signal is "H18";	-- Rotación en z
+	attribute loc of rot_z_ng: signal is "G18";	-- Rotación negativa en z
+	-- Botones
+	attribute loc of inc_alfa: signal is "H13";
+	attribute loc of inc_beta: signal is "E18";
+	attribute loc of inc_gama: signal is "D18";
+	attribute loc of rst_angs: signal is "B18";
 
 	-- Apagar los segmentos del display
 	attribute loc of a:	signal is "L18";
@@ -39,8 +53,6 @@ entity tp4 is
 	attribute loc of f:	signal is "J17";
 	attribute loc of g:	signal is "H14";
 	attribute loc of dp: signal is "C17";
-
-	--- ...
 
 end;
 
@@ -53,20 +65,8 @@ architecture tp4_arq of tp4 is
 	signal pos_pixel: t_vec;
 	signal dir_pixel: t_dir;
 
-	-- component IBUFDS
-	-- 	port(
-	-- 		I: 	in std_logic;
-	-- 		IB: in std_logic;
-	-- 		O: 	out std_logic
-	-- 	);
-	-- end component;
-    --
-	-- signal dif_out: std_logic := '0';
-	-- signal ffd_out: std_logic := '0';
-    --
-	-- signal pix_x, pix_y: std_logic_vector(9 downto 0) := (others => '0');
-	-- signal font_row, font_col: std_logic_vector(M-1 downto 0) := (others => '0');
-	-- signal rom_aux: std_logic := '0';
+    signal pix_x, pix_y: std_logic_vector(9 downto 0) := (others => '0');
+	signal pix_on: std_logic := '0';
 
 begin
 
@@ -92,16 +92,28 @@ begin
 
 	--- TODO: Leer datos de memoria externa y guardarlos en vector pos_pixel_leido
 
-	--- TODO: Obtener y procesar ángulos de rotación, incrementales cada cierta cantidad de clocks?
+	--- Si hiciéramos rotación constante:
+	---			3 contadores de pasos angulares en cada eje,
+	--- 		se multiplican a la velocidad de rotación (lenta o rápida según rot_vel),
+	---			y eso son los 3 ángulos: alfa, beta, gama.
+
+	-- Obtengo los ángulos de rotación para cada eje
+	angles: entity work.det_angulos
+		port map(
+			rst_angs,
+			inc_alfa, inc_beta, inc_gama,
+			rot_x_ng, rot_y_ng, rot_z_ng,
+			alfa, beta, gama
+		);
 
 	-- Roto la posición leída según los ángulos de rotación
 	rotador: entity work.rotador3d
 		port map(
 			clk => clk_i,
 			pos => pos_leida,
-			alfa => ...,
-			beta => ...,
-			gama => ...,
+			alfa => alfa,
+			beta => beta,
+			gama => gama,
 			pos_rotada => pos_rotada
 		);
 
@@ -130,27 +142,26 @@ begin
         );
 
 
-	-- *** IMPRIMIR ***
+	-- *** IMPRIMIR ***		[De acá en más, se tratan los ejes como (x,y)]
 
-	--- TODO: Controlador VGA lee de DP RAM y dibuja en pantalla
+	--- TODO: Leer de DP RAM si en (pix_x,pix_y) hay un píxel => pix_on
 
-	-- ...
-	-- -- VGA
-	-- vga: entity work.VGA_ctrl
-	-- 	port map(
-	-- 		mclk => clk_i,
-	-- 		red_i => rom_aux,
-	-- 		grn_i => rom_aux,
-	-- 		blu_i => '1',
-	--
-	-- 		hs => hs,
-	-- 		vs => vs,
-	-- 		red_o => red_o,
-	-- 		grn_o => grn_o,
-	-- 		blu_o => blu_o,
-	-- 		pixel_row => pix_y,
-	-- 		pixel_col => pix_x
-	-- 	);
+	-- VGA
+	vga: entity work.VGA_ctrl
+		port map(
+			mclk => clk_i,
+			red_i => pix_on,	--- 1 si hay algo, 0 si no
+			grn_i => pix_on,	--- 1 si hay algo, 0 si no
+			blu_i => '1',
+
+			hs => hs,
+			vs => vs,
+			red_o => red_o,
+			grn_o => grn_o,
+			blu_o => blu_o,
+			pixel_row => pix_y,	-- y del píxel que se está imprimiendo
+			pixel_col => pix_x	-- x del píxel que se está imprimiendo
+		);
 
 	-- Apago todos los segmentos del display de 7 segmentos
 	a <= '1';

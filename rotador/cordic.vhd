@@ -13,11 +13,6 @@ use ieee_proposed.float_pkg.all;
 
 package cordic_lib is
 
-    constant N_PF       : natural := 32;
-    constant PI_PF      : std_logic_vector := "01000000010010010000111111011011";
-    constant HALF_PI_PF : std_logic_vector := "00111111110010010000111111011011";
-    constant CERO       : std_logic_vector := "00000000000000000000000000000000";
-
     -- type t_float is std_logic_vector(N_PF-1 downto 0);
     type t_float is float32;
     type t_coordenada is t_float;-- := CERO;           -- tipo coordenada
@@ -26,6 +21,11 @@ package cordic_lib is
     type t_dir is array(1 to 2) of std_logic_vector(N_PF-1 downto 0);   -- tipo dirección en memoria
     -- type t_mat_r is array(1 to 2) of t_coordenada;
     -- type t_mat is array(1 to 2) of t_mat_r;         -- tipo matriz 2x2 de coordenadas
+
+    constant N_PF       : natural := 32;
+    constant PI_PF      : t_float := "01000000010010010000111111011011";    ---Estos 3 tendrían que ser std_logic_vector?
+    constant HALF_PI_PF : t_float := "00111111110010010000111111011011";
+    constant CERO       : t_float := "00000000000000000000000000000000";
 
 end package cordic_lib;
 
