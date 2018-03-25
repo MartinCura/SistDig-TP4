@@ -72,7 +72,7 @@ begin
 
 	-- *** RECIBIR Y GUARDAR ***
 
-	-- UART para recibir los datos de la RAM externa
+	-- UART para recibir los datos de la PC y mandarlos a la RAM externa
 	uart: entity work.uart_rx
 		generic map(
 			data_bits => n_bits_coord
