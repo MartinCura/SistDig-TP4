@@ -79,16 +79,16 @@ architecture vga_ctrl_arq of vga_ctrl is
 
 	-- Contadores (horizontal y vertical)
 	signal hc, vc: unsigned(9 downto 0);
-	-- Flag para obtener una habilitaci�n cada dos ciclos de clock
+	-- Flag para obtener una habilitación cada dos ciclos de clock
 	signal clkdiv_flag: std_logic;
-	-- Senal para habilitar la visualizaci�n de datos
+	-- Señal para habilitar la visualización de datos
 	signal vidon: std_logic;
-	-- Senal para habilitar el contador vertical
+	-- Señal para habilitar el contador vertical
 	signal vsenable: std_logic;
 
 
 begin
-    -- Divisi�n de la frecuencia del reloj
+    -- División de la frecuencia del reloj
     process(mclk)
     begin
         if rising_edge(mclk) then
@@ -102,8 +102,8 @@ begin
         if rising_edge(mclk) then
             if clkdiv_flag = '1' then
                 if hc = hpixels then
-                    hc <= (others => '0');	-- El cont horiz se resetea cuando alcanza la cuenta m�xima de pixeles
-                    vsenable <= '1';		-- Habilitaci�n del cont vert
+                    hc <= (others => '0');	-- El cont horiz se resetea cuando alcanza la cuenta máxima de pixeles
+                    vsenable <= '1';		-- Habilitación del cont vert
                 else
                     hc <= hc + 1;			-- Incremento del cont horiz
                     vsenable <= '0';		-- El cont vert se mantiene deshabilitado

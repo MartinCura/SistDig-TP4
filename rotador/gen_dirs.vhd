@@ -11,7 +11,7 @@ use work.cordic_lib.all;
 entity gen_dirs is
 
 	port(
-        clk: in std_logic;
+        -- clk: in std_logic;
         pos: in t_coordenada;
 		dir: out t_dir
 	);
@@ -27,9 +27,11 @@ architecture gen_dirs_arq of gen_dirs is
     integer x, y : integer;
 
 begin
+
     x := SCR_W / 2 + to_integer( SIZE * pos(1) );
     y := SCR_H / 2 + to_integer( SIZE * pos(2) );
     ---dir := x + SCR_W * y; 						!!!
 	dir(1) <= std_logic_vector(to_unsigned(x));
 	dir(2) <= std_logic_vector(to_unsigned(y));
+
 end;

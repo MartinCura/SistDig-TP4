@@ -5,11 +5,14 @@ use ieee_proposed.float_pkg.all;
 library work;
 use work.cordic_lib.all;
 
--- Almacena y actualiza ángulos de rotación
+-- Almacena y actualiza ángulos de rotación en cada ciclo
 entity det_angulos is
+	generic (
+		C : integer := 50 * (10**6)	-- 50 MHz
+	);
 	port (
-		-- clk: in std_logic;
-		-- ena: in std_logic;
+		clk: in std_logic;
+		ena: in std_logic;
 		rst: in std_logic;
         inc_a, inc_b, inc_g: in std_logic;
         neg_a, neg_b, neg_g: in std_logic;
@@ -24,8 +27,18 @@ architecture det_angulos_arq of det_angulos is
 
 begin
 
-    a <= CERO when rst else ((a - paso_ang when neg_a else a + paso_ang) when inc_a else a);
-    b <= CERO when rst else ((b - paso_ang when neg_b else b + paso_ang) when inc_b else b);
-    g <= CERO when rst else ((g - paso_ang when neg_g else g + paso_ang) when inc_g else g);
-
+	if ena then
+		process(clk)
+		variable i : NATURAL := 0;
+		begin
+			i = i + 1;
+			if i = C then
+				i = 0;
+				a <= CERO when rst else ((a - paso_ang when neg_a else a + paso_ang) when inc_a else a);
+				b <= CERO when rst else ((b - paso_ang when neg_b else b + paso_ang) when inc_b else b);
+				g <= CERO when rst else ((g - paso_ang when neg_g else g + paso_ang) when inc_g else g);
+			end if;
+		end process;
+	end if;
+	
 end;

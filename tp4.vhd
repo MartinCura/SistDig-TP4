@@ -1,7 +1,7 @@
 entity tp4 is
 
 	generic(
-		n_bits_coord := 8	--- REVISAR
+		n_bits_coord := 32	--- REVISAR
 	);
 
 	port(
@@ -60,6 +60,9 @@ architecture tp4_arq of tp4 is
 
 	signal lectura_uart: std_logic_vector(n_bits_coord-1 downto 0) := (others => '0');
 
+	-- signal rot_ena: std_logic := '0';		-- Enable de rotar
+	signal ena_o: std_logic := '0';
+	signal rst_pdram: std_logic := '0';
 	signal alfa, beta, gama: t_float;
 	signal pos_leida, pos_rotada: t_pos;
 	signal pos_pixel: t_vec;
@@ -73,33 +76,77 @@ begin
 	-- *** RECIBIR Y GUARDAR ***
 
 	-- UART para recibir los datos de la PC y mandarlos a la RAM externa
-	uart: entity work.uart_rx
+	uart: entity work.uart
 		generic map(
 			data_bits => n_bits_coord
 		) port map(
-			clk_in   => clk_i,
-			reset_in => '0', ---TODO
-			tick_in  => '1', ---TODO!
-			rx_in	 => '0', ---TODO
-			rx_done_tick => '0', ---TODO
-			data_out => lectura_uart
+			Rx => CONECTAR AL PIN MICRO USB
+			Tx => CONECTAR AL PIN MICRO USB
+			Din => ...
+			StartTx =>
+			TxBusy =>
+			Dout =>
+			RxRdy =>
+			RxErr =>
+			clk =>
+			rst =>
 		);
+			-- clk_in   => clk_i,
+			-- reset_in => '0', ---TODO
+			-- tick_in  => '1', ---TODO!
+			-- rx_in	 => '0', ---TODO
+			-- rx_done_tick => '0', ---TODO
+			-- data_out => lectura_uart
+		-- ////
+		-- port (
+		-- 	Rx	: in std_logic;
+		-- 	Tx	: out std_logic;
+		-- 	Din	: in std_logic_vector(7 downto 0);
+		-- 	StartTx	: in std_logic;
+		-- 	TxBusy	: out std_logic;
+		-- 	Dout	: out std_logic_vector(7 downto 0);
+		-- 	RxRdy	: out std_logic;
+		-- 	RxErr	: out std_logic;
+		-- 	clk	: in std_logic;
+		-- 	rst	: in std_logic
+		-- );
 
 	--- TODO: Escribir esos datos (procesar lectura_uart) en memoria externa
 
 
 	-- *** LEER Y ROTAR ***
 
-	--- TODO: Leer datos de memoria externa y guardarlos en vector pos_pixel_leido
+	--- TODO: Leer datos de memoria externa y guardarlos en vector pos_leida
 
 	--- Si hiciéramos rotación constante:
 	---			3 contadores de pasos angulares en cada eje,
 	--- 		se multiplican a la velocidad de rotación (lenta o rápida según rot_vel),
 	---			y eso son los 3 ángulos: alfa, beta, gama.
 
+	-- -- Generador de enable	/// Si en cada clock trato un pixel distinto, no lo necesito
+	-- ena_generator: entity work.rot_ena_gen
+	-- 	port map(
+	-- 		clk => clk_i,
+	-- 		ena => rot_ena
+	-- 	);
+
+	ram_int: entity work.ram_interna
+		generic map(
+			N_BITS => n_bits_coord
+		) port map(
+			clk => clk_i,
+			Rx  => RxRdy,
+			Din => Dout,
+			Dout => pos_leida,
+			Rdy => ena_o,
+			barr => rst_pdram
+		);
+
 	-- Obtengo los ángulos de rotación para cada eje
 	angles: entity work.det_angulos
 		port map(
+			-- rot_ena,
+			ena_o,
 			rst_angs,
 			inc_alfa, inc_beta, inc_gama,
 			rot_x_ng, rot_y_ng, rot_z_ng,
@@ -109,7 +156,8 @@ begin
 	-- Roto la posición leída según los ángulos de rotación
 	rotador: entity work.rotador3d
 		port map(
-			clk => clk_i,
+			-- ena => rot_ena,
+			ena_o,
 			pos => pos_leida,
 			alfa => alfa,
 			beta => beta,
@@ -123,7 +171,7 @@ begin
 	-- Para la posición rotada genero la dirección en memoria correspondiente
 	gen_dir: entity work.gen_dirs
 		port map(
-            clk => clk_i,
+            -- clk => clk_i,
 			pos => pos_pixel,
 			dir => dir_pixel
 		);
@@ -132,26 +180,24 @@ begin
     escrit_dpram: entity work.video_ram
         port map (
             clock => clk,
-            write_enable => '1',
-            A_row => dir_pixel(1),
-            B_row => open,
-            A_col => dir_pixel(2),
-            B_col => open,
-            data_A => '1',
-            data_B => open
+            write_enable => '1' and ena_o,
+            A_row => dir_pixel(2) when not barrido else pix_y,
+            B_row => pix_y,
+            A_col => dir_pixel(1) when not barrido else pix_x,
+            B_col => pix_x,
+            data_A => '1' when not barrido else '0',	-- Limpieza de RAM
+            data_B => pix_on and ena_o
         );
 
 
 	-- *** IMPRIMIR ***		[De acá en más, se tratan los ejes como (x,y)]
 
-	--- TODO: Leer de DP RAM si en (pix_x,pix_y) hay un píxel => pix_on
-
 	-- VGA
 	vga: entity work.VGA_ctrl
 		port map(
 			mclk => clk_i,
-			red_i => pix_on,	--- 1 si hay algo, 0 si no
-			grn_i => pix_on,	--- 1 si hay algo, 0 si no
+			red_i => pix_on and ena_o,	--- 1 si hay algo, 0 si no
+			grn_i => pix_on and ena_o,	--- 1 si hay algo, 0 si no
 			blu_i => '1',
 
 			hs => hs,
