@@ -19,8 +19,10 @@ use STD.TEXTIO.all;
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
-library IEEE_PROPOSED;
-use IEEE_PROPOSED.fixed_float_types.all;
+---library IEEE_PROPOSED;
+---use IEEE_PROPOSED.fixed_float_types.all;
+library work;
+use work.fixed_float_types.all;
 
 package fixed_pkg is
 -- generic (

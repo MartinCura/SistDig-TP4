@@ -1,11 +1,10 @@
---- Ver si tengo que descomentar todo
--- use ieee.std_logic_1164.all;
--- use ieee.numeric_std.all;
--- use ieee_proposed.fixed_float_types.all;
--- use ieee_proposed.fixed_pkg.all;
-use ieee_proposed.float_pkg.all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 library work;
+---use ieee_proposed.float_pkg.all;
+use work.float_pkg.all;
 use work.cordic_lib.all;
 
 entity ram_interna is
@@ -19,7 +18,7 @@ entity ram_interna is
 	port(
         clk: in std_logic;
         Rx: in std_logic;
-        Din: in std_logic_vector(N-1 downto 0);
+        Din: in std_logic_vector(N_BITS-1 downto 0);	---Estoy guardando slv y sacando t_coordenada's ???
 		Dout: out t_pos;
         Rdy: out std_logic := '0';
         barrido: out std_logic := '0'
@@ -29,9 +28,9 @@ end entity;
 
 architecture ram_interna_arq of ram_interna is
 
-    constant ram_size = 3 * CANT_P;
+    constant ram_size : integer := 3 * CANT_P;
     type t_ram is array(1 to ram_size) of t_coordenada;
-    variable ram : t_ram;
+    signal ram : t_ram; ----:= (others => CERO); ---Cómo la inicializo?
 
 begin
 
@@ -45,7 +44,7 @@ begin
                 j := 1;
                 Rdy <= '1';
             end if;
-            ram(j) := Din;
+            ram(j) <= to_float(Din);	---CHEQUEAR... hacerlo afuera??
         end if;
     end process;
 
@@ -62,10 +61,10 @@ begin
                 if j > ram_size then
                     j := 1;
                     barrido <= '1';
-                end if;
-                Dout(0) <= ram(j);
-                Dout(1) <= ram(j+1);
-                Dout(2) <= ram(j+2);
+                end if;		---CHEQUEAR dónde puse el end if
+                Dout(1) <= ram(j);
+                Dout(2) <= ram(j+1);
+                Dout(3) <= ram(j+2);
             end if;
         end if;
     end process;

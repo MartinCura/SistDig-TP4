@@ -52,8 +52,10 @@ package standard_textio_additions is
 
 end package standard_textio_additions;
 
-library ieee_proposed;
-use ieee_proposed.standard_additions.all;
+---library ieee_proposed;
+---use ieee_proposed.standard_additions.all;
+library work;
+use work.standard_additions.all;
 
 package body standard_textio_additions is
 -- pragma synthesis_off

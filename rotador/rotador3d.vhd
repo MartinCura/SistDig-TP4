@@ -1,11 +1,10 @@
---- Ver si tengo que descomentar todo
--- use ieee.std_logic_1164.all;
+library ieee;
+use ieee.std_logic_1164.all;
 -- use ieee.numeric_std.all;
--- use ieee_proposed.fixed_float_types.all;
--- use ieee_proposed.fixed_pkg.all;
-use ieee_proposed.float_pkg.all;
 
 library work;
+---use ieee_proposed.float_pkg.all;
+use work.float_pkg.all;
 use work.cordic_lib.all;
 
 entity rotador3d is
@@ -13,52 +12,62 @@ entity rotador3d is
 		N: integer := 32
 	);
 	port(
-        -- ena: in std_logic;  -- Enable para rotar
-        pos: in t_pos;      -- Posición de un píxel a rotar a la pos correcta
+        ena: in std_logic;  -- Enable para rotar
+        pos: in t_pos;      -- Posición de un punto a rotar a la pos correcta
 		alfa, beta, gama: in t_float;  -- Ángulo de rotación en x, y, z
-        pos_rotada: out t_pos
+        pos_rotada: out t_pos	---Valor inicial?
 	);
 end;
 
 architecture rotador3d_arq of rotador3d is
-    variable aux_1, aux_2, aux_3: t_pos;
+   
+	signal aux_1, aux_2, aux_3 : t_pos;
+	signal vec_aux : t_vec;
 
 begin
 
-    -- process(ena)
-    -- begin
-    --     if rising_edge(ena) then
-            -- Rotación en x
-    if ena then
-        aux_1(3) <= pos(1);
-        if (alfa /= 0) then
-        --if (not isZero(alfa)) then ---implementar en PF
-            aux_1(1 to 2) <= cordic(pos(2 to 3), alfa);
-        else
-            aux_1(1 to 2) <= pos(2 to 3);
-        end if;
+	process(pos)	--- Con cada cambio de posición?? Con cada clock???
+	begin
+	    if ena = '1' then
+			-- Rotación en x
+			if (alfa /= 0) then
+				---aux_1 <= cordic(pos, alfa); -- Otra forma, pero es menos clara de este lado
+				vec_aux(1) <= pos(2);
+				vec_aux(2) <= pos(3);
+				vec_aux <= cordic(vec_aux, alfa);
+				aux_1(1) <= vec_aux(1);
+				aux_1(2) <= vec_aux(2);
+			else
+				aux_1(1 to 2) <= pos(2 to 3);
+			end if;
+			aux_1(3) <= pos(1);
 
-        -- Rotación en y
-        aux_2(3) <= aux_1(1);
-        if (beta /= 0) then
-        --if (not isZero(beta)) then
-            aux_2(1 to 2) <= cordic(aux_1(2 to 3), beta);
-        else
-            aux_2(1 to 2) <= aux_1(2 to 3);
-        end if;
+			-- Rotación en y
+			if (beta /= 0) then
+				vec_aux(1) <= aux_1(2);
+				vec_aux(2) <= aux_1(3);
+				vec_aux <= cordic(vec_aux, beta);
+				aux_2(1) <= vec_aux(1);
+				aux_2(2) <= vec_aux(2);
+			else
+				aux_2(1 to 2) <= aux_1(2 to 3);
+			end if;
+			aux_2(3) <= aux_1(1);
 
-        -- Rotación en z
-        aux_3(3) <= aux_2(1);
-        if (gama /= 0) then
-        --if (not isZero(gama)) then
-            aux_3(1 to 2) <= cordic(aux_2(2 to 3), gama);
-        else
-            aux_3(1 to 2) <= aux_2(2 to 3);
-        end if;
+			-- Rotación en z
+			if (gama /= 0) then
+				vec_aux(1) <= aux_2(2);
+				vec_aux(2) <= aux_2(3);
+				vec_aux <= cordic(vec_aux, gama);
+				aux_3(1) <= vec_aux(1);
+				aux_3(2) <= vec_aux(2);
+			else
+				aux_3(1 to 2) <= aux_2(2 to 3);
+			end if;
+			aux_3(3) <= aux_2(1);
 
-        pos_rotada <= aux_3;
-    then if;
-    --     end if;
-    -- end process;
+			pos_rotada <= aux_3;
+		end if;
+	end process;
 
 end;

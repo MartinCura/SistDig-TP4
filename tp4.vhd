@@ -1,19 +1,33 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+library work;
+--use work.float_pkg.all;
+use work.cordic_lib.all;
+
 entity tp4 is
 
 	generic(
-		n_bits_coord := 32	--- REVISAR
+		n_bits_coord : integer := 32	--- REVISAR
 	);
 
 	port(
 		clk_i: in std_logic;	-- Clock general
-
+		
+		--rot_on, rot_vel: in std_logic;			-- Switches y botones para controlar la rotación
+		--rot_x_on, rot_y_on, rot_z_on: in std_logic;
+		rot_x_ng, rot_y_ng, rot_z_ng: in std_logic;
+		inc_alfa, inc_beta, inc_gama: in std_logic;
+		rst_angs: in std_logic;
+		
 		data_volt_out: out std_logic;
-		hs, vs: out std_logic;
+		hs, vs: out std_logic;						-- Output para el display VGA
 		red_o: out std_logic_vector(2 downto 0);
 		grn_o: out std_logic_vector(2 downto 0);
 		blu_o: out std_logic_vector(1 downto 0);
 
-		a,b,c,d,e,f,g,dp: out std_logic	-- Segmentos del display
+		a,b,c,d,e,f,g,dp: out std_logic				-- Segmentos del display de 7 segmentos
 	);
 
 	attribute loc: string;
@@ -65,11 +79,16 @@ architecture tp4_arq of tp4 is
 	signal rst_pdram: std_logic := '0';
 	signal alfa, beta, gama: t_float;
 	signal pos_leida, pos_rotada: t_pos;
-	signal pos_pixel: t_vec;
+	signal vec_pos_pixel: t_vec;
 	signal dir_pixel: t_dir;
 
     signal pix_x, pix_y: std_logic_vector(9 downto 0) := (others => '0');
 	signal pix_on: std_logic := '0';
+	
+	---CHEQUEAR:
+	signal barrido: std_logic := '0';	---FALTA ASIGNARLA EN ALGÚN MOMENTO /// O es rst_pdram?
+	signal RxRdy: std_logic := '0';
+	signal Dout_uart: std_logic_vector(7 downto 0) := (others => '0');
 
 begin
 
@@ -78,18 +97,18 @@ begin
 	-- UART para recibir los datos de la PC y mandarlos a la RAM externa
 	uart: entity work.uart
 		generic map(
-			data_bits => n_bits_coord
+			num_data_bits => n_bits_coord
 		) port map(
-			Rx => CONECTAR AL PIN MICRO USB
-			Tx => CONECTAR AL PIN MICRO USB
-			Din => ...
-			StartTx =>
-			TxBusy =>
-			Dout =>
-			RxRdy =>
-			RxErr =>
-			clk =>
-			rst =>
+			Rx => '0',---CONECTAR AL PIN MICRO USB !!!
+			Tx => open,---CONECTAR AL PIN MICRO USB !!!
+			Din => (others => '0'), ---...		   !!!
+			StartTx => '0',			---
+			TxBusy => open,			---
+			Dout => Dout_uart,		---
+			RxRdy => RxRdy,			---
+			RxErr => open,			---
+			clk => clk_i,
+			rst => '0'				--- TODOS ESTOS VALORES PUESTOS PARA DEBUGUEAR TP4; REEMPLAZAR 	!!!
 		);
 			-- clk_in   => clk_i,
 			-- reset_in => '0', ---TODO
@@ -136,17 +155,17 @@ begin
 		) port map(
 			clk => clk_i,
 			Rx  => RxRdy,
-			Din => Dout,
+			Din => Dout_uart,
 			Dout => pos_leida,
 			Rdy => ena_o,
-			barr => rst_pdram
+			barrido => rst_pdram
 		);
 
 	-- Obtengo los ángulos de rotación para cada eje
 	angles: entity work.det_angulos
 		port map(
-			-- rot_ena,
-			ena_o,
+			clk_i,
+			ena_o,	-- rot_ena,
 			rst_angs,
 			inc_alfa, inc_beta, inc_gama,
 			rot_x_ng, rot_y_ng, rot_z_ng,
@@ -156,8 +175,7 @@ begin
 	-- Roto la posición leída según los ángulos de rotación
 	rotador: entity work.rotador3d
 		port map(
-			-- ena => rot_ena,
-			ena_o,
+			ena => ena_o, -- ena => rot_ena,
 			pos => pos_leida,
 			alfa => alfa,
 			beta => beta,
@@ -166,29 +184,31 @@ begin
 		);
 
 	-- Aplano a ejes (y,z)
-	pos_pixel <= pos_rotada(2 to 3);
+	vec_pos_pixel(1) <= pos_rotada(2);
+	vec_pos_pixel(2) <= pos_rotada(3);
 
 	-- Para la posición rotada genero la dirección en memoria correspondiente
 	gen_dir: entity work.gen_dirs
 		port map(
-            -- clk => clk_i,
-			pos => pos_pixel,
+            clk => clk_i,
+			pos => vec_pos_pixel,
 			dir => dir_pixel
 		);
 
 	-- Prendo el bit para la posición apropiada en la dual port ram
     escrit_dpram: entity work.video_ram
         port map (
-            clock => clk,
-            write_enable => '1' and ena_o,
-            A_row => dir_pixel(2) when not barrido else pix_y,
+            clock => clk_i,
+            write_enable => ena_o,	---Chequear
+            A_row => dir_pixel(2),----dir_pixel(2) when not barrido else pix_y,	 FALTA BARRIDO (o sería rst_pdram?)
             B_row => pix_y,
-            A_col => dir_pixel(1) when not barrido else pix_x,
+            A_col => dir_pixel(1),----dir_pixel(1) when not barrido else pix_x,
             B_col => pix_x,
-            data_A => '1' when not barrido else '0',	-- Limpieza de RAM
-            data_B => pix_on and ena_o
+            data_A => '1',----'1' when not barrido else '0',	-- Limpieza de RAM
+            data_B => pix_on			--- and ena_o 	estaba asignando a 2 variables this makes no sense
         );
 
+	pix_on <= pix_on and ena_o;
 
 	-- *** IMPRIMIR ***		[De acá en más, se tratan los ejes como (x,y)]
 
@@ -196,8 +216,8 @@ begin
 	vga: entity work.VGA_ctrl
 		port map(
 			mclk => clk_i,
-			red_i => pix_on and ena_o,	--- 1 si hay algo, 0 si no
-			grn_i => pix_on and ena_o,	--- 1 si hay algo, 0 si no
+			red_i => pix_on,	--- 1 si hay algo, 0 si no
+			grn_i => pix_on,	--- 1 si hay algo, 0 si no
 			blu_i => '1',
 
 			hs => hs,
