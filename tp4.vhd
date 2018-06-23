@@ -86,7 +86,7 @@ architecture tp4_arq of tp4 is
 	signal pix_on: std_logic := '0';
 	
 	---CHEQUEAR:
-	signal barrido: std_logic := '0';	---FALTA ASIGNARLA EN ALGÚN MOMENTO /// O es rst_pdram?
+	----signal barrido: std_logic := '0';	---FALTA ASIGNARLA EN ALGÚN MOMENTO /// O es rst_pdram?
 	signal RxRdy: std_logic := '0';
 	signal Dout_uart: std_logic_vector(7 downto 0) := (others => '0');
 
@@ -151,7 +151,8 @@ begin
 
 	ram_int: entity work.ram_interna
 		generic map(
-			N_BITS => n_bits_coord
+			N_BITS => n_bits_coord,
+			CANT_P => 1000
 		) port map(
 			clk => clk_i,
 			Rx  => RxRdy,
@@ -175,7 +176,7 @@ begin
 	-- Roto la posición leída según los ángulos de rotación
 	rotador: entity work.rotador3d
 		port map(
-			ena => ena_o, -- ena => rot_ena,
+			ena => ena_o,	---ena => rot_ena,
 			pos => pos_leida,
 			alfa => alfa,
 			beta => beta,
@@ -200,11 +201,13 @@ begin
         port map (
             clock => clk_i,
             write_enable => ena_o,	---Chequear
-            A_row => dir_pixel(2),----dir_pixel(2) when not barrido else pix_y,	 FALTA BARRIDO (o sería rst_pdram?)
+            A_row => dir_pixel(2),----when not rst_pdram else pix_y,----dir_pixel(2) when not barrido else pix_y,	 FALTA BARRIDO (o sería rst_pdram?)
             B_row => pix_y,
-            A_col => dir_pixel(1),----dir_pixel(1) when not barrido else pix_x,
+            A_col => dir_pixel(1),----dir_pixel(1) when not rst_pdram else pix_x,
+			
             B_col => pix_x,
-            data_A => '1',----'1' when not barrido else '0',	-- Limpieza de RAM
+--            data_A => '1',----'1' when not barrido else '0',	-- Limpieza de RAM
+			data_A => '1',----when not rst_dpram else '0',
             data_B => pix_on			--- and ena_o 	estaba asignando a 2 variables this makes no sense
         );
 

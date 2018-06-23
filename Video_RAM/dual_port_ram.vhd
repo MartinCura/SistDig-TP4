@@ -1,8 +1,8 @@
 library IEEE;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
---De los puertos A y B, uso el A para escribir y B para leer (uso esta opcion de las 4 posibles de la dual port ram)
 
+-- De los puertos A y B, uso el A para escribir y B para leer (uso esta opcion de las 4 posibles de la dual port ram)
 entity dual_port_ram is
   generic(
     data_width : natural := 1;

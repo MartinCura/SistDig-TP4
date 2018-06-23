@@ -8,24 +8,24 @@ entity MemoryController is
     Port ( 
 			  clk				:in	STD_LOGIC;								 -- 100MHz/50MHz
 			  reset				:in	STD_LOGIC;								
-			  address_in	    :in	STD_LOGIC_VECTOR (22 downto 0);	         -- RAM address
+			  address_in		:in	STD_LOGIC_VECTOR (22 downto 0);	         -- RAM address
 			  mem				:in	STD_LOGIC;								 -- if='1' Comienza la operacion
-			  rw		        :in	STD_LOGIC;								 -- if='0' => lectura if='1' => escritura
+			  rw				:in	STD_LOGIC;								 -- if='0' => lectura if='1' => escritura
 			  data_in			:in STD_LOGIC_VECTOR (15 downto 0);	         -- data que va a ser escrita
-			  data_out		    :out STD_LOGIC_VECTOR (15 downto 0);	     -- data que va a ser leida
-              read_ready_out    :out STD_LOGIC;                              -- if='1' valida data_out
+			  data_out			:out STD_LOGIC_VECTOR (15 downto 0);	     -- data que va a ser leida
+              read_ready_out	:out STD_LOGIC;                              -- if='1' valida data_out
               busy 				:out STD_LOGIC;                              -- if='1' RAM esta ocupada (mem no tiene efecto)
 
-			  clock_out		        :out STD_LOGIC;
-			  ADDRESS			    :out STD_LOGIC_VECTOR (22 downto 0);
-			  ADV					:out STD_LOGIC;
-			  CRE					:out STD_LOGIC;
-			  CE					:out STD_LOGIC;
-			  OE					:out STD_LOGIC;
-			  WE					:out STD_LOGIC;
-			  LB					:out STD_LOGIC;
-			  UB					:out STD_LOGIC;
-			  DATA				    :inout	STD_LOGIC_VECTOR (15 downto 0)
+			  clock_out			:out STD_LOGIC;
+			  ADDRESS			:out STD_LOGIC_VECTOR (22 downto 0);
+			  ADV				:out STD_LOGIC;
+			  CRE				:out STD_LOGIC;
+			  CE				:out STD_LOGIC;
+			  OE				:out STD_LOGIC;
+			  WE				:out STD_LOGIC;
+			  LB				:out STD_LOGIC;
+			  UB				:out STD_LOGIC;
+			  DATA				:inout	STD_LOGIC_VECTOR (15 downto 0)
 			 );
 end entity MemoryController;
 
@@ -103,7 +103,7 @@ begin
           read_ready_out <= '0';
           data_out <= (others => '0');
 
-          if mem = '1' then --Si esta habilitado el controlador, entonces entra en estado de lectura o escritura
+          if mem = '1' then	-- Si esta habilitado el controlador, entonces entra en estado de lectura o escritura
             if rw = '1' then
               state <= WRITING;
             else

@@ -1,19 +1,20 @@
 library ieee;
 use ieee.std_logic_1164.all;
--- use ieee.numeric_std.all;
 
 library work;
 ---use ieee_proposed.float_pkg.all;
 use work.float_pkg.all;
 use work.cordic_lib.all;
 
+
+-- Rota un punto 3D, usando 3 veces el algoritmo CORDIC, usando 3 veces el algoritmo CORDIC y los ángulos para cada eje
 entity rotador3d is
     generic(
 		N: integer := 32
 	);
 	port(
-        ena: in std_logic;  -- Enable para rotar
-        pos: in t_pos;      -- Posición de un punto a rotar a la pos correcta
+        ena: in std_logic;  	-- Enable para rotar
+        pos: in t_pos;      	-- Posición de un punto a rotar a la pos correcta
 		alfa, beta, gama: in t_float;  -- Ángulo de rotación en x, y, z
         pos_rotada: out t_pos	---Valor inicial?
 	);

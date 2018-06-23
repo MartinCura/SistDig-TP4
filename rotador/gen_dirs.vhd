@@ -7,10 +7,11 @@ library work;
 use work.float_pkg.all;
 use work.cordic_lib.all;
 
+-- A partir de una posición 2D (x,y) mapea a una dirección de pantalla (i,j)
 entity gen_dirs is
 
 	generic(
-	    --Bits por fila/columna
+	    -- Bits por fila/columna
 		BR : integer := 10;		-- n_bits_row
 	    BC : integer := 10		-- n_bits_col
 	);
@@ -32,12 +33,12 @@ architecture gen_dirs_arq of gen_dirs is
 begin
 
 	process(clk)
-	variable i : natural := 0;
+	variable i	  : natural := 0;
 	variable x, y : integer := 0;
 	begin
 		x := SCR_W / 2 + to_integer( SIZE * pos(1) );
 		y := SCR_H / 2 + to_integer( SIZE * pos(2) );
-		---dir := x + SCR_W * y; 						!!!
+		---dir := x + SCR_W * y;
 		dir(1) <= std_logic_vector(to_unsigned(x,BR));
 		dir(2) <= std_logic_vector(to_unsigned(y,BC));
 	end process;

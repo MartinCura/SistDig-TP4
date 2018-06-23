@@ -15,9 +15,9 @@ package cordic_lib is
     constant N_PF       : natural := 32;
 
 	alias t_float is float32;
-    subtype t_coordenada is t_float; --- := CERO;           -- tipo coordenada
-	type t_pos is array (1 to 3) of t_coordenada;    -- tipo posición 3D (x,y,z)
-    type t_vec is array (1 to 2) of t_coordenada;    -- tipo posición 2D (x,y)
+    subtype t_coordenada is t_float; --- := CERO;	-- tipo coordenada
+	type t_pos is array (1 to 3) of t_coordenada;	-- tipo posición 3D (x,y,z)
+    type t_vec is array (1 to 2) of t_coordenada;	-- tipo posición 2D (x,y)
     type t_dir is array (1 to 2) of std_logic_vector(N_PF-1 downto 0);   -- tipo dirección en memoria	---float32 es 23 a -8, que no cause problemas...
     -- type t_mat_r is array(1 to 2) of t_coordenada;
 
@@ -82,9 +82,7 @@ package body cordic_lib is
 		variable beta_i : t_float := beta;
 
     begin
-        -- if ( (beta_i + HALF_PI_PF)(0) == '1' or (beta_i - HALF_PI_PF)(0) == '0' )
         if (beta_i < -PI_PF/2 or beta_i > PI_PF/2) then
-            -- if (beta_i(0) == '1') then
             if (beta_i < 0) then
                 v := cordic(vector, beta_i + PI_PF);
             else
@@ -97,10 +95,9 @@ package body cordic_lib is
 
         for i in 0 to P-1 loop
             if (i > (ANGLES'length - 1)) then
-                angle_i := angle_i / 2;
-                ---angle_i := angle_i srl 1;   -- Si superé la tabla, aproximo
+                angle_i := angle_i / 2;			-- Si superé la tabla, aproximo
             else
-                angle_i := to_float(ANGLES(i));  -- Si no, tabla
+                angle_i := to_float(ANGLES(i));	-- Si no, tabla
             end if;
 
             if (beta_i < 0) then
@@ -109,11 +106,7 @@ package body cordic_lib is
                 sigma := 1;
             end if;
 
-            ---v_aux(1) := v(1) - sigma * (v(2) srl i); MAL
-            ---v_aux(1) := v(1) - sigma * (v(2) * 2^(-i));
 			v_aux(1) := v(1) - sigma * (v(2) * 2**(-i));
-            ---v_aux(2) <= sigma * (v(1) srl i) + v(2); MAL
-            ---v_aux(2) := sigma * (v(1) * 2^(-i)) + v(2);
 			v_aux(2) := sigma * (v(1) * 2**(-i)) + v(2);
             v := v_aux;
 

@@ -74,4 +74,4 @@ package uart_comps is
     );
   end component;
 
-  end package uart_comps;
+end package uart_comps;

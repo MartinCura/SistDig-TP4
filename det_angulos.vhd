@@ -9,7 +9,7 @@ use work.cordic_lib.all;
 -- Almacena y actualiza ángulos de rotación en cada ciclo
 entity det_angulos is
 	generic (
-		C : integer := 50 * (10**6)	-- 50 MHz
+		C : integer := 50 * (10**6)		-- 50 MHz
 	);
 	port (
 		clk: in std_logic;
@@ -24,7 +24,7 @@ end;
 
 architecture det_angulos_arq of det_angulos is
 
-    constant PASO_ANG : t_float := "00111111001101000000000000000000";  -- Paso angular ∆φ: 0.703125 grados
+    constant PASO_ANG : t_float := "00111111001101000000000000000000";	-- Paso angular ∆φ: 0.703125 grados
 	
 	signal a_aux, b_aux, g_aux : t_float := CERO;
 
@@ -35,7 +35,7 @@ begin
 	begin
 		if ena = '1' then
 			i := i + 1;
-			if i = C then
+			if i = C then	-- Cada C clocks, actualizar ángulos de rotación
 				i := 0;
 				if rst = '1' then
 					a_aux <= CERO;

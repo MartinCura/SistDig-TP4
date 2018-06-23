@@ -54,14 +54,14 @@ entity vga_ctrl is
 
 	-- Mapeo de pines para el kit spartan 3
 	-- attribute loc of mclk: signal is "T9";
-	-- attribute loc of red_in: signal is "K13";
-	-- attribute loc of grn_in: signal is "K14";
-	-- attribute loc of blu_in: signal is "J13";
+	-- attribute loc of red_i: signal is "K13";
+	-- attribute loc of grn_i: signal is "K14";
+	-- attribute loc of blu_i: signal is "J13";
 	-- attribute loc of hs: signal is "R9";
 	-- attribute loc of vs: signal is "T10";
-	-- attribute loc of red_out: signal is "R12";
-	-- attribute loc of grn_out: signal is "T12";
-	-- attribute loc of blu_out: signal is "R11";
+	-- attribute loc of red_o: signal is "R12";
+	-- attribute loc of grn_o: signal is "T12";
+	-- attribute loc of blu_o: signal is "R11";
 
 end vga_ctrl;
 
@@ -119,7 +119,7 @@ begin
             if clkdiv_flag = '1' then           -- Flag que habilita la operaci�n una vez cada dos ciclos (25 MHz)
                 if vsenable = '1' then          -- Cuando el cont horiz llega al m�ximo de su cuenta habilita al cont vert
                     if vc = vlines then
-                        vc <= (others => '0');  -- El cont vert se resetea cuando alcanza la cantidad m�xima de lineas
+                        vc <= (others => '0');  -- El cont vert se resetea cuando alcanza la cantidad máxima de lineas
                     else
                         vc <= vc + 1;           -- Incremento del cont vert
                     end if;
@@ -130,13 +130,13 @@ begin
 
 	-- hs <= '1' when (hc(9 downto 7) = "000") else '0';
 	-- vs <= '1' when (vc(9 downto 1) = "000000000") else '0';
-    hs <= '1' when (hc < "0001100001") else '0';   -- Generaci�n de la se�al de sincronismo horizontal
-    vs <= '1' when (vc < "0000000011") else '0';   -- Generaci�n de la se�al de sincronismo vertical
+    hs <= '1' when (hc < "0001100001") else '0';   -- Generación de la señal de sincronismo horizontal
+    vs <= '1' when (vc < "0000000011") else '0';   -- Generación de la señal de sincronismo vertical
 
     pixel_col <= std_logic_vector(hc - 144) when (vidon = '1') else std_logic_vector(hc);
     pixel_row <= std_logic_vector(vc -  31) when (vidon = '1') else std_logic_vector(vc);
 
-	-- Habilitaci�n de la salida de datos por el display cuando se encuentra entre los porches
+	-- Habilitación de la salida de datos por el display cuando se encuentra entre los porches
     vidon <= '1' when (((hc < hfp) and (hc > hbp)) and ((vc < vfp) and (vc > vbp))) else '0';
 
 	-- Pinta la pantalla del color formado por la combinación de las entradas red_i, grn_i y blu_i (switches)

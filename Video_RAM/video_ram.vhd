@@ -2,13 +2,13 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
---La video ram es implementada con la dual port ram, por ende A es la escritura y B lectura.
+-- La video ram es implementada con la dual port ram, por ende A es la escritura y B lectura.
 entity video_ram is
 	generic(
-	    --Bits por fila/columna
+	    -- Bits por fila/columna
 		N_bits_row : integer := 10;
 	    N_bits_col : integer := 10;
-		--Numero de filas/columnas
+		-- Numero de filas/columnas
 	    N_rows : integer := 480;
 		N_cols : integer := 640
 	);
@@ -26,7 +26,7 @@ end entity video_ram;
 
 architecture video_ram_arch of video_ram is
 
---Declaracion de componentes a utilizar (se utiliza la dual port ram)
+	--Declaracion de componentes a utilizar (se utiliza la dual port ram)
 	component dual_port_ram is
 		generic(
 			data_width : natural := 1;
@@ -50,7 +50,7 @@ architecture video_ram_arch of video_ram is
 begin
 	address_A <= A_row & A_col; --La dirección A es la concantenacion de fila y columna
     address_B <= B_row & B_col; --La dirección B es la concantenacion de fila y columna
-	--Instanciacion de los componentes a utilizar
+	--Instanciación de los componentes a utilizar
 	video_dual_port_ram: dual_port_ram
 		generic map(
 			data_width =>1,
