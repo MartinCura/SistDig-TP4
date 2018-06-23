@@ -4,7 +4,7 @@ use IEEE.std_logic_1164.all;
 
 entity extRam_loader is
 	port(
-    clock: in std_logic;
+    clk: in std_logic;
     reset: in std_logic;
     data_in: in std_logic_vector(7 downto 0);
     data_out: out std_logic_vector(15 downto 0);
@@ -21,14 +21,14 @@ architecture extRam_loader_arch of extRam_loader is
 
 begin
 
-  FSM: process(clock, reset)
+  FSM: process(clk, reset)
   begin
     -- RESET
     if reset = '1' then
       data_out <= (others => '0');
       state <= LSB;
       RxRdy_out <= '0';
-    elsif (clk’event and clk=’l’) then
+    elsif rising_edge(clk) then ---elsif (clk'event and clk = 'l') then
       RxRdy_out <= '0';
       case state is
         -- LSByte

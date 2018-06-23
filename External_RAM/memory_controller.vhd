@@ -6,7 +6,7 @@ entity MemoryController is
         clock_frec : integer := 50 -- MHz
     );
     Port ( 
-			  clock				:in	STD_LOGIC;								 -- 100MHz/50MHz
+			  clk				:in	STD_LOGIC;								 -- 100MHz/50MHz
 			  reset				:in	STD_LOGIC;								
 			  address_in	    :in	STD_LOGIC_VECTOR (22 downto 0);	         -- RAM address
 			  mem				:in	STD_LOGIC;								 -- if='1' Comienza la operacion
@@ -48,12 +48,12 @@ begin
 
    ADDRESS <= address_aux ;
   --Estado y registro de datos
-  address_process: process (clock, reset)
+  address_process: process (clk, reset)
   begin
     if reset = '1' then
       address_aux <= (others => '0');
       data_in_aux <= (others => '0');
-    elsif (clk’event and clk=’l’) then
+    elsif rising_edge(clk) then ---elsif (clk'event and clk = 'l') then
       if mem = '1' then
         address_aux <= address_in;
         data_in_aux <= data_in;
@@ -81,12 +81,12 @@ begin
   writing_out <= '1' when state = WRITING else '0';
 	
   -- FSM process
-  FSM: process (clock, reset)
+  FSM: process (clk, reset)
   begin
     -- RESET
     if reset = '1' then
        state <= INIT;
-    elsif (clk’event and clk=’l’) then
+    elsif rising_edge(clk) then ---elsif (clk'event and clk = 'l') then
       case state is
         -- INIT
         when INIT => 
@@ -141,6 +141,8 @@ begin
         when others =>
           state <= IDLE;
 
-     end case;
-   end if;
- end process; -- FSM
+      end case;
+    end if;
+  end process; -- FSM
+  
+end;
