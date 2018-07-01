@@ -4,12 +4,12 @@ use IEEE.std_logic_1164.all;
 -------------------------------------------------------------------------------
 entity extRam_loader is
 	port(
-    clk: in std_logic;
-    reset: in std_logic;
-    data_in: in std_logic_vector(7 downto 0);
-    data_out: out std_logic_vector(15 downto 0);
-    RxRdy_in: in std_logic;
-    RxRdy_out: out std_logic
+	    clk: in std_logic;
+	    reset: in std_logic;
+	    data_in: in std_logic_vector(7 downto 0);
+	    data_out: out std_logic_vector(15 downto 0);
+	    RxRdy_in: in std_logic;
+	    RxRdy_out: out std_logic
 	);
 end entity extRam_loader;
 -------------------------------------------------------------------------------

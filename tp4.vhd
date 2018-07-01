@@ -14,13 +14,13 @@ entity tp4 is
 
 	port(
 		clk_i: in std_logic;	-- Clock general
-		
+
 		--rot_on, rot_vel: in std_logic;			-- Switches y botones para controlar la rotación
 		--rot_x_on, rot_y_on, rot_z_on: in std_logic;
 		rot_x_ng, rot_y_ng, rot_z_ng: in std_logic;
 		inc_alfa, inc_beta, inc_gama: in std_logic;
 		rst_angs: in std_logic;
-		
+
 		data_volt_out: out std_logic;
 		hs, vs: out std_logic;						-- Output para el display VGA
 		red_o: out std_logic_vector(2 downto 0);
@@ -72,7 +72,7 @@ end;
 
 architecture tp4_arq of tp4 is
 
-	signal lectura_uart: std_logic_vector(n_bits_coord-1 downto 0) := (others => '0');
+	signal lectura_uart32: std_logic_vector(n_bits_coord-1 downto 0) := (others => '0');---
 
 	-- signal rot_ena: std_logic := '0';		-- Enable de rotar
 	signal ena_o: std_logic := '0';
@@ -84,11 +84,11 @@ architecture tp4_arq of tp4 is
 
     signal pix_x, pix_y: std_logic_vector(9 downto 0) := (others => '0');
 	signal pix_on: std_logic := '0';
-	
+
 	---CHEQUEAR:
 	----signal barrido: std_logic := '0';	---FALTA ASIGNARLA EN ALGÚN MOMENTO /// O es rst_pdram?
 	signal RxRdy: std_logic := '0';
-	signal Dout_uart: std_logic_vector(7 downto 0) := (others => '0');
+	signal Dout_uart: std_logic_vector(15 downto 0) := (others => '0');---CHEQUEAR TAMAÑO CORRECTO, MIRAR NOTA MÁS ABAJO
 
 begin
 
@@ -115,7 +115,7 @@ begin
 			-- tick_in  => '1', ---TODO!
 			-- rx_in	 => '0', ---TODO
 			-- rx_done_tick => '0', ---TODO
-			-- data_out => lectura_uart
+			-- data_out => lectura_uart32
 		-- ////
 		-- port (
 		-- 	Rx	: in std_logic;
@@ -130,7 +130,7 @@ begin
 		-- 	rst	: in std_logic
 		-- );
 
-	--- TODO: Escribir esos datos (procesar lectura_uart) en memoria externa
+	--- TODO: Escribir esos datos (procesar lectura_uart32) en memoria externa
 
 
 	-- *** LEER Y ROTAR ***
@@ -148,6 +148,10 @@ begin
 	-- 		clk => clk_i,
 	-- 		ena => rot_ena
 	-- 	);
+
+	--- %%%%%% LA UART LEE 16 BITS, PERO LO ESTIRO A 32 %%%%%%%%%%%%
+	-- numero de 32 bits lectura_uart32 <= Dout_uart;
+	--- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	ram_int: entity work.ram_interna
 		generic map(
@@ -204,7 +208,7 @@ begin
             A_row => dir_pixel(2),----when not rst_pdram else pix_y,----dir_pixel(2) when not barrido else pix_y,	 FALTA BARRIDO (o sería rst_pdram?)
             B_row => pix_y,
             A_col => dir_pixel(1),----dir_pixel(1) when not rst_pdram else pix_x,
-			
+
             B_col => pix_x,
 --            data_A => '1',----'1' when not barrido else '0',	-- Limpieza de RAM
 			data_A => '1',----when not rst_dpram else '0',
