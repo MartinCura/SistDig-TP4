@@ -1,5 +1,13 @@
 clear all, close all, clc;
-%agregar la parte de levantar el archivo
+format long e
+
+fileID = fopen("coordenadas.txt", 'r');
+formatSpec = '%f %f %f';
+sizeD = [1 Inf];
+
+D = fscanf(fileID, formatSpec, sizeD);
+fclose(fileID);
+%%%
 
 PORT = 'com3';
 BAUDRATE = 9600;
