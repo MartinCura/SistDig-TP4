@@ -15,6 +15,7 @@ entity video_ram is
 	port(
 	    clock: in std_logic;
 	    write_enable : in std_logic;
+		barrido: in std_logic;
 	    A_row : in std_logic_vector(N_bits_row-1 downto 0);
 	    B_row : in std_logic_vector(N_bits_row-1 downto 0);
 	    A_col : in std_logic_vector(N_bits_col-1 downto 0);
@@ -36,6 +37,7 @@ architecture video_ram_arch of video_ram is
 		port(
 			clock: in std_logic;
 			write_enable : in std_logic;
+			barrido : in std_logic;
 			addr_A : in  std_logic_vector(addr_width-1 downto 0);
 			addr_B : in  std_logic_vector(addr_width-1 downto 0);
 			data_A : in  std_logic_vector(data_width-1 downto 0);
@@ -60,8 +62,9 @@ begin
 		port map(
 			clock =>clock,
 			write_enable =>write_enable,
+			barrido => barrido,
 			addr_A =>address_A,
-			addr_B =>address_B ,
+			addr_B =>address_B,
 			data_A(0) =>data_A,
 			data_B(0) =>data_B
 		);

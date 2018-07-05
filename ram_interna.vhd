@@ -19,6 +19,7 @@ entity ram_interna is
 
 	port(
         clk:	 in std_logic;
+		rst:	 in std_logic;
         Rx:		 in std_logic;
         Din:	 in std_logic_vector(N_BITS-1 downto 0);	---Estoy guardando slv y sacando t_coordenada's ???
 		Dout:	 out t_pos;
@@ -37,7 +38,7 @@ architecture ram_interna_arq of ram_interna is
 begin
 
     -- IN
-    process(Rx)
+    process(Rx, rst)
     variable j : natural := 0;
     begin
         if rising_edge(Rx) then
@@ -49,6 +50,11 @@ begin
 				ram(j) <= to_float(Din);	---CHEQUEAR... hacerlo afuera?
             end if;
         end if;
+		-- Reseteo
+		if rising_edge(rst) then
+			ram <= (others => CERO);
+			j := 1;
+		end if;
     end process;
 
     -- OUT
@@ -79,5 +85,6 @@ begin
             end if;
         end if;
     end process;
+	----Tiempo intermedio entre fin de lectura y barrido
 
 end;

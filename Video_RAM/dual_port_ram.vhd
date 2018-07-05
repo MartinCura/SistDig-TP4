@@ -12,6 +12,7 @@ entity dual_port_ram is
   port(
     clock: in std_logic;
     write_enable : in std_logic;
+	barrido: in	 std_logic;
     addr_A : in  std_logic_vector(addr_width-1 downto 0);
     addr_B : in  std_logic_vector(addr_width-1 downto 0);
     data_A : in  std_logic_vector(data_width-1 downto 0);
@@ -23,7 +24,7 @@ architecture dual_port_ram_arch of dual_port_ram is
 	--Creo un array donde tengo 2^(addr_width) vectores de largo data_width (posiciones en la memoria).
 	constant memo_size : natural := 2**(addr_width) -1;
 	type  ram_type is array(0 to memo_size)
-		of std_logic_vector(data_width-1 downto 0) ;
+		of std_logic_vector(data_width-1 downto 0);
 	signal ram: ram_type;
 	signal addr_A_int : integer := 0;
 	signal addr_B_int : integer := 0;
@@ -34,14 +35,19 @@ begin
 	addr_A_int <= to_integer(unsigned(addr_A));
 	addr_B_int <= to_integer(unsigned(addr_B));
 
-	process(clock)
-		begin
-			if (clock'event and clock = '1') then
-				if(write_enable = '1') then
-					ram(addr_A_int) <= data_A;
-				end if;
-			data_B <= ram(addr_B_int);
+	process(clock, barrido)
+	begin
+		-- Reseteo
+		if (rising_edge(barrido)) then
+			ram <= (others => (others => '0'));
+			data_B <= (others => '0');
+		
+		elsif (clock'event and clock = '1') then
+			if(write_enable = '1') then
+				ram(addr_A_int) <= data_A;
 			end if;
+			data_B <= ram(addr_B_int);
+		end if;
 	end process;
 
 end dual_port_ram_arch;

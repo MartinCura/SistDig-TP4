@@ -9,7 +9,7 @@ use work.cordic_lib.all;
 -- Almacena y actualiza ángulos de rotación en cada ciclo
 entity det_angulos is
 	generic (
-		C : integer := 50 * (10**6)		-- 50 MHz
+		C : integer := 50 * (10**6)		-- Ciclo en clocks. Clock es 50 MHz.
 	);
 	port (
 		clk: in std_logic;
@@ -44,30 +44,30 @@ begin
 				else
 					if inc_a = '1' then
 						if neg_a = '1' then
-							a_aux <= a_aux - paso_ang;
+							a_aux <= a_aux - PASO_ANG;
 						else
-							a_aux <= a_aux + paso_ang;
+							a_aux <= a_aux + PASO_ANG;
 						end if;
 					end if;
 					if inc_b = '1' then
 						if neg_b = '1' then
-							b_aux <= b_aux - paso_ang;
+							b_aux <= b_aux - PASO_ANG;
 						else
-							b_aux <= b_aux + paso_ang;
+							b_aux <= b_aux + PASO_ANG;
 						end if;
 					end if;
 					if inc_g = '1' then
 						if neg_g = '1' then
-							g_aux <= g_aux - paso_ang;
+							g_aux <= g_aux - PASO_ANG;
 						else
-							g_aux <= g_aux + paso_ang;
+							g_aux <= g_aux + PASO_ANG;
 						end if;
 					end if;
 				end if;					
 				
-				--a := CERO when rst = '1' else ((a - paso_ang when neg_a = '1' else a + paso_ang) when inc_a = '1' else a);
-				--b := CERO when rst = '1' else ((b - paso_ang when neg_b = '1' else b + paso_ang) when inc_b = '1' else b);
-				--g := CERO when rst = '1' else ((g - paso_ang when neg_g = '1' else g + paso_ang) when inc_g = '1' else g);
+				--a := CERO when rst = '1' else ((a - PASO_ANG when neg_a = '1' else a + PASO_ANG) when inc_a = '1' else a);
+				--b := CERO when rst = '1' else ((b - PASO_ANG when neg_b = '1' else b + PASO_ANG) when inc_b = '1' else b);
+				--g := CERO when rst = '1' else ((g - PASO_ANG when neg_g = '1' else g + PASO_ANG) when inc_g = '1' else g);
 			end if;
 		end if;
 		
