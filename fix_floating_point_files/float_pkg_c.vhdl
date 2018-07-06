@@ -21,12 +21,13 @@ use STD.TEXTIO.all;
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
----library ieee_proposed;
----use ieee_proposed.fixed_float_types.all;
----use ieee_proposed.fixed_pkg.all;
-library work;
-use work.fixed_float_types.all;
-use work.fixed_pkg.all;
+
+library ieee_proposed;
+use ieee_proposed.fixed_float_types.all;
+use ieee_proposed.fixed_pkg.all;
+---library work;
+---use work.fixed_float_types.all;
+---use work.fixed_pkg.all;
 
 package float_pkg is
 -- generic (
@@ -67,7 +68,7 @@ package float_pkg is
 
   -- IEEE 754 single precision
   subtype UNRESOLVED_float32 is UNRESOLVED_float (8 downto -23);
-  alias U_float32 is UNRESOLVED_float32;
+  subtype U_float32 is UNRESOLVED_float32;---alias U_float32 is UNRESOLVED_float32;
   subtype float32 is float (8 downto -23);
   -----------------------------------------------------------------------------
   -- IEEE-754 single precision floating point.  This is a "float"
@@ -84,7 +85,7 @@ package float_pkg is
 
   -- IEEE 754 double precision
   subtype UNRESOLVED_float64 is UNRESOLVED_float (11 downto -52);
-  alias U_float64 is UNRESOLVED_float64;
+  subtype U_float64 is UNRESOLVED_float64;---alias U_float64 is UNRESOLVED_float64;
   subtype float64 is float (11 downto -52);
   -----------------------------------------------------------------------------
   -- IEEE-754 double precision floating point.  This is a "double float"
@@ -101,7 +102,7 @@ package float_pkg is
 
   -- IEEE 854 & C extended precision
   subtype UNRESOLVED_float128 is UNRESOLVED_float (15 downto -112);
-  alias U_float128 is UNRESOLVED_float128;
+  subtype U_float128 is UNRESOLVED_float128;---alias U_float128 is UNRESOLVED_float128;
   subtype float128 is float (15 downto -112);
   -----------------------------------------------------------------------------
   -- The 128 bit floating point number is "long double" in C (on
@@ -350,13 +351,13 @@ package float_pkg is
 
   -- Converts an fp into an SLV (needed for synthesis)
   function to_slv (arg : UNRESOLVED_float) return STD_LOGIC_VECTOR;
-  alias to_StdLogicVector is to_slv [UNRESOLVED_float return STD_LOGIC_VECTOR];
-  alias to_Std_Logic_Vector is to_slv [UNRESOLVED_float return STD_LOGIC_VECTOR];
+  ---alias to_StdLogicVector is to_slv [UNRESOLVED_float return STD_LOGIC_VECTOR];		IGUAL NO SE USABA
+  ---alias to_Std_Logic_Vector is to_slv [UNRESOLVED_float return STD_LOGIC_VECTOR];	IGUAL NO SE USABA
 
   -- Converts an fp into an std_ulogic_vector (sulv)
   function to_sulv (arg : UNRESOLVED_float) return STD_ULOGIC_VECTOR;
-  alias to_StdULogicVector is to_sulv [UNRESOLVED_float return STD_ULOGIC_VECTOR];
-  alias to_Std_ULogic_Vector is to_sulv [UNRESOLVED_float return STD_ULOGIC_VECTOR];
+  ---alias to_StdULogicVector is to_sulv [UNRESOLVED_float return STD_ULOGIC_VECTOR];		IGUAL NO SE USABA
+  ---alias to_Std_ULogic_Vector is to_sulv [UNRESOLVED_float return STD_ULOGIC_VECTOR];	IGUAL NO SE USABA
 
   -- std_ulogic_vector to float
   function to_float (
@@ -1248,7 +1249,7 @@ package body float_pkg is
     return INTEGER is
   begin  -- function minimum
     if (L = INTEGER'low or R = INTEGER'low) then
-      report float_pkg'instance_name
+      report "float_pkg"
         & " Unbounded number passed, was a literal used?"
         severity error;
       return 0;
@@ -1453,7 +1454,7 @@ package body float_pkg is
         exp (exponent_width-1) := not exp(exponent_width-1);
       when others =>
         assert NO_WARNING
-          report float_pkg'instance_name
+          report "float_pkg"
           & "BREAK_NUMBER: " &
           "Meta state detected in fp_break_number process"
           severity warning;
@@ -1566,7 +1567,7 @@ package body float_pkg is
   -- Converts an fp into an SLV
   function to_slv (arg : UNRESOLVED_float) return STD_LOGIC_VECTOR is
   begin
-    return to_stdlogicvector (to_sulv (arg));
+    return std_logic_vector (arg);
   end function to_slv;
 
   -- purpose: normalizes a floating point number
@@ -1752,7 +1753,7 @@ package body float_pkg is
   begin  -- classfp
     if (arg'length < 1 or fraction_width < 3 or exponent_width < 3
         or x'left < x'right) then
-      report float_pkg'instance_name
+      report "float_pkg"
         & "CLASSFP: " &
         "Floating point number detected with a bad range"
         severity error;
@@ -2224,7 +2225,7 @@ package body float_pkg is
         fpresult := zerofp (fraction_width => fraction_width,
                             exponent_width => exponent_width);
       when neg_zero | pos_zero =>       -- 1/0
-        report float_pkg'instance_name
+        report "float_pkg"
           & "RECIPROCAL: Floating Point divide by zero"
           severity error;
         fpresult := pos_inffp (fraction_width => fraction_width,
@@ -2333,7 +2334,7 @@ package body float_pkg is
           fpresult := qnanfp (fraction_width => fraction_width,
                               exponent_width => exponent_width);
         else
-          report float_pkg'instance_name
+          report "float_pkg"
             & "DIVIDE: Floating Point divide by zero"
             severity error;
           -- Infinity, define in 754-1985-7.2
@@ -2473,7 +2474,7 @@ package body float_pkg is
           fpresult := qnanfp (fraction_width => fraction_width,
                               exponent_width => exponent_width);
         else
-          report float_pkg'instance_name
+          report "float_pkg"
             & "DIVIDEBYP2: Floating Point divide by zero"
             severity error;
           -- Infinity, define in 754-1985-7.2
@@ -2528,7 +2529,7 @@ package body float_pkg is
               fract       => urfract,
               expon       => exponr);
             assert (or_reduce (urfract (fraction_width-1 downto 0)) = '0')
-              report float_pkg'instance_name
+              report "float_pkg"
               & "DIVIDEBYP2: "
               & "Dividebyp2 called with a non power of two divisor"
               severity error;
@@ -3309,7 +3310,7 @@ package body float_pkg is
         end if;
       end loop;
       if founddash then
-        report float_pkg'instance_name
+        report "float_pkg"
           & " ""?>"": '-' found in compare string"
           severity error;
         return 'X';
@@ -3341,7 +3342,7 @@ package body float_pkg is
         end if;
       end loop;
       if founddash then
-        report float_pkg'instance_name
+        report "float_pkg"
           & " ""?>="": '-' found in compare string"
           severity error;
         return 'X';
@@ -3373,7 +3374,7 @@ package body float_pkg is
         end if;
       end loop;
       if founddash then
-        report float_pkg'instance_name
+        report "float_pkg"
           & " ""?<"": '-' found in compare string"
           severity error;
         return 'X';
@@ -3405,7 +3406,7 @@ package body float_pkg is
         end if;
       end loop;
       if founddash then
-        report float_pkg'instance_name
+        report "float_pkg"
           & " ""?<="": '-' found in compare string"
           severity error;
         return 'X';
@@ -3424,7 +3425,7 @@ package body float_pkg is
     if (L'high = R'high and L'low = R'low) then
       return std_match(to_sulv(L), to_sulv(R));
     else
-      report float_pkg'instance_name
+      report "float_pkg"
         & "STD_MATCH: L'RANGE /= R'RANGE, returning FALSE"
         severity warning;
       return false;
@@ -4768,7 +4769,7 @@ package body float_pkg is
   begin  -- function to_01
     if (arg'length < 1) then
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & "TO_01: null detected, returning NULL"
         severity warning;
       return NAFP;
@@ -4789,7 +4790,7 @@ package body float_pkg is
   begin
     if (arg'length < 1) then
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & "TO_X01: null detected, returning NULL"
         severity warning;
       return NAFP;
@@ -4804,7 +4805,7 @@ package body float_pkg is
   begin
     if (arg'length < 1) then
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & "TO_X01Z: null detected, returning NULL"
         severity warning;
       return NAFP;
@@ -4819,7 +4820,7 @@ package body float_pkg is
   begin
     if (arg'length < 1) then
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & "TO_UX01: null detected, returning NULL"
         severity warning;
       return NAFP;
@@ -5452,7 +5453,7 @@ package body float_pkg is
       RESULT := to_sulv(L) and to_sulv(R);
     else
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & """and"": Range error L'RANGE /= R'RANGE"
         severity warning;
       RESULT := (others => 'X');
@@ -5467,7 +5468,7 @@ package body float_pkg is
       RESULT := to_sulv(L) or to_sulv(R);
     else
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & """or"": Range error L'RANGE /= R'RANGE"
         severity warning;
       RESULT := (others => 'X');
@@ -5482,7 +5483,7 @@ package body float_pkg is
       RESULT := to_sulv(L) nand to_sulv(R);
     else
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & """nand"": Range error L'RANGE /= R'RANGE"
         severity warning;
       RESULT := (others => 'X');
@@ -5497,7 +5498,7 @@ package body float_pkg is
       RESULT := to_sulv(L) nor to_sulv(R);
     else
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & """nor"": Range error L'RANGE /= R'RANGE"
         severity warning;
       RESULT := (others => 'X');
@@ -5512,7 +5513,7 @@ package body float_pkg is
       RESULT := to_sulv(L) xor to_sulv(R);
     else
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & """xor"": Range error L'RANGE /= R'RANGE"
         severity warning;
       RESULT := (others => 'X');
@@ -5527,7 +5528,7 @@ package body float_pkg is
       RESULT := to_sulv(L) xnor to_sulv(R);
     else
       assert NO_WARNING
-        report float_pkg'instance_name
+        report "float_pkg"
         & """xnor"": Range error L'RANGE /= R'RANGE"
         severity warning;
       RESULT := (others => 'X');
@@ -5882,7 +5883,7 @@ package body float_pkg is
               and expon (0) = '0' then
                                         -- Exponent is one away from infinity.
               assert NO_WARNING
-                report float_pkg'instance_name
+                report "float_pkg"
                 & "FP_NEXTAFTER: NextAfter overflow"
                 severity warning;
               return pos_inffp (fraction_width => fraction_width,
@@ -5946,7 +5947,7 @@ package body float_pkg is
               and expon (0) = '0' then
                                         -- Exponent is one away from infinity.
               assert NO_WARNING
-                report float_pkg'instance_name
+                report "float_pkg"
                 & "FP_NEXTAFTER: NextAfter overflow"
                 severity warning;
               return neg_inffp (fraction_width => fraction_width,
@@ -6303,7 +6304,7 @@ package body float_pkg is
       when 'X' => result := "XXX"; good := true;
       when others =>
         assert not ISSUE_ERROR
-          report float_pkg'instance_name
+          report "float_pkg"
           & "OREAD Error: Read a '" & c &
           "', expected an Octal character (0-7)."
           severity error;
@@ -6395,7 +6396,7 @@ package body float_pkg is
       when 'X'       => result := "XXXX"; good := true;
       when others =>
         assert not ISSUE_ERROR
-          report float_pkg'instance_name
+          report "float_pkg"
           & "HREAD Error: Read a '" & c &
           "', expected a Hex character (0-F)."
           severity error;
@@ -6555,14 +6556,14 @@ package body float_pkg is
       i := value'high;
       readloop : loop
         if readOk = false then          -- Bail out if there was a bad read
-          report float_pkg'instance_name
+          report "float_pkg"
             & "READ(float): "
             & "Error end of file encountered."
             severity error;
           return;
         elsif c = ' ' or c = CR or c = HT then  -- reading done.
           if (i /= value'low) then
-            report float_pkg'instance_name
+            report "float_pkg"
               & "READ(float): "
               & "Warning: Value truncated."
               severity warning;
@@ -6570,12 +6571,12 @@ package body float_pkg is
           end if;
         elsif c = '_' then
           if i = value'high then        -- Begins with an "_"
-            report float_pkg'instance_name
+            report "float_pkg"
               & "READ(float): "
               & "String begins with an ""_""" severity error;
             return;
           elsif lastu then              -- "__" detected
-            report float_pkg'instance_name
+            report "float_pkg"
               & "READ(float): "
               & "Two underscores detected in input string ""__"""
               severity error;
@@ -6585,7 +6586,7 @@ package body float_pkg is
           end if;
         elsif c = ':' or c = '.' then   -- separator, ignore
           if not (i = -1 or i = value'high-1) then
-            report float_pkg'instance_name
+            report "float_pkg"
               & "READ(float):  "
               & "Warning: Separator point does not match number format: '"
               & c & "' encountered at location " & INTEGER'image(i) & "."
@@ -6593,7 +6594,7 @@ package body float_pkg is
           end if;
           lastu := false;
         elsif (char_to_MVL9plus(c) = error) then
-          report float_pkg'instance_name
+          report "float_pkg"
             & "READ(float): "
             & "Error: Character '" & c & "' read, expected STD_ULOGIC literal."
             severity error;
@@ -6692,7 +6693,7 @@ package body float_pkg is
                          good  => ok,
                          chars => ne/3);
       if not ok then
-        report float_pkg'instance_name & "OREAD: "
+        report "float_pkg" & "OREAD: "
           & "short string encounted: " & L.all
           & " needs to have " & integer'image (ne/3)
           & " valid octal characters."
@@ -6701,7 +6702,7 @@ package body float_pkg is
       elsif dot then
         OREAD (L, slvu, ok);            -- read it like a UFIXED number
         if not ok then
-          report float_pkg'instance_name & "OREAD: "
+          report "float_pkg" & "OREAD: "
             & "error encounted reading STRING " & L.all
             severity error;
           return;
@@ -6711,12 +6712,12 @@ package body float_pkg is
       elsif colon then
         OREAD (L, nybble, ok);          -- read the sign bit
         if not ok then
-          report float_pkg'instance_name & "OREAD: "
+          report "float_pkg" & "OREAD: "
             & "End of string encountered"
             severity error;
           return;
         elsif nybble (2 downto 1) /= "00" then
-          report float_pkg'instance_name & "OREAD: "
+          report "float_pkg" & "OREAD: "
             & "Illegal sign bit STRING encounted "
             severity error;
           return;
@@ -6725,7 +6726,7 @@ package body float_pkg is
         fix_colon (L.all, ne/3);         -- replaces the colon with a ".".
         OREAD (L, slvu (slvu'high-1 downto slvu'low), ok);  -- read it like a UFIXED number
         if not ok then
-          report float_pkg'instance_name & "OREAD: "
+          report "float_pkg" & "OREAD: "
             & "error encounted reading STRING " & L.all
             severity error;
           return;
@@ -6736,13 +6737,13 @@ package body float_pkg is
       else
         OREAD (L, slv, ok);
         if not ok then
-          report float_pkg'instance_name & "OREAD: "
+          report "float_pkg" & "OREAD: "
             & "Error encounted during read"
             severity error;
           return;
         end if;
         if (or_reduce (slv(ne-1 downto VALUE'high-VALUE'low+1)) = '1') then
-          report float_pkg'instance_name & "OREAD: "
+          report "float_pkg" & "OREAD: "
             & "Vector truncated."
             severity error;
           return;
@@ -6841,7 +6842,7 @@ package body float_pkg is
                          good  => ok,
                          chars => ne/4);
       if not ok then
-        report float_pkg'instance_name & "HREAD: "
+        report "float_pkg" & "HREAD: "
           & "short string encounted: " & L.all
           & " needs to have " & integer'image (ne/4)
           & " valid hex characters."
@@ -6850,7 +6851,7 @@ package body float_pkg is
       elsif dot then
         HREAD (L, slvu, ok);            -- read it like a UFIXED number
         if not ok then
-          report float_pkg'instance_name & "HREAD: "
+          report "float_pkg" & "HREAD: "
             & "error encounted reading STRING " & L.all
             severity error;
           return;
@@ -6860,12 +6861,12 @@ package body float_pkg is
       elsif colon then
         HREAD (L, nybble, ok);          -- read the sign bit
         if not ok then
-          report float_pkg'instance_name & "HREAD: "
+          report "float_pkg" & "HREAD: "
             & "End of string encountered"
             severity error;
           return;
         elsif nybble (3 downto 1) /= "000" then
-          report float_pkg'instance_name & "HREAD: "
+          report "float_pkg" & "HREAD: "
             & "Illegal sign bit STRING encounted "
             severity error;
           return;
@@ -6874,7 +6875,7 @@ package body float_pkg is
         fix_colon (L.all, ne/4);         -- replaces the colon with a ".".
         HREAD (L, slvu (slvu'high-1 downto slvu'low), ok);  -- read it like a UFIXED number
         if not ok then
-          report float_pkg'instance_name & "HREAD: "
+          report "float_pkg" & "HREAD: "
             & "error encounted reading STRING " & L.all
             severity error;
           return;
@@ -6885,13 +6886,13 @@ package body float_pkg is
       else
         HREAD (L, slv, ok);
         if not ok then
-          report float_pkg'instance_name & "HREAD: "
+          report "float_pkg" & "HREAD: "
             & "Error encounted during read"
             severity error;
           return;
         end if;
         if (or_reduce (slv(ne-1 downto VALUE'high-VALUE'low+1)) = '1') then
-          report float_pkg'instance_name & "HREAD: "
+          report "float_pkg" & "HREAD: "
             & "Vector truncated."
             severity error;
           return;
@@ -7011,7 +7012,7 @@ package body float_pkg is
     READ (L, result, good);
     deallocate (L);
     assert (good)
-      report float_pkg'instance_name
+      report "float_pkg"
       & "from_string: Bad string " & bstring
       severity error;
     return result;
@@ -7030,7 +7031,7 @@ package body float_pkg is
     OREAD (L, result, good);
     deallocate (L);
     assert (good)
-      report float_pkg'instance_name
+      report "float_pkg"
       & "from_ostring: Bad string " & ostring
       severity error;
     return result;
@@ -7049,7 +7050,7 @@ package body float_pkg is
     HREAD (L, result, good);
     deallocate (L);
     assert (good)
-      report float_pkg'instance_name
+      report "float_pkg"
       & "from_hstring: Bad string " & hstring
       severity error;
     return result;
@@ -7093,7 +7094,7 @@ package body float_pkg is
     return UNRESOLVED_float is
   begin
     return to_float (
-      arg            => to_stdulogicvector (arg),
+      arg            => std_ulogic_vector (arg),
       exponent_width => exponent_width,
       fraction_width => fraction_width);
   end function to_float;
@@ -7104,7 +7105,7 @@ package body float_pkg is
     return UNRESOLVED_float is
   begin
     return to_float (
-      arg      => to_stdulogicvector (arg),
+      arg      => std_ulogic_vector (arg),
       size_res => size_res);
   end function to_float;
 

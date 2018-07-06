@@ -3,9 +3,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 library work;
----use ieee_proposed.float_pkg.all;
-use work.float_pkg.all;
 use work.cordic_lib.all;
+---use work.float_pkg.all;
+library ieee_proposed;
+use ieee_proposed.float_pkg.all;
 
 -- RAM interna que recibe svl's de forma serial y los guarda como posiciones de 3 coordenadas; también lee
 ---Actualmente debería recibir precisamente (o más) CANT_P puntos. Podría cambiarla para que sepa la cantidad que contiene

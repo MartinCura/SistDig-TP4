@@ -2,9 +2,10 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 library work;
----use ieee_proposed.float_pkg.all;
-use work.float_pkg.all;
 use work.cordic_lib.all;
+---use work.float_pkg.all;
+library ieee_proposed;
+use ieee_proposed.float_pkg.all;
 
 -- Almacena y actualiza ángulos de rotación en cada ciclo
 entity det_angulos is

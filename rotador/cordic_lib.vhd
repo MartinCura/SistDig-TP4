@@ -1,20 +1,22 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
----use ieee_proposed.float_pkg.all;
-library work;
-use work.float_pkg.all;
+---library work;
+---use work.float_pkg.all;
+library ieee_proposed;
+use ieee_proposed.float_pkg.all;
 
--- Para usar:
--- -- library work;
--- -- use work.cordic_lib.all;
+-- -- Para usar:
+-- library work;
+-- use work.cordic_lib.all;
 
 
 package cordic_lib is
 
     constant N_PF       : natural := 32;
 
-	alias t_float is float32;
+	---alias t_float is float32;
+	subtype t_float is float32;
     subtype t_coordenada is t_float; --- := CERO;	-- tipo coordenada
 	type t_pos is array (1 to 3) of t_coordenada;	-- tipo posición 3D (x,y,z)
     type t_vec is array (1 to 2) of t_coordenada;	-- tipo posición 2D (x,y)

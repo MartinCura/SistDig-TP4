@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 library work;
---use work.float_pkg.all;
 use work.cordic_lib.all;
 
 entity tp4 is
@@ -69,7 +68,7 @@ entity tp4 is
 	attribute loc of b:	signal is "F18";
 	attribute loc of c:	signal is "D17";
 	attribute loc of d:	signal is "D16";
-	attribute loc of e:	signal is "G14";
+	---attribute loc of e:	signal is "G14";
 	attribute loc of f:	signal is "J17";
 	attribute loc of g:	signal is "H14";
 	attribute loc of dp: signal is "C17";
