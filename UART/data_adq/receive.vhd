@@ -91,7 +91,7 @@ begin
 						RxFSM <= Idle;
 						-- assert (debug < 1)
 						report "Character received in decimal is : "
-						& integer'image(to_integer(unsigned(Rx_Reg)))
+							& integer'image(to_integer(unsigned(Rx_Reg)))
 						severity note;
 					end if;
 				when Rx_OVF => -- Overflow / Error

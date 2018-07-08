@@ -5,10 +5,16 @@ use ieee.numeric_std.all;
 library work;
 use work.cordic_lib.all;
 
+--library ieee_proposed;
+--use ieee_proposed.float_pkg.all;
+library floatfixlib;
+use floatfixlib.float_pkg.all;
+
+
 entity tp4 is
 
 	generic(
-		n_bits_coord : integer := 32	--- REVISAR
+		N_BITS_COORD : integer := 32	--- REVISAR
 	);
 
 	port(
@@ -68,7 +74,7 @@ entity tp4 is
 	attribute loc of b:	signal is "F18";
 	attribute loc of c:	signal is "D17";
 	attribute loc of d:	signal is "D16";
-	---attribute loc of e:	signal is "G14";
+	attribute loc of e:	signal is "G14";
 	attribute loc of f:	signal is "J17";
 	attribute loc of g:	signal is "H14";
 	attribute loc of dp: signal is "C17";
@@ -92,7 +98,8 @@ architecture tp4_arq of tp4 is
 	signal RxRdy: std_logic := '0';		-- Dato listo para leerse
 	---Falta un bit para saber si se terminó de leer [todos los] datos?
 	signal Dout_uart: std_logic_vector(15 downto 0) := (others => '0');---CHEQUEAR TAMAÑO CORRECTO, MIRAR NOTA MÁS ABAJO
-	signal lectura_32b: std_logic_vector(n_bits_coord-1 downto 0) := (others => '0');---
+	signal lectura_32b: std_logic_vector(N_BITS_COORD-1 downto 0) := (others => '0');---
+	signal lectura_fp: t_coordenada;
 	signal rst_angs: std_logic := '0';
 
 begin
@@ -110,27 +117,29 @@ begin
 		);
 	
 	--- %%%%%% LA UART LEE 16 BITS, PERO LO ESTIRO A 32 %%%%%%%%%%%%	---Así estará bien?
-	lectura_32b(n_bits_coord-1 downto n_bits_coord-16) <= Dout_uart;
-	lectura_32b(n_bits_coord-17 downto 0) <= (others => '0');
+	lectura_32b <= std_logic_vector(to_signed(to_integer(signed(Dout_uart)),N_BITS_COORD));
+	---lectura_32b(N_BITS_COORD-1 downto N_BITS_COORD-16)
+	---lectura_32b(N_BITS_COORD-17 downto 0) <= (others => '0');
+	lectura_fp <= to_float(lectura_32b);
 	--- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	--- Se guarda un dato de lectura listo en memoria [interna]. Continuamente se leen y guardan en vector pos_leida
 	ram_int: entity work.ram_interna
 		generic map(
-			N_BITS => n_bits_coord,
+			N_BITS => N_BITS_COORD,
 			CANT_P => 1000
 		) port map(
 			clk => clk_i,
 			rst => rst_i,
 			Rx  => RxRdy,
-			Din => lectura_32b,
+			Din => lectura_fp,
 
 			Dout => pos_leida,
 			Rdy => ena_o,
 			barrido => ram_int_refresh
 		);
 
-		
+	
 	-- *** LEER Y ROTAR ***
 
 	--- Si hiciéramos rotación constante:

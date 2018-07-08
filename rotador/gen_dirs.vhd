@@ -5,8 +5,10 @@ use ieee.numeric_std.all;
 library work;
 use work.cordic_lib.all;
 ---use work.float_pkg.all;
-library ieee_proposed;
-use ieee_proposed.float_pkg.all;
+--library ieee_proposed;
+--use ieee_proposed.float_pkg.all;
+library floatfixlib;
+use floatfixlib.float_pkg.all;
 
 -- A partir de una posición 2D (x,y) mapea a una dirección de pantalla (i,j)
 entity gen_dirs is

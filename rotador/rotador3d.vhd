@@ -4,8 +4,10 @@ use ieee.std_logic_1164.all;
 library work;
 use work.cordic_lib.all;
 ---use work.float_pkg.all;
-library ieee_proposed;
-use ieee_proposed.float_pkg.all;
+--library ieee_proposed;
+--use ieee_proposed.float_pkg.all;
+library floatfixlib;
+use floatfixlib.float_pkg.all;
 
 -- Rota un punto 3D, usando 3 veces el algoritmo CORDIC, usando 3 veces el algoritmo CORDIC y los ángulos para cada eje
 entity rotador3d is

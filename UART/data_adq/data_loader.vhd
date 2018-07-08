@@ -37,7 +37,7 @@ architecture data_loader_arch of data_loader is
 
 begin
 
-  FSM: process(RxRdy_in, reset)
+  FSM: process(RxRdy_in, reset, state, data_in)
   begin
 
     RxRdy_out <= '0';

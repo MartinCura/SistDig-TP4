@@ -22,9 +22,13 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
 
-library ieee_proposed;
-use ieee_proposed.fixed_float_types.all;
-use ieee_proposed.fixed_pkg.all;
+--library ieee_proposed;
+--use ieee_proposed.fixed_float_types.all;
+--use ieee_proposed.fixed_pkg.all;
+library floatfixlib;
+use floatfixlib.fixed_float_types.all;
+use floatfixlib.fixed_pkg.all;
+
 ---library work;
 ---use work.fixed_float_types.all;
 ---use work.fixed_pkg.all;
@@ -127,7 +131,7 @@ package float_pkg is
 
   -- This deferred constant will tell you if the package body is synthesizable
   -- or implemented as real numbers.
-  constant fphdlsynth_or_real : BOOLEAN;  -- deferred constant
+  ---constant fphdlsynth_or_real : BOOLEAN;  -- deferred constant	---CAMBIADO
 
   -- Returns the class which X falls into
   function Classfp (
@@ -1453,11 +1457,11 @@ package body float_pkg is
         exp                    := SIGNED(arg(exponent_width-1 downto 0));
         exp (exponent_width-1) := not exp(exponent_width-1);
       when others =>
-        assert NO_WARNING
-          report "float_pkg"
-          & "BREAK_NUMBER: " &
-          "Meta state detected in fp_break_number process"
-          severity warning;
+        ---assert NO_WARNING
+        ---  report "float_pkg"
+        ---  & "BREAK_NUMBER: " &
+        ---  "Meta state detected in fp_break_number process"
+        ---  severity warning;
         -- complete the case, if a NAN goes in, a NAN comes out.
         exp                    := (others => '1');
         fract (fraction_width) := '1';
@@ -2389,7 +2393,7 @@ package body float_pkg is
               fract       => urfract,
               expon       => exponr);
             -- Compute the exponent
-            rexpon := resize (exponl, rexpon'length) - exponr - 2;
+            rexpon := resize( resize(exponl, rexpon'length) - exponr - 2, rexpon'length );---resize (exponl, rexpon'length) - exponr - 2; ---CAMBIADO
             if (rfptype = pos_denormal or rfptype = neg_denormal) then
               -- Do the shifting here not after.  That way we have a smaller
               -- shifter, and need a smaller divider, because the top
@@ -3784,7 +3788,7 @@ package body float_pkg is
           expon := expon + 1;
           fract := (others => '0');
         else
-          fract := fract + 1;
+          fract := resize(fract + 1, fract'length);
         end if;
       end if;
       result (exponent_width-1 downto 0) := UNRESOLVED_float(expon);

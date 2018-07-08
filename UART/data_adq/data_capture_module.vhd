@@ -73,7 +73,7 @@ end component;
 		num_data_bits => 8
 	)
 	port map (
-      Rx => rx,
+		Rx => rx,
 	 	Tx	=> tx_aux,
 	 	Din	=> sig_Din,
 	 	StartTx	=> sig_StartTx,
