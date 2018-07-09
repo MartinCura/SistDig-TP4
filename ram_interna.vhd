@@ -28,7 +28,7 @@ entity ram_interna is
 		Din:	 in t_coordenada;
 ---        Din:	 in std_logic_vector(N_BITS-1 downto 0);	---Guardando slv y sacando t_coordenada's ???
 		Dout:	 out t_pos;
-        Rdy:	 out std_logic := '1';---'0';
+        Rdy:	 out std_logic := '0';
         barrido: out std_logic := '0'
 	);
 
@@ -37,63 +37,68 @@ end entity;
 architecture ram_interna_arq of ram_interna is
 
     constant ram_size : integer := 3 * CANT_P;
+	signal n : integer := 0;
     type t_ram is array(1 to ram_size) of t_coordenada;
     signal ram : t_ram; ----:= (others => CERO); ---Cómo la inicializo?
 	---shared variable ram: t_ram;
+	signal Dout_aux : t_pos := (others => CERO);
 	
 begin
 
-	process(clk, Rx, rst)
+	-- IN
+	process(Rx, rst)---, Din, n)
+	variable j_in : natural := 1;
+	begin
+		-- Reseteo
+		if rst = '1' then
+			ram <= (others => CERO);
+			j_in := 1;
+		elsif Rx = '1' then
+			if j_in > ram_size then
+				j_in := 1;
+			end if;
+			ram(j_in) <= Din;
+			j_in := j_in + 1;
+			if n < ram_size then
+				n <= n + 1;
+			end if;
+		end if;
+	end process;
+	
+	-- OUT
+	process(clk)
 	variable i : natural := 0;
-	variable j_in, j_out : natural := 1;
-	variable n : natural := 0;
+	variable j_out : natural := 1;
 	begin
 		if rising_edge(clk) then
-			if rst = '1' then
-				-- Reseteo
-				ram <= (others => CERO);
-				j_in := 1;
-			---if Rx = '1' then
-			elsif Rx = '1' then ----rising_edge(Rx) then		---CHEQUEAR!!!
-
-				-- IN
-				if j_in > ram_size then
-					j_in := 1;
-					Rdy <= '1';
-				else
-					ram(j_in) <= Din;
-					j_in := j_in + 1;
-					if n < ram_size then
-						n := n + 1;
-					end if;
-				end if;
-				
-			end if;
-			
-			-- OUT
 			i := i + 1;
 			if i = REFR_R then
 				barrido <= '0';
 				i := 0;
 				if j_out > n then
 					j_out := 1;
-					Dout(1) <= ram(j_out);
-					Dout(2) <= ram(j_out+1);
-					Dout(3) <= ram(j_out+2);
+					Dout_aux(1) <= ram(j_out);
+					Dout_aux(2) <= ram(j_out+1);
+					Dout_aux(3) <= ram(j_out+2);
 				else
 					j_out := j_out + 3;
 					if j_out > n then
 						barrido <= '1';
 					else
-						Dout(1) <= ram(j_out);
-						Dout(2) <= ram(j_out+1);
-						Dout(3) <= ram(j_out+2);
+						Dout_aux(1) <= ram(j_out);
+						Dout_aux(2) <= ram(j_out+1);
+						Dout_aux(3) <= ram(j_out+2);
 					end if;
 				end if;
+				Rdy <= '1';
+			else
+				Rdy <= '0';	---Chequear que funcione
 			end if;
 		end if;
 	end process;
 
+	Dout <= Dout_aux;
+	
 	----Analizar problemas con el tiempo intermedio entre fin de lectura y barrido
 
 end;

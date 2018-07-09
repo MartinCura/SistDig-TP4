@@ -17,7 +17,11 @@ entity tester_ram_interna is
 
 	port(
 		clk_i: in std_logic;		-- Clock general
-		rst_i: in std_logic := '0'	-- Botón de reset
+		rst_i: in std_logic := '0';	-- Botón de reset
+		
+		pos_leida: out t_pos;
+		ena_o: out std_logic := '0';
+		ram_int_refresh: out std_logic := '0'
 	);
 
 	attribute loc: string;
@@ -27,17 +31,15 @@ end;
 
 architecture tester_ram_interna_arq of tester_ram_interna is
 
-	signal ena_o: std_logic := '0';
-	signal ram_int_refresh, rst_pdram: std_logic := '0';
-	signal pos_leida: t_pos;
+	signal pos_leida_aux: t_pos;
+
 	signal RxRdy: std_logic := '0';		-- Dato listo para leerse
-	
-	signal Dout_uart: std_logic_vector(15 downto 0) := (others => '0');---CHEQUEAR TAMAÑO CORRECTO, MIRAR NOTA MÁS ABAJO
-	signal lectura_32b: std_logic_vector(N_BITS_COORD-1 downto 0) := (others => '0');---
+	signal Dout_uart: std_logic_vector(15 downto 0) := (others => '0');
+	signal lectura_32b: std_logic_vector(N_BITS_COORD-1 downto 0) := (others => '0');
 	signal lectura_fp: t_coordenada := CERO;
 
 	type memo_t is array(0 to 14) of std_logic_vector(15 downto 0);
-	signal testmemo : memo_t := (
+	constant testmemo : memo_t := (
 			"0000000000000000",
 			"0000000000000100",
 			"0000000000001100",
@@ -76,16 +78,17 @@ begin
 			--- else RxRdy <= '0';
 			
 			if n < 150 then
-				report "pos_leida 1 " & integer'image(to_integer(signed(pos_leida(1))))-- & " ena_o " & ena_o
+				report "pos_leida 1 " & integer'image(to_integer(signed(pos_leida_aux(1))))-- & " ena_o " & ena_o
 					severity note;
-				report "pos_leida 2 " & integer'image(to_integer(signed(pos_leida(2))))-- & " ena_o " & ena_o
+				report "pos_leida 2 " & integer'image(to_integer(signed(pos_leida_aux(2))))-- & " ena_o " & ena_o
 					severity note;
-				report "pos_leida 3 " & integer'image(to_integer(signed(pos_leida(3))))-- & " ena_o " & ena_o
+				report "pos_leida 3 " & integer'image(to_integer(signed(pos_leida_aux(3))))-- & " ena_o " & ena_o
 					severity note;
 				n := n + 1;
 			end if;
 		end if;
 	end process;
+	
 	
 	lectura_32b <= std_logic_vector(to_signed(to_integer(signed(Dout_uart)),N_BITS_COORD));
 	lectura_fp <= to_float(lectura_32b);
@@ -101,9 +104,11 @@ begin
 			Rx  => RxRdy,
 			Din => lectura_fp,
 
-			Dout => pos_leida,
+			Dout => pos_leida_aux,
 			Rdy => ena_o,
 			barrido => ram_int_refresh
 		);
+	
+	pos_leida <= pos_leida_aux;
 
 end;
