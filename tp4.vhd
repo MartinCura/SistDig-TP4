@@ -47,7 +47,6 @@ entity tp4 is
 	-- https://reference.digilentinc.com/_media/nexys:nexys2:nexys2_rm.pdf
 	attribute loc of clk_i: signal is "B8";
 	attribute loc of data_i: signal is "L15";		-- Pin físico de entrada de datos
-	---attribute loc of rst_i: signal is "?##";		-- Botón para resetear todo
 	-- VGA
 	attribute loc of hs: signal is "T4";
 	attribute loc of vs: signal is "U3";
@@ -58,16 +57,17 @@ entity tp4 is
 	-- attribute loc of rot_on: signal is "R17";	-- Prender rotación constante
 	-- attribute loc of rot_vel: signal is "N17";	-- Velocidad lenta o rápida
 	-- attribute loc of rot_x_on: signal is "L13";	-- Rotación en x
-	attribute loc of rot_x_ng: signal is "L14";		-- Rotación negativa en x
 	-- attribute loc of rot_y_on: signal is "K17";	-- Rotación en y
-	attribute loc of rot_y_ng: signal is "K18";		-- Rotación negativa en y
 	-- attribute loc of rot_z_on: signal is "H18";	-- Rotación en z
+	attribute loc of rot_x_ng: signal is "L14";		-- Rotación negativa en x
+	attribute loc of rot_y_ng: signal is "K18";		-- Rotación negativa en y
 	attribute loc of rot_z_ng: signal is "G18";		-- Rotación negativa en z
 	-- Botones
+	attribute loc of rst_i: signal is "B18";		-- Botón para resetear todo
 	attribute loc of inc_alfa: signal is "H13";
 	attribute loc of inc_beta: signal is "E18";
 	attribute loc of inc_gama: signal is "D18";
-	attribute loc of rst_angs_i: signal is "B18";
+	-- attribute loc of rst_angs_i: signal is "B18";	-- Reseteo a posición inicial
 
 	-- Apagar los segmentos del display
 	attribute loc of a:	signal is "L18";
@@ -94,12 +94,10 @@ architecture tp4_arq of tp4 is
     signal pix_x, pix_y: std_logic_vector(9 downto 0) := (others => '0');
 	signal pix_on: std_logic := '0';
 
-	----signal barrido: std_logic := '0';	---FALTA ASIGNARLA EN ALGÚN MOMENTO /// O es rst_pdram?
 	signal RxRdy: std_logic := '0';		-- Dato listo para leerse
 	---Falta un bit para saber si se terminó de leer [todos los] datos?
-	signal Dout_uart: std_logic_vector(15 downto 0) := (others => '0');---CHEQUEAR TAMAÑO CORRECTO, MIRAR NOTA MÁS ABAJO
-	signal lectura_32b: std_logic_vector(N_BITS_COORD-1 downto 0) := (others => '0');---
-	signal lectura_fp: t_coordenada;
+	signal Dout_uart: std_logic_vector(15 downto 0) := (others => '0');
+	signal pos_mem_leida: t_pos_mem := (others => (others => '0'));
 	signal rst_angs: std_logic := '0';
 
 begin
@@ -116,28 +114,26 @@ begin
 			data_ready => RxRdy
 		);
 	
-	--- %%%%%% LA UART LEE 16 BITS, PERO LO ESTIRO A 32 %%%%%%%%%%%%	---Así estará bien?
-	lectura_32b <= std_logic_vector(to_signed(to_integer(signed(Dout_uart)),N_BITS_COORD));
-	---lectura_32b(N_BITS_COORD-1 downto N_BITS_COORD-16)
-	---lectura_32b(N_BITS_COORD-17 downto 0) <= (others => '0');
-	lectura_fp <= to_float(lectura_32b);
-	--- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-	--- Se guarda un dato de lectura listo en memoria [interna]. Continuamente se leen y guardan en vector pos_leida
+	--- Se guarda un dato de lectura listo en memoria [interna]. Paralelamente, continuamente se escriben en vector pos_leida los datos ya guardados
 	ram_int: entity work.ram_interna
 		generic map(
 			N_BITS => N_BITS_COORD,
-			CANT_P => 1000
+			CANT_P => 40
 		) port map(
 			clk => clk_i,
 			rst => rst_i,
 			Rx  => RxRdy,
-			Din => lectura_fp,
+			Din => Dout_uart,
 
-			Dout => pos_leida,
+			Dout => pos_mem_leida,
 			Rdy => ena_o,
 			barrido => ram_int_refresh
 		);
+		
+	-- Paso a formato punto flotante
+	pos_leida(1) <= to_float(pos_mem_leida(1));
+	pos_leida(2) <= to_float(pos_mem_leida(2));
+	pos_leida(3) <= to_float(pos_mem_leida(3));
 
 	
 	-- *** LEER Y ROTAR ***
@@ -186,7 +182,7 @@ begin
 	rst_pdram <= ram_int_refresh or rst_i;
 	
 	-- Prendo el bit para la posición apropiada en la dual port ram
-    escrit_dpram: entity work.video_ram
+    ram_video: entity work.video_ram
         port map (
             clock => clk_i,
             write_enable => ena_o,	---Chequear

@@ -31,14 +31,12 @@ end;
 
 architecture tester_ram_interna_arq of tester_ram_interna is
 
-	signal pos_leida_aux: t_pos;
-
 	signal RxRdy: std_logic := '0';		-- Dato listo para leerse
 	signal Dout_uart: std_logic_vector(15 downto 0) := (others => '0');
-	signal lectura_32b: std_logic_vector(N_BITS_COORD-1 downto 0) := (others => '0');
-	signal lectura_fp: t_coordenada := CERO;
+	signal Dout_memint: t_pos_mem := (others => (others => '0'));
+	signal pos_leida_aux: t_pos := (others => CERO);
 
-	type memo_t is array(0 to 14) of std_logic_vector(15 downto 0);
+	type memo_t is array(0 to 39) of std_logic_vector(15 downto 0);
 	constant testmemo : memo_t := (
 			"0000000000000000",
 			"0000000000000100",
@@ -54,7 +52,32 @@ architecture tester_ram_interna_arq of tester_ram_interna is
 			"1111101111101111",
 			"0000000000000010",
 			"1000000000000011",
-			"0000000000000011"
+			"0000000000000011",
+			"0000000001100000",
+			"0000000000000010",
+			"0000000000000001",
+			"1000001100000000",
+			"1000000000010000",
+			"0100000000010000",
+			"1111111111111111",
+			"1111111111111110",
+			"1111111111111110",
+			"1111101111101111",
+			"0000000000000010",
+			"1000000000000011",
+			"0000000000000011",
+			"0000000001100000",
+			"0000000000000010",
+			"0100000000010000",
+			"1111111111111111",
+			"1111111111111110",
+			"1111101111101111",
+			"0000000000000010",
+			"1000000000000011",
+			"0000000000000011",
+			"0000000001100000",
+			"0000000000000001",
+			"0000000000000010"
 		);
 	
 begin
@@ -90,24 +113,26 @@ begin
 	end process;
 	
 	
-	lectura_32b <= std_logic_vector(to_signed(to_integer(signed(Dout_uart)),N_BITS_COORD));
-	lectura_fp <= to_float(lectura_32b);
-
 	--- Se guarda un dato de lectura listo en memoria [interna]. Continuamente se leen y guardan en vector pos_leida
 	ram_int: entity work.ram_interna
 		generic map(
-			N_BITS => N_BITS_COORD,
-			CANT_P => 1000
+			N_BITS => N_BITS_COORD---,
+			---CANT_P => 50---0
 		) port map(
 			clk => clk_i,
 			rst => rst_i,
 			Rx  => RxRdy,
-			Din => lectura_fp,
+			Din => Dout_uart,
 
-			Dout => pos_leida_aux,
+			Dout => Dout_memint,
 			Rdy => ena_o,
 			barrido => ram_int_refresh
 		);
+	
+	---pos_leida_aux(i) <= to_float(std_logic_vector(to_signed(to_integer(signed(pos_leida_aux(i)),N_BITS_COORD));
+	pos_leida_aux(1) <= to_float(Dout_memint(1));
+	pos_leida_aux(2) <= to_float(Dout_memint(2));
+	pos_leida_aux(3) <= to_float(Dout_memint(3));
 	
 	pos_leida <= pos_leida_aux;
 

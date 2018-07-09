@@ -10,9 +10,10 @@ library floatfixlib;
 use floatfixlib.float_pkg.all;
 
 -- Almacena y actualiza ángulos de rotación en cada ciclo
+--- Funciona perfecto (salvo por un retraso de 1 clock para resetear, nada importante)
 entity det_angulos is
 	generic (
-		C : integer := 50 * (10**6)		-- Ciclo en clocks. Clock es 50 MHz.
+		C : integer := 1---50 * (10**6)	-- Ciclo en clocks. Clock es 50 MHz. --- Si no es constante, chequear siempre
 	);
 	port (
 		clk: in std_logic;
@@ -33,45 +34,39 @@ architecture det_angulos_arq of det_angulos is
 
 begin
 
-	process(clk)
+	process(clk)---, rst, inc_a, inc_b, inc_g)
 	variable i : NATURAL := 0;
 	begin
 		if rising_edge(clk) then
-			if ena = '1' then
+			if rst = '1' then
+				a_aux <= CERO;
+				b_aux <= CERO;
+				g_aux <= CERO;
+			elsif ena = '1' then
 				i := i + 1;
-				if i = C then	-- Cada C clocks, actualizar ángulos de rotación
+				if i = C then	-- Actualizar ángulos de rotación cada C clocks
 					i := 0;
-					if rst = '1' then
-						a_aux <= CERO;
-						b_aux <= CERO;
-						g_aux <= CERO;
-					else
-						if inc_a = '1' then
-							if neg_a = '1' then
-								a_aux <= a_aux - PASO_ANG;
-							else
-								a_aux <= a_aux + PASO_ANG;
-							end if;
+					if inc_a = '1' then
+						if neg_a = '1' then
+							a_aux <= a_aux - PASO_ANG;
+						else
+							a_aux <= a_aux + PASO_ANG;
 						end if;
-						if inc_b = '1' then
-							if neg_b = '1' then
-								b_aux <= b_aux - PASO_ANG;
-							else
-								b_aux <= b_aux + PASO_ANG;
-							end if;
+					end if;
+					if inc_b = '1' then
+						if neg_b = '1' then
+							b_aux <= b_aux - PASO_ANG;
+						else
+							b_aux <= b_aux + PASO_ANG;
 						end if;
-						if inc_g = '1' then
-							if neg_g = '1' then
-								g_aux <= g_aux - PASO_ANG;
-							else
-								g_aux <= g_aux + PASO_ANG;
-							end if;
+					end if;
+					if inc_g = '1' then
+						if neg_g = '1' then
+							g_aux <= g_aux - PASO_ANG;
+						else
+							g_aux <= g_aux + PASO_ANG;
 						end if;
-					end if;					
-					
-					--a := CERO when rst = '1' else ((a - PASO_ANG when neg_a = '1' else a + PASO_ANG) when inc_a = '1' else a);
-					--b := CERO when rst = '1' else ((b - PASO_ANG when neg_b = '1' else b + PASO_ANG) when inc_b = '1' else b);
-					--g := CERO when rst = '1' else ((g - PASO_ANG when neg_g = '1' else g + PASO_ANG) when inc_g = '1' else g);
+					end if;
 				end if;
 			end if;
 		end if;

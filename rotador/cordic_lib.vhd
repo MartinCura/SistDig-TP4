@@ -18,13 +18,12 @@ package cordic_lib is
     constant N_PF       : natural := 32;
 	constant N_BITS_DIR	: natural := 10;
 
-	---alias t_float is float32;
 	subtype t_float is float32;
     subtype t_coordenada is t_float; --- := CERO;	-- tipo coordenada
 	type t_pos is array (1 to 3) of t_coordenada;	-- tipo posición 3D (x,y,z)
     type t_vec is array (1 to 2) of t_coordenada;	-- tipo posición 2D (x,y)
     type t_dir is array (1 to 2) of std_logic_vector(N_BITS_DIR-1 downto 0);   -- tipo dirección en memoria	---float32 es 23 a -8, que no cause problemas...
-    -- type t_mat_r is array(1 to 2) of t_coordenada;
+	type t_pos_mem is array (1 to 3) of std_logic_vector(15 downto 0);	-- tipo de posición 3D (x,y,z) tal como son recibidas y guardadas en memoria interna
 
     constant PI_PF      : t_float := "01000000010010010000111111011011";---Estos 3 tendrían que ser std_logic_vector?
     constant HALF_PI_PF : t_float := "00111111110010010000111111011011";

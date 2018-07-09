@@ -70,13 +70,13 @@ begin
 					aux_data_buffer := "0000";
 				end if;
 
-				else
-					datax_out <= posicion(to_integer(contador_salida));
-					datay_out <= posicion(to_integer(contador_salida + 1));
-					dataz_out <= posicion(to_integer(contador_salida + 2));
-					contador_salida <= contador_salida + 3;
-					aux_data_buffer := "0001";
-					aux_data_out_rdy := '0';
+			else
+				datax_out <= posicion(to_integer(contador_salida));
+				datay_out <= posicion(to_integer(contador_salida + 1));
+				dataz_out <= posicion(to_integer(contador_salida + 2));
+				contador_salida <= contador_salida + 3;
+				aux_data_buffer := "0001";
+				aux_data_out_rdy := '0';
 			end if;
 		end if;
 	end if;

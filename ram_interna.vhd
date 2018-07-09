@@ -17,7 +17,7 @@ entity ram_interna is
 
     generic(
         N_BITS : integer :=	  32;     -- Cantidad de bits por coordenada
-        CANT_P : integer :=	10;---00;     -- Cantidad de puntos	---12 MIL
+        CANT_P : integer :=	  40;---1000;     -- Cantidad de puntos	---12 MIL
         REFR_R : integer :=	 100      -- Ciclos por dato que saco
     );
 
@@ -25,9 +25,8 @@ entity ram_interna is
         clk:	 in std_logic;
 		rst:	 in std_logic;
         Rx:		 in std_logic;
-		Din:	 in t_coordenada;
----        Din:	 in std_logic_vector(N_BITS-1 downto 0);	---Guardando slv y sacando t_coordenada's ???
-		Dout:	 out t_pos;
+		Din:	 in std_logic_vector(15 downto 0);
+		Dout:	 out t_pos_mem;
         Rdy:	 out std_logic := '0';
         barrido: out std_logic := '0'
 	);
@@ -36,24 +35,26 @@ end entity;
 
 architecture ram_interna_arq of ram_interna is
 
-    constant ram_size : integer := 3 * CANT_P;
 	signal n : integer := 0;
-    type t_ram is array(1 to ram_size) of t_coordenada;
+    constant ram_size : integer := 3 * CANT_P;
+	subtype t_ram_elem is std_logic_vector(15 downto 0);---t_coordenada;
+    type t_ram is array(1 to ram_size) of t_ram_elem;
     signal ram : t_ram; ----:= (others => CERO); ---Cómo la inicializo?
 	---shared variable ram: t_ram;
-	signal Dout_aux : t_pos := (others => CERO);
+	signal Dout_aux : t_pos_mem := (others => (others => '0'));
 	
 begin
 
 	-- IN
-	process(Rx, rst)---, Din, n)
+	process(Rx, Din, n, rst)
 	variable j_in : natural := 1;
 	begin
 		-- Reseteo
 		if rst = '1' then
-			ram <= (others => CERO);
+			ram <= (others => (others => '0'));
 			j_in := 1;
 		elsif Rx = '1' then
+		---if Rx = '1' then
 			if j_in > ram_size then
 				j_in := 1;
 			end if;
