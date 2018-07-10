@@ -31,6 +31,7 @@ end;
 architecture det_angulos_tb_arq of det_angulos_tb is
 
 	constant PASO_ANG : t_float := "00111111001101000000000000000000";	-- Paso angular ∆φ: 0.703125 grados
+	constant PASO_ANG_R : t_float := PI_PF * PASO_ANG / 180;			-- Paso angular en radianes
 
 	-- Entrada
 	signal clk_t : std_logic := '1';
@@ -72,7 +73,9 @@ begin
 	
 	-- Obtengo los ángulos de rotación para cada eje
 	angles: entity work.det_angulos
-		port map(
+		generic map(
+			C => 1
+		) port map(
 			clk_t,
 			ena_o,	-- and rot_ena,
 			rst_angs,
@@ -86,7 +89,7 @@ begin
 	gama <= gama_aux;
 		
 
-		process(clk_t)
+	process(clk_t)
 	begin
 		if rising_edge(clk_t) then
 			if off = '0' then

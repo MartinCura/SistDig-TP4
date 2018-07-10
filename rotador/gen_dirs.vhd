@@ -20,9 +20,8 @@ entity gen_dirs is
 	);
 
 	port(
-        clk: in std_logic;
-        pos: in t_vec;
-		dir: out t_dir
+        pos_2d: in t_vec;		-- Posición 2D
+		dir: out t_dir		-- Dirección en pantalla de píxel correspondiente
 	);
 
 end entity;
@@ -35,15 +34,14 @@ architecture gen_dirs_arq of gen_dirs is
 
 begin
 
-	process(clk)
-	variable i	  : natural := 0;
+	process(pos_2d)
 	variable x, y : integer := 0;
 	begin
-		x := SCR_W / 2 + to_integer( SIZE * pos(1) );
-		y := SCR_H / 2 + to_integer( SIZE * pos(2) );
+		x := SCR_W / 2 + to_integer( SIZE * pos_2d(1) );
+		y := SCR_H / 2 + to_integer( SIZE * pos_2d(2) );
 		---dir := x + SCR_W * y;
-		dir(1) <= std_logic_vector(to_unsigned(x,BR));
-		dir(2) <= std_logic_vector(to_unsigned(y,BC));
+		dir(1) <= std_logic_vector(to_unsigned(x, BR));
+		dir(2) <= std_logic_vector(to_unsigned(y, BC));
 	end process;
 
 end;

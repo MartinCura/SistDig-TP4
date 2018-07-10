@@ -94,7 +94,7 @@ architecture tp4_arq of tp4 is
     signal pix_x, pix_y: std_logic_vector(9 downto 0) := (others => '0');
 	signal pix_on: std_logic := '0';
 
-	signal RxRdy: std_logic := '0';		-- Dato listo para leerse
+	signal RxRdy: std_logic := '0';		-- Si el próximo dato está listo para leerse
 	---Falta un bit para saber si se terminó de leer [todos los] datos?
 	signal Dout_uart: std_logic_vector(15 downto 0) := (others => '0');
 	signal pos_mem_leida: t_pos_mem := (others => (others => '0'));
@@ -110,6 +110,7 @@ begin
 			clk => clk_i,
 			rst => rst_i,
 			rx => data_i,
+			
 			data_out_16bits => Dout_uart,
 			data_ready => RxRdy
 		);
@@ -129,12 +130,16 @@ begin
 			Rdy => ena_o,
 			barrido => ram_int_refresh
 		);
-		
+	
 	-- Paso a formato punto flotante
-	pos_leida(1) <= to_float(pos_mem_leida(1));
-	pos_leida(2) <= to_float(pos_mem_leida(2));
-	pos_leida(3) <= to_float(pos_mem_leida(3));
-
+	process(pos_mem_leida)
+	begin
+		---	pos_leida(i) <= to_float(std_logic_vector(to_signed(to_integer(signed(pos_mem_leida(i))),N_BITS_COORD)));
+		pos_leida(1) <= to_float(pos_mem_leida(1));
+		pos_leida(2) <= to_float(pos_mem_leida(2));
+		pos_leida(3) <= to_float(pos_mem_leida(3));
+	end process;
+	
 	
 	-- *** LEER Y ROTAR ***
 
@@ -153,6 +158,7 @@ begin
 			rst_angs,
 			inc_alfa, inc_beta, inc_gama,
 			rot_x_ng, rot_y_ng, rot_z_ng,
+			
 			alfa, beta, gama
 		);
 
@@ -160,10 +166,11 @@ begin
 	rotador: entity work.rotador3d
 		port map(
 			ena => ena_o,	---ena => rot_ena,
-			pos => pos_leida,
+			pos_in => pos_leida,
 			alfa => alfa,
 			beta => beta,
 			gama => gama,
+			
 			pos_rotada => pos_rotada
 		);
 
@@ -174,8 +181,7 @@ begin
 	-- Para la posición rotada genero la dirección en memoria correspondiente
 	gen_dir: entity work.gen_dirs
 		port map(
-            clk => clk_i,
-			pos => vec_pos_pixel,
+			pos_2d => vec_pos_pixel,
 			dir => dir_pixel
 		);
 
@@ -196,7 +202,7 @@ begin
             data_B => pix_on
         );
 
-	pix_on <= pix_on and ena_o;
+	pix_on <= pix_on and ena_o;---Quilombo?
 
 	
 	-- *** IMPRIMIR ***		[De acá en más, se tratan los ejes como (x,y)]

@@ -25,7 +25,7 @@ package cordic_lib is
     type t_dir is array (1 to 2) of std_logic_vector(N_BITS_DIR-1 downto 0);   -- tipo dirección en memoria	---float32 es 23 a -8, que no cause problemas...
 	type t_pos_mem is array (1 to 3) of std_logic_vector(15 downto 0);	-- tipo de posición 3D (x,y,z) tal como son recibidas y guardadas en memoria interna
 
-    constant PI_PF      : t_float := "01000000010010010000111111011011";---Estos 3 tendrían que ser std_logic_vector?
+    constant PI_PF      : t_float := "01000000010010010000111111011011";
     constant HALF_PI_PF : t_float := "00111111110010010000111111011011";
     constant CERO       : t_float := "00000000000000000000000000000000";
 	
@@ -56,7 +56,7 @@ package body cordic_lib is
     function cordic (vector : t_vec; beta : t_float)
                     return t_vec is
 
-        constant P		: natural := 16;	-- Cantidad de iteraciones, que determina la precisión
+        constant P		: natural := 24;	-- Cantidad de iteraciones, que determina la precisión
 
 		type T_ANGLES is array (0 to 27) of real;
         constant ANGLES	: T_ANGLES := (		-- 28 primeros valores de atan(2^-i)
@@ -110,8 +110,8 @@ package body cordic_lib is
                 sigma := 1;
             end if;
 
-			v_aux(1) := v(1) - sigma * (v(2) * 2**(-i));
-			v_aux(2) := sigma * (v(1) * 2**(-i)) + v(2);
+			v_aux(1) := v(1) - sigma * (v(2) / 2**(i));		--- Cambié desde * 2**(-i)
+			v_aux(2) := sigma * (v(1) / 2**(i)) + v(2);		--- Same
             v := v_aux;
 
             -- Actualizo ángulo beta_i faltante
