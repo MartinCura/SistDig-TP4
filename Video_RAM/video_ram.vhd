@@ -9,7 +9,7 @@ entity video_ram is
 		N_bits_row : integer := 10;
 	    N_bits_col : integer := 10;
 		-- Numero de filas/columnas
-	    N_rows : integer := 480;
+	    N_rows : integer := 480;			---NO SE USAN
 		N_cols : integer := 640
 	);
 	port(
@@ -50,21 +50,21 @@ architecture video_ram_arch of video_ram is
 	signal address_B :std_logic_vector(N_bits_row+N_bits_col -1 downto 0):= (others => '0');
 
 begin
-	address_A <= A_row & A_col; --La dirección A es la concantenacion de fila y columna
-    address_B <= B_row & B_col; --La dirección B es la concantenacion de fila y columna
+	address_A <= A_row & A_col; --La dirección A es la concantenacion de fila y columna		---CREO Q HAY Q OPTIMIZAR ESTO
+    address_B <= B_row & B_col; --La dirección B es la concantenacion de fila y columna		---mirar gen_dirs.vhd
 	--Instanciación de los componentes a utilizar
 	video_dual_port_ram: dual_port_ram
 		generic map(
-			data_width =>1,
-			addr_width => N_bits_row+ N_bits_col
+			data_width => 1,
+			addr_width => 5---N_bits_row + N_bits_col		---TESTEO
 		)
 
 		port map(
 			clock =>clock,
 			write_enable =>write_enable,
 			barrido => barrido,
-			addr_A =>address_A,
-			addr_B =>address_B,
+			addr_A =>"00000",---address_A,
+			addr_B =>"00000",---address_B,
 			data_A(0) =>data_A,
 			data_B(0) =>data_B
 		);

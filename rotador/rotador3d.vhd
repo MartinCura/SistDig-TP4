@@ -9,10 +9,10 @@ use work.cordic_lib.all;
 library floatfixlib;
 use floatfixlib.float_pkg.all;
 
--- Rota un punto 3D, usando 3 veces el algoritmo CORDIC, usando 3 veces el algoritmo CORDIC y los ángulos para cada eje
+-- Rota un punto 3D, usando 3 veces el algoritmo CORDIC y rotando según los ángulos para cada eje
 entity rotador3d is
     generic(
-		N: integer := 32
+		N_BITS: integer := 32
 	);
 	port(
         ena : in std_logic := '0';  	-- Enable para rotar

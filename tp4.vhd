@@ -163,16 +163,17 @@ begin
 		);
 
 	-- Roto la posición leída según los ángulos de rotación
-	rotador: entity work.rotador3d
-		port map(
-			ena => ena_o,	---ena => rot_ena,
-			pos_in => pos_leida,
-			alfa => alfa,
-			beta => beta,
-			gama => gama,
-			
-			pos_rotada => pos_rotada
-		);
+	---rotador: entity work.rotador3d							COMENTADA para probar sintetizar
+	---	port map(
+	---		ena => ena_o,	---ena => rot_ena,
+	---		pos_in => pos_leida,
+	---		alfa => alfa,
+	---		beta => beta,
+	---		gama => gama,
+	---		
+	---		pos_rotada => pos_rotada
+	---	);
+	pos_rotada <= pos_leida;---
 
 	-- Aplano a ejes (y,z)
 	vec_pos_pixel(1) <= pos_rotada(2);
@@ -189,7 +190,7 @@ begin
 	
 	-- Prendo el bit para la posición apropiada en la dual port ram
     ram_video: entity work.video_ram
-        port map (
+		port map (
             clock => clk_i,
             write_enable => ena_o,	---Chequear
 			barrido => rst_pdram,
