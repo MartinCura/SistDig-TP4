@@ -203,7 +203,7 @@ begin
             data_B => pix_on
         );
 
-	pix_on <= pix_on and ena_o;---Quilombo?
+	--pix_on <= pix_on and ena_o;---Quilombo?
 
 	
 	-- *** IMPRIMIR ***		[De acá en más, se tratan los ejes como (x,y)]
