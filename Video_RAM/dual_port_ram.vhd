@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 -- De los puertos A y B, uso el A para escribir y B para leer (uso esta opcion de las 4 posibles de la dual port ram)
 entity dual_port_ram is
   generic(
-    data_width : natural := 1;
+    data_width : natural := 16;
     addr_width : natural := 18
   );
 
@@ -38,11 +38,11 @@ begin
 	process(clock, barrido)
 	begin
 		-- Reseteo
-		if (rising_edge(barrido)) then
+		if (barrido = '1') then
 			ram <= (others => (others => '0'));
 			data_B <= (others => '0');
 		
-		elsif (clock'event and clock = '1') then
+		elsif (rising_edge(clock)) then
 			if(write_enable = '1') then
 				ram(addr_A_int) <= data_A;
 			end if;
