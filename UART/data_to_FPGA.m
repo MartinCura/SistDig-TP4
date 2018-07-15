@@ -7,13 +7,14 @@ sizeD = [1 Inf];
 
 D = fscanf(fileID, formatSpec, sizeD);
 fclose(fileID);
-%%%
+
+datos = D'*(2^(14)) * (1 - 2^(15));
 
 PORT = 'com3';
 BAUDRATE = 9600;
 DATA_BITS = 8;
 
-datos = [355 2 3 1 300 2 3 1 300 2 3 1 300 2 3 1 300 2 3 1];
+%datos = [355 2 3 1 300 2 3 1 300 2 3 1 300 2 3 1 300 2 3 1];
 
 %datos = datos/10;
 
@@ -27,7 +28,7 @@ recov = zeros(1,length(datos));
 %readasync(FPGA);
 for i = 1:length(datos)
      
-     fwrite(FPGA,datos(i),'uint8');
+     fwrite(FPGA,datos(i),'int16',"ieee-le");%'uint8');
      pause(0.5)
     % fscanf(FPGA,'%i')
     % recov(i) = fread(FPGA,1,'char')

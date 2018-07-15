@@ -42,6 +42,9 @@ entity tp4 is
 	attribute slew: string;
 	attribute drive: string;
 	attribute iostandard: string;
+	attribute CLOCK_DEDICATED_ROUTE: string;
+	
+	attribute CLOCK_DEDICATED_ROUTE of rst_i: signal is "false";
 
 	-- Mapeo de pines para el kit Nexys 2 (spartan 3E)
 	-- https://reference.digilentinc.com/_media/nexys:nexys2:nexys2_rm.pdf
@@ -119,7 +122,7 @@ begin
 	ram_int: entity work.ram_interna
 		generic map(
 			N_BITS => N_BITS_COORD,
-			CANT_P => 40
+			CANT_P => 100
 		) port map(
 			clk => clk_i,
 			rst => rst_i,
@@ -214,7 +217,7 @@ begin
 			mclk => clk_i,
 			red_i => pix_on,	--- 1 si hay algo, 0 si no
 			grn_i => pix_on,	--- 1 si hay algo, 0 si no
-			blu_i => '1',
+			blu_i => pix_on,---'1',
 
 			hs => hs,
 			vs => vs,

@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 -- De los puertos A y B, uso el A para escribir y B para leer (uso esta opcion de las 4 posibles de la dual port ram)
 entity dual_port_ram is
   generic(
-    data_width : natural := 16;
+    data_width : natural := 1;
     addr_width : natural := 18
   );
 
@@ -25,7 +25,7 @@ architecture dual_port_ram_arch of dual_port_ram is
 	constant memo_size : natural := 2**(addr_width) -1;
 	type  ram_type is array(0 to memo_size)
 		of std_logic_vector(data_width-1 downto 0);
-	signal ram: ram_type;
+	signal ram: ram_type := (others => (others => '0'));
 	signal addr_A_int : integer := 0;
 	signal addr_B_int : integer := 0;
 

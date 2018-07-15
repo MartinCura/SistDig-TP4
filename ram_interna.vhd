@@ -17,7 +17,7 @@ entity ram_interna is
 
     generic(
         N_BITS : integer :=	  32;     -- Cantidad de bits por coordenada
-        CANT_P : integer :=	  40;---1000;     -- Cantidad de puntos	---12 MIL
+        CANT_P : integer :=	 100;---1000;     -- Cantidad de puntos	---12 MIL
         REFR_R : integer :=	 100      -- Ciclos por dato que saco
     );
 
@@ -39,7 +39,7 @@ architecture ram_interna_arq of ram_interna is
     constant ram_size : integer := 3 * CANT_P;
 	subtype t_ram_elem is std_logic_vector(15 downto 0);---t_coordenada;
     type t_ram is array(1 to ram_size) of t_ram_elem;
-    signal ram : t_ram; ----:= (others => CERO); ---Cómo la inicializo?
+    signal ram : t_ram := (others => (others => '0'));
 	---shared variable ram: t_ram;
 	signal Dout_aux : t_pos_mem := (others => (others => '0'));
 	
@@ -52,6 +52,9 @@ begin
 		-- Reseteo
 		if rst = '1' then
 			ram <= (others => (others => '0'));
+			ram(1) <= "0000000000000001";
+			ram(2) <= "0000000000000001";
+			ram(3) <= "0000000000000001";
 			j_in := 1;
 		elsif Rx = '1' then
 		---if Rx = '1' then
@@ -69,7 +72,7 @@ begin
 	-- OUT
 	process(clk)
 	variable i : natural := 0;
-	variable j_out : natural := 1;
+	variable j_out : natural := ram_size;
 	begin
 		if rising_edge(clk) then
 			i := i + 1;
