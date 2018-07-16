@@ -39,9 +39,12 @@ begin
 	begin
 		-- Reseteo
 		if (barrido = '1') then
-			ram <= (others => (others => '0'));
-			data_B <= (others => '0');
-		
+            ---Ya que addrB sale de la VGA, podríamos escribir 0 en addrB, y en suficiente tiempo se haría el barrido
+            ---ram(addr_B_int) <= (others => '0');
+            ram <= (others => (others => '0'));
+            ---
+            data_B <= (others => '0');
+
 		elsif (rising_edge(clock)) then
 			if(write_enable = '1') then
 				ram(addr_A_int) <= data_A;

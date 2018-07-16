@@ -78,13 +78,13 @@ architecture vga_ctrl_arq of vga_ctrl is
 	constant vfp: unsigned(9 downto 0) := "0111111111";	 -- Front porch vertical (511)
 
 	-- Contadores (horizontal y vertical)
-	signal hc, vc: unsigned(9 downto 0);
+	signal hc, vc: unsigned(9 downto 0) := (others => '0');
 	-- Flag para obtener una habilitación cada dos ciclos de clock
-	signal clkdiv_flag: std_logic;
+	signal clkdiv_flag: std_logic := '0';
 	-- Señal para habilitar la visualización de datos
-	signal vidon: std_logic;
+	signal vidon: std_logic := '0';
 	-- Señal para habilitar el contador vertical
-	signal vsenable: std_logic;
+	signal vsenable: std_logic := '0';
 
 
 begin
@@ -135,6 +135,10 @@ begin
 
     pixel_col <= std_logic_vector(hc - 144) when (vidon = '1') else std_logic_vector(hc);
     pixel_row <= std_logic_vector(vc -  31) when (vidon = '1') else std_logic_vector(vc);
+    ---Modificación para probar:    ---TESTEAR
+    -- Resto 1 para que cuente desde fila 0 y columna 0 (si no empieza en 1); y que cuando no escribe se quede en 0.
+    --pixel_col <= std_logic_vector(hc - 144 - 1) when (vidon = '1') else (others => '0');
+    --pixel_row <= std_logic_vector(vc -  31 - 1) when (vidon = '1') else (others => '0');
 
 	-- Habilitación de la salida de datos por el display cuando se encuentra entre los porches
     vidon <= '1' when (((hc < hfp) and (hc > hbp)) and ((vc < vfp) and (vc > vbp))) else '0';

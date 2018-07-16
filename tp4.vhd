@@ -19,7 +19,7 @@ entity tp4 is
 
 	port(
 		clk_i: in std_logic;	-- Clock general
-		
+
 		data_i: in std_logic;	-- Entrada de datos
 		rst_i: in std_logic;	-- Botón de reset
 
@@ -43,7 +43,7 @@ entity tp4 is
 	attribute drive: string;
 	attribute iostandard: string;
 	attribute CLOCK_DEDICATED_ROUTE: string;
-	
+
 	attribute CLOCK_DEDICATED_ROUTE of rst_i: signal is "false";
 
 	-- Mapeo de pines para el kit Nexys 2 (spartan 3E)
@@ -113,11 +113,11 @@ begin
 			clk => clk_i,
 			rst => rst_i,
 			rx => data_i,
-			
+
 			data_out_16bits => Dout_uart,
 			data_ready => RxRdy
 		);
-	
+
 	--- Se guarda un dato de lectura listo en memoria [interna]. Paralelamente, continuamente se escriben en vector pos_leida los datos ya guardados
 	ram_int: entity work.ram_interna
 		generic map(
@@ -133,7 +133,7 @@ begin
 			Rdy => ena_o,
 			barrido => ram_int_refresh
 		);
-	
+
 	-- Paso a formato punto flotante
 	process(pos_mem_leida)
 	begin
@@ -142,8 +142,8 @@ begin
 		pos_leida(2) <= to_float(pos_mem_leida(2));
 		pos_leida(3) <= to_float(pos_mem_leida(3));
 	end process;
-	
-	
+
+
 	-- *** LEER Y ROTAR ***
 
 	--- Si hiciéramos rotación constante:
@@ -152,7 +152,7 @@ begin
 	---			y eso son los 3 ángulos: alfa, beta, gama.
 
 	rst_angs <= rst_angs_i or rst_i;
-	
+
 	-- Obtengo los ángulos de rotación para cada eje
 	angles: entity work.det_angulos
 		port map(
@@ -161,7 +161,7 @@ begin
 			rst_angs,
 			inc_alfa, inc_beta, inc_gama,
 			rot_x_ng, rot_y_ng, rot_z_ng,
-			
+
 			alfa, beta, gama
 		);
 
@@ -173,7 +173,7 @@ begin
 	---		alfa => alfa,
 	---		beta => beta,
 	---		gama => gama,
-	---		
+	---
 	---		pos_rotada => pos_rotada
 	---	);
 	pos_rotada <= pos_leida;---
@@ -189,8 +189,10 @@ begin
 			dir => dir_pixel
 		);
 
-	rst_pdram <= ram_int_refresh or rst_i;
-	
+	---rst_pdram <= ram_int_refresh or rst_i;
+	----APAGO BARRIDO para tests
+	rst_pdram <= '0';
+
 	-- Prendo el bit para la posición apropiada en la dual port ram
     ram_video: entity work.video_ram
 		port map (
@@ -208,7 +210,7 @@ begin
 
 	--pix_on <= pix_on and ena_o;---Quilombo?
 
-	
+
 	-- *** IMPRIMIR ***		[De acá en más, se tratan los ejes como (x,y)]
 
 	-- VGA
