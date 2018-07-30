@@ -242,7 +242,7 @@ begin
         );
 
     -- ...
-    delay_Rdy: ffd
+    delay_Rdy: entity work.ffd
         port map(
             clk => clk,
             rst => rst,
