@@ -23,7 +23,7 @@ architecture barrel_shifterNb_arq of barrel_shifterNb is
 begin
 
     shs(0) <= a;
-    for i in 1 to N generate
+    barrsh: for i in 1 to N generate
         shs(i) <= shs(i-1)(N-2 downto 0) & '0' when to_left = '1' else  -- Lleno
                   shs(i-1)(N-1) & shs(i-1)(N-1 downto 1);   -- Extiendo
     end generate;

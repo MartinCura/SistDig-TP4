@@ -7,7 +7,7 @@ entity pos_rotator is
     generic(
         Nxy : natural := 16;
         Nangle : natural := 16;
-        Nits : 16
+        Nits : natural := 16
     );
 
     port (
@@ -24,6 +24,8 @@ end;
 
 
 architecture pos_rotator_arq of pos_rotator is
+
+    constant n_reg_in : natural := 1+3*Nxy+3*Nangle-1; -- tamaño de registro de entrada
 
     -- Señales entre etapas
 
@@ -66,8 +68,6 @@ architecture pos_rotator_arq of pos_rotator is
     signal alfa_delay : std_logic_vector(Nangle-1 downto 0) := (others => '0');
     signal beta_delay : std_logic_vector(Nangle-1 downto 0) := (others => '0');
     signal gama_delay : std_logic_vector(Nangle-1 downto 0) := (others => '0');
-
-    constant n_reg_in : natural := 1+3*Nxy+3*Nangle-1; -- tamaño de registro de entrada
 
 begin
 

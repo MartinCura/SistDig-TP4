@@ -35,7 +35,7 @@ end;
 
 architecture Behavioral of MemoryController is
 
-    type t_state is (INIT, IDLE, WRITING, READING);
+    type state_t is (INIT, IDLE, WRITING, READING);
     signal state : state_t := INIT;
     constant clock_period_ns : integer := (1000/clock_frec); -- nanoseconds (50MHz => 20ns, 100MHz => 10ns)
     constant init_period_us : integer := 151; -- microseconds (151 us)

@@ -38,7 +38,7 @@ begin
             RxRdy_out <= '0';
             go_ram <= '0';
             if enable = '1' then
-                case estado
+                case estado is
 
                     when IDLE =>
                         if start = '1' and busy_ram = '0' then -- pido X

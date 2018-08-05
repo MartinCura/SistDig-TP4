@@ -20,12 +20,12 @@ end entity dual_port_ram;
 architecture dual_port_ram_arq of dual_port_ram is
 
     attribute ram_style : string;
-    attribute ram_style of ram: signal is "block";
 
     constant memo_size : natural := 2**ADDRESS_WIDTH;
     subtype t_word is std_logic_vector(DATA_WIDTH-1 downto 0);
     type memo is array(0 to (memo_size-1)) of t_word;
     signal RAM : memo := (others => (others => '0'));
+    attribute ram_style of ram: signal is "block";
 
     -- DEBUG
     ---type memo_aux is array(0 to (memo_size-1)) of std_logic;

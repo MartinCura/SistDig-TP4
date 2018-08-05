@@ -2,9 +2,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
---library work;
---use work.cordic_lib.all;
-
 library floatfixlib;
 use floatfixlib.float_pkg.all;
 
@@ -15,16 +12,16 @@ entity tp4 is
         clk_i   : in std_logic;     -- Clock general
         data_i  : in std_logic;     -- Entrada de datos (UART)
         -- Controles:
-        write_rst_i : in std_logic;
-        read_rst_i  : in std_logic;
-        speed : in std_logic_vector(1 downto 0);
+		write_rst_i : in std_logic;
+		read_rst_i  : in std_logic;
+		speed : in std_logic_vector(1 downto 0);
         rot_switches_i : in std_logic_vector(5 downto 0);
         -- Salidas
         hs, vs: out std_logic;						-- Output para el display VGA
         red_o: out std_logic_vector(2 downto 0);
         grn_o: out std_logic_vector(2 downto 0);
         blu_o: out std_logic_vector(1 downto 0);
-        a,b,c,d,e,f,g,dp: out std_logic	-- Segmentos del display de 7 segmentos
+        a,b,c,d,e,f,g,dp: out std_logic;	-- Segmentos del display de 7 segmentos
         -- Para controlar la memoria externa:
         clock_out   : out 	STD_LOGIC;
         ADDRESS     : out	STD_LOGIC_VECTOR (22 downto 0);
@@ -212,10 +209,13 @@ begin
     ---                 (rot_switches_i(1) XOR rot_switches_i(0)) OR
     ---                    write_rst_i OR
     ---                    read_rst_i );
+    --button_down <= ( (not (rot_switches_i = (rot_switches_i'range => '0')))
+    --                 write_rst_i OR
+    --                 read_rst_i );
     -- Si estoy apretando algún botón o algún switch está prendido
-    button_down <= ( (not (rot_switches_i = (rot_switches_i'range => '0')))
-                     write_rst_i OR
-                     read_rst_i );
+	button_down <= (rot_switches_i(5) or rot_switches_i(4) or rot_switches_i(3) or
+					rot_switches_i(2) or rot_switches_i(1) or rot_switches_i(0) or
+					write_rst_i or read_rst_i);
 
     control_global: entity work.global_ctrl
     generic map(Nangle)
@@ -449,7 +449,7 @@ begin
     A_row <= row_counter when clear_enable = '1' else A_row_aux;
     A_col <= col_counter when clear_enable = '1' else A_col_aux;
     data_A <= '0' when clear_enable = '1' else '1';
-    video_write_enable <= rotator_RxRdy OR clear_enable;;-- when bypass_cordic = '0' else
+    video_write_enable <= rotator_RxRdy OR clear_enable;-- when bypass_cordic = '0' else
                             --RxRdy_xyz OR clear_enable;
 
     -- Lectura: con el contador de salida de la VGA, leo la video ram,
@@ -504,11 +504,11 @@ begin
         red_i => vga_pixel_in,
         grn_i => vga_pixel_in,  ---Testear colores
         blu_i => vga_pixel_in,
-        hs => hsync,
-        vs => vsync,
-        red_o => red_out,
-        grn_o => grn_out,
-        blu_o => blu_out,
+        hs => hs,
+        vs => vs,
+        red_o => red_o,
+        grn_o => grn_o,
+        blu_o => blu_o,
         pixel_row => pixel_row,
         pixel_col => pixel_col
     );

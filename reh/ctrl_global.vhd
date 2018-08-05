@@ -10,16 +10,18 @@ entity global_ctrl is
     );
     port (
         clock : in std_logic;
-        write_reset_in: in std_logic;
-        read_reset_in: in std_logic;
+        write_rst_i: in std_logic;
+        read_rst_i : in std_logic;
         sw_x_pos, sw_x_neg: in std_logic;
         sw_y_pos, sw_y_neg: in std_logic;
         sw_z_pos, sw_z_neg: in std_logic;
         delta_angle: in std_logic_vector(Nangle-1 downto 0);
         alfa, beta, gama: out std_logic_vector(Nangle-1 downto 0);
-        clear_reset, clear_enable, clear_stop: out std_logic;
-        read_start, read_stop, read_reset_out: out std_logic;
-        write_reset_out: out std_logic;
+        clear_reset, clear_enable: out std_logic;
+		clear_stop: in std_logic;
+        read_start: out std_logic;
+		read_stop: in std_logic;
+        read_reset_out, write_reset_out: out std_logic;
         vga_start, vga_stop: in std_logic
     );
 
@@ -29,7 +31,7 @@ end;
 architecture global_ctrl_arq of global_ctrl is
 
     type t_estado is (IDLE, CLEARING, READING, REFRESHING);
-    signal state : t_estado := IDLE;
+    signal estado : t_estado := IDLE;
     type t_subestado is (WAITING, REFRESHING);
     signal refresh_subestado : t_subestado := WAITING;
 
@@ -45,14 +47,14 @@ begin
     button_down <= (sw_x_pos or sw_x_neg or
                     sw_y_pos or sw_y_neg or
                     sw_z_pos or sw_z_neg or
-                    write_reset_in or read_reset_in);
+                    write_rst_i or read_rst_i);
     --button_down <= ( (sw_x_pos XOR sw_x_neg) OR (sw_y_pos XOR sw_y_neg) OR (sw_z_pos XOR sw_z_neg)
-    --              OR write_reset_in OR read_reset_in );
+    --              OR write_rst_i OR read_rst_i );
 
     clear_enable   <= '1' when (estado = CLEARING) else '0';
     read_reset_out <= '1' when (estado = CLEARING) else '0';
     read_start     <= '1' when (estado = READING)  else '0';
-    write_reset_out <= write_reset_in;
+    write_reset_out <= write_rst_i;
 
     process(clock, button_down)
     begin

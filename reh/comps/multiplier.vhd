@@ -83,8 +83,6 @@ begin
     result <= regP_out & regB_out when done_aux = '1' else
               (others => 'X');
 
-    hey;
-
     process (clock)
     variable i: integer := 0;
     begin

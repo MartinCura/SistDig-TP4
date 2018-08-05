@@ -12,7 +12,7 @@ entity ffd_serie is
         reset : in std_logic;
         enable: in std_logic;
         D : in std_logic;
-        Q : in std_logic
+        Q : out std_logic
     );
 
 end;
@@ -25,7 +25,7 @@ begin
 
     aux(0) <= D;
 
-    for i in 1 to N generate
+    delay_i: for i in 1 to N generate
         ffd_delay: entity work.ffd
             port map(
                 clk => clock,

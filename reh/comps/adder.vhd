@@ -26,7 +26,7 @@ begin
     ciclo: for i in 1 to N generate
         B_aux(i-1) <= B(i-1) XOR control;
 
-        full_adder_1_bit_inst: entity work.full_adder_1_bit
+        full_addr_1_bit_inst: entity work.full_addr_1_bit
         port map(
             A(i-1),
             B_aux(i-1),
