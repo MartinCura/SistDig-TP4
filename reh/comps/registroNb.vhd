@@ -8,6 +8,7 @@ entity registroNb is
 
 	port (
 		clk: in std_logic;
+		rst: in std_logic;
 		ena: in std_logic;
 		d: in  std_logic_vector(N-1 downto 0);
 		q: out std_logic_vector(N-1 downto 0)
@@ -21,7 +22,7 @@ begin
 		FFD_inst: entity work.ffd
 			port map(
 				clk => clk,
-				rst => '0',
+				rst => rst,
 				ena => ena,
 				d => d(i),
 				q => q(i)
