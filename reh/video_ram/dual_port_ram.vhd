@@ -22,6 +22,7 @@ architecture dual_port_ram_arq of dual_port_ram is
     attribute ram_style : string;
 
     constant memo_size : natural := 2**ADDRESS_WIDTH;
+	subtype memo_i is integer range 0 to memo_size-1;
     subtype t_word is std_logic_vector(DATA_WIDTH-1 downto 0);
     type memo is array(0 to (memo_size-1)) of t_word;
     signal RAM : memo := (others => (others => '0'));
@@ -31,8 +32,8 @@ architecture dual_port_ram_arq of dual_port_ram is
     ---type memo_aux is array(0 to (memo_size-1)) of std_logic;
     ---signal RAM_aux : memo_aux := (others => '0');
 
-    signal address_A_int : integer := 0;
-    signal address_B_int : integer := 0;
+    signal address_A_int : memo_i := 0;---integer := 0;
+    signal address_B_int : memo_i := 0;---integer := 0;
 
 begin
 

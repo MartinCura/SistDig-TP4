@@ -62,7 +62,7 @@ begin
 
                     when Z_st =>
                         if RxRdy_ram = '1' then -- Ya Z, vuelvo a IDLE
-                            x <= data_in;
+                            z <= data_in;
                             RxRdy_out <= '1'; -- Posición lista
                             go_ram <= '1';
                             estado <= X_st;---

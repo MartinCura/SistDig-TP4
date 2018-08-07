@@ -2,8 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-library floatfixlib;
-use floatfixlib.float_pkg.all;
+--library floatfixlib;
+--use floatfixlib.float_pkg.all;
 
 
 entity tp4 is
