@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=C:\Users\Martin\Documents\SistDig\SistDig-TP4\reh\ISE\tp4-reh\tp4.ncd
-OUTFILE=C:\Users\Martin\Documents\SistDig\SistDig-TP4\reh\ISE\tp4-reh\tp4.bit
-FAMILY=Spartan3E
-PART=xc3s500e-5fg320
-WORKINGDIR=C:\Users\Martin\Documents\SistDig\SistDig-TP4\reh\ISE\tp4-reh
-LICENSE=WebPack
-USER_INFO=211557112_0_0_638
