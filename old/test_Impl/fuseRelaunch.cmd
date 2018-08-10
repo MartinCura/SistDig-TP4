@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/rotador3d_tb_isim_beh.exe" -prj "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/rotador3d_tb_beh.prj" "work.rotador3d_tb" 

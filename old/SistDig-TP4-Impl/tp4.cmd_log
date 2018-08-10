@@ -1,0 +1,50 @@
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 tp4.ngc tp4.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o tp4_map.ncd tp4.ngd tp4.pcf 
+par -w -intstyle ise -ol high -t 1 tp4_map.ncd tp4.ncd tp4.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml tp4.twx tp4.ncd -o tp4.twr tp4.pcf 
+bitgen -intstyle ise -f tp4.ut tp4.ncd 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 tp4.ngc tp4.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o tp4_map.ncd tp4.ngd tp4.pcf 
+par -w -intstyle ise -ol high -t 1 tp4_map.ncd tp4.ncd tp4.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml tp4.twx tp4.ncd -o tp4.twr tp4.pcf 
+bitgen -intstyle ise -f tp4.ut tp4.ncd 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 tp4.ngc tp4.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o tp4_map.ncd tp4.ngd tp4.pcf 
+par -w -intstyle ise -ol high -t 1 tp4_map.ncd tp4.ncd tp4.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml tp4.twx tp4.ncd -o tp4.twr tp4.pcf 
+bitgen -intstyle ise -f tp4.ut tp4.ncd 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 tp4.ngc tp4.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o tp4_map.ncd tp4.ngd tp4.pcf 
+par -w -intstyle ise -ol high -t 1 tp4_map.ncd tp4.ncd tp4.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml tp4.twx tp4.ncd -o tp4.twr tp4.pcf 
+bitgen -intstyle ise -f tp4.ut tp4.ncd 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 tp4.ngc tp4.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o tp4_map.ncd tp4.ngd tp4.pcf 
+par -w -intstyle ise -ol high -t 1 tp4_map.ncd tp4.ncd tp4.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml tp4.twx tp4.ncd -o tp4.twr tp4.pcf 
+bitgen -intstyle ise -f tp4.ut tp4.ncd 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 tp4.ngc tp4.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o tp4_map.ncd tp4.ngd tp4.pcf 
+par -w -intstyle ise -ol high -t 1 tp4_map.ncd tp4.ncd tp4.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml tp4.twx tp4.ncd -o tp4.twr tp4.pcf 
+bitgen -intstyle ise -f tp4.ut tp4.ncd 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 tp4.ngc tp4.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o tp4_map.ncd tp4.ngd tp4.pcf 
+par -w -intstyle ise -ol high -t 1 tp4_map.ncd tp4.ncd tp4.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml tp4.twx tp4.ncd -o tp4.twr tp4.pcf 
+bitgen -intstyle ise -f tp4.ut tp4.ncd 
+xst -intstyle ise -ifn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.xst" -ofn "C:/Users/Martin/Documents/SistDig/SistDig-TP4/SistDig-TP4-Impl/tp4.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 tp4.ngc tp4.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o tp4_map.ncd tp4.ngd tp4.pcf 
+par -w -intstyle ise -ol high -t 1 tp4_map.ncd tp4.ncd tp4.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml tp4.twx tp4.ncd -o tp4.twr tp4.pcf 
+bitgen -intstyle ise -f tp4.ut tp4.ncd 

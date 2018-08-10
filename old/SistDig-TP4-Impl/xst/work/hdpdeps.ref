@@ -1,0 +1,109 @@
+V3 60
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/det_angulos.vhd 2018/07/09.23:51:10 P.20131013
+EN work/det_angulos 1532538648 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/det_angulos.vhd \
+      PB ieee/std_logic_1164 1381692176 PB work/cordic_lib 1532538639 \
+      LB floatfixlib PB floatfixlib/float_pkg 1532538628
+AR work/det_angulos/det_angulos_arq 1532538649 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/det_angulos.vhd \
+      EN work/det_angulos 1532538648
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd 2018/07/12.18:25:53 P.20131013
+EN work/ram_interna 1532538646 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
+      PB work/cordic_lib 1532538639 LB floatfixlib PB floatfixlib/float_pkg 1532538628
+AR work/ram_interna/ram_interna_arq 1532538647 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd \
+      EN work/ram_interna 1532538646
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/cordic_lib.vhd 2018/07/09.23:26:45 P.20131013
+PH work/cordic_lib 1532538638 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/cordic_lib.vhd \
+      PB ieee/std_logic_1164 1381692176 LB floatfixlib PB floatfixlib/float_pkg 1532538628
+PB work/cordic_lib 1532538639 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/cordic_lib.vhd \
+      PH work/cordic_lib 1532538638
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/gen_dirs.vhd 2018/07/09.23:58:26 P.20131013
+EN work/gen_dirs 1532538650 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/gen_dirs.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
+      PB work/cordic_lib 1532538639 LB floatfixlib PB floatfixlib/float_pkg 1532538628
+AR work/gen_dirs/gen_dirs_arq 1532538651 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/gen_dirs.vhd \
+      EN work/gen_dirs 1532538650
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/tp4.vhd 2018/07/25.14:10:07 P.20131013
+EN work/tp4 1532538656 FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/tp4.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
+      PB work/cordic_lib 1532538639 LB floatfixlib PB floatfixlib/float_pkg 1532538628
+AR work/tp4/tp4_arq 1532538657 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/tp4.vhd EN work/tp4 1532538656 \
+      CP work/data_acq_unit CP work/ram_interna CP work/det_angulos \
+      CP work/gen_dirs CP work/video_ram CP work/VGA_ctrl
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_capture_module.vhd 2018/07/06.20:46:25 P.20131013
+EN work/data_acq_unit 1532538644 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_capture_module.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/data_acq_unit/arch 1532538645 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_capture_module.vhd \
+      EN work/data_acq_unit 1532538644 CP uart CP data_loader
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_loader.vhd 2018/07/06.20:51:55 P.20131013
+EN work/data_loader 1532538642 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_loader.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/data_loader/data_loader_arch 1532538643 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_loader.vhd \
+      EN work/data_loader 1532538642
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/receive.vhd 2018/07/06.20:50:27 P.20131013
+EN work/receive 1532538630 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/receive.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/receive/arch 1532538631 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/receive.vhd \
+      EN work/receive 1532538630
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/timing.vhd 2018/07/05.10:57:16 P.20131013
+EN work/timing 1532538634 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/timing.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/timing/timing 1532538635 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/timing.vhd \
+      EN work/timing 1532538634
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/transmit.vhd 2018/07/05.10:57:16 P.20131013
+EN work/transmit 1532538632 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/transmit.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/transmit/arch 1532538633 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/transmit.vhd \
+      EN work/transmit 1532538632
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart.vhd 2018/07/06.20:48:55 P.20131013
+EN work/uart 1532538640 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
+      PH work/uart_comps 1532538629
+AR work/uart/arch 1532538641 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart.vhd \
+      EN work/uart 1532538640 CP receive CP transmit CP timing
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart_comps.vhd 2018/07/05.10:57:16 P.20131013
+PH work/uart_comps 1532538629 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart_comps.vhd \
+      PB ieee/std_logic_1164 1381692176 CD timing CD transmit CD receive
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/VGActrl.vhd 2018/07/15.21:12:13 P.20131013
+EN work/vga_ctrl 1532538654 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/VGActrl.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/vga_ctrl/vga_ctrl_arq 1532538655 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/VGActrl.vhd \
+      EN work/vga_ctrl 1532538654
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/Video_RAM/dual_port_ram.vhd 2018/07/25.14:03:08 P.20131013
+EN work/dual_port_ram 1532538636 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/Video_RAM/dual_port_ram.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/dual_port_ram/dual_port_ram_arch 1532538637 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/Video_RAM/dual_port_ram.vhd \
+      EN work/dual_port_ram 1532538636
+FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/Video_RAM/video_ram.vhd 2018/07/10.01:58:26 P.20131013
+EN work/video_ram 1532538652 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/Video_RAM/video_ram.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/video_ram/video_ram_arch 1532538653 \
+      FL C:/Users/Martin/Documents/SistDig/SistDig-TP4/Video_RAM/video_ram.vhd \
+      EN work/video_ram 1532538652 CP dual_port_ram

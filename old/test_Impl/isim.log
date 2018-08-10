@@ -1,0 +1,113 @@
+ISim log file
+Running: C:\Users\Martin\Documents\SistDig\SistDig-TP4\test_Impl\rotador3d_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/rotador3d_tb_isim_beh.wdb 
+ISim P.20131013 (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+at 5 ns: Note: pos x: 1000000 pos y: 2000000 pos z: 3000000 (/rotador3d_tb/).
+at 15 ns: Note: pos x: 1000000 pos y: 2000000 pos z: 3000000 (/rotador3d_tb/).
+at 25 ns: Note: pos x: 1012870 pos y: 1975613 pos z: 3011818 (/rotador3d_tb/).
+at 35 ns: Note: pos x: 1012870 pos y: 1975613 pos z: 3011818 (/rotador3d_tb/).
+at 45 ns: Note: pos x: 1012870 pos y: 1975613 pos z: 3011818 (/rotador3d_tb/).
+at 55 ns: Note: pos x: 1012870 pos y: 1975613 pos z: 3011818 (/rotador3d_tb/).
+at 65 ns: Note: pos x: 1012870 pos y: 1975613 pos z: 3011818 (/rotador3d_tb/).
+at 75 ns: Note: pos x: 1012870 pos y: 1975613 pos z: 3011818 (/rotador3d_tb/).
+at 85 ns: Note: pos x: 1012870 pos y: 1975613 pos z: 3011818 (/rotador3d_tb/).
+at 95 ns: Note: pos x: 1012870 pos y: 1975613 pos z: 3011818 (/rotador3d_tb/).
+at 105 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 115 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 125 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 135 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 145 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 155 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 165 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 175 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 185 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 195 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 205 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 215 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 225 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 235 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 245 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 255 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 265 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 275 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 285 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 295 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 305 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 315 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 325 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 335 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 345 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 355 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 365 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 375 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 385 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 395 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 405 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 415 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 425 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 435 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 445 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 455 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 465 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 475 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 485 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 495 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 505 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 515 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 525 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 535 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 545 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 555 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 565 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 575 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 585 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 595 ns: Note: pos x: 3000000 pos y: 1000000 pos z: 2000000 (/rotador3d_tb/).
+at 605 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 615 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 625 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 635 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 645 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 655 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 665 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 675 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 685 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 695 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 705 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 715 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 725 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 735 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 745 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 755 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 765 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 775 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 785 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 795 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 805 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 815 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 825 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 835 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 845 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 855 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 865 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 875 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 885 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 895 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 905 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 915 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 925 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 935 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 945 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 955 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 965 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 975 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 985 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).
+at 995 ns: Note: pos x: -1000000 pos y: 3000000 pos z: 2000000 (/rotador3d_tb/).

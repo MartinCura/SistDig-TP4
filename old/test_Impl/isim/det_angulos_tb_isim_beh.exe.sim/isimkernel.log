@@ -1,0 +1,29 @@
+Command line:
+   det_angulos_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  58400
+
+Mon Jul 09 15:10:50 2018
+
+
+ Elaboration Time: 0.062401 sec
+
+ Current Memory Usage: 670.462 Meg
+
+ Total Signals          : 33
+ Total Nets             : 300
+ Total Signal Drivers   : 19
+ Total Blocks           : 10
+ Total Primitive Blocks : 9
+ Total Processes        : 18
+ Total Traceable Variables  : 80
+ Total Scalar Nets and Variables : 2288
+Total Line Count : 39
+
+ Total Simulation Time: 0.124801 sec
+
+ Current Memory Usage: 670.462 Meg
+
+Mon Jul 09 15:15:57 2018
+

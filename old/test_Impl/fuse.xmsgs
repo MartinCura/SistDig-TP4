@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" Line 1476: Range is empty (null range)
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" Line 1477: Range is empty (null range)
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" Line 1478: Range is empty (null range)
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" Line 6879: Range is empty (null range)
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" Line 1029: Range is empty (null range)
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" Line 1030: Range is empty (null range)
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" Line 6198: Range is empty (null range)
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"N:/P.20131013/rtf/vhdl/src/ieee/numeric_std.vhd" Line 3314: Range is empty (null range)
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="220" delta="unknown" >"N:/P.20131013/rtf/vhdl/src/ieee/numeric_std.vhd" Line 3314: Assignment ignored
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="746" delta="unknown" >"C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" Line 3851: Range is empty (null range)
+</msg>
+
+</messages>
+

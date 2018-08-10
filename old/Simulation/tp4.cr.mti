@@ -1,0 +1,294 @@
+C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd {2 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Loading package float_pkg
+-- Loading package cordic_lib
+-- Compiling entity tester_ram_interna
+-- Compiling architecture tester_ram_interna_arq of tester_ram_interna
+-- Loading entity ram_interna
+** Warning: vhdl_src/floatfixlib/float_pkg_c.vhd(104): (vcom-1167) Index value -23 (of type std.STANDARD.NATURAL) is out of range 0 to 2147483647.
+
+** Warning: vhdl_src/floatfixlib/float_pkg_c.vhd(106): (vcom-1167) Index value -23 (of type std.STANDARD.NATURAL) is out of range 0 to 2147483647.
+
+** Warning: vhdl_src/floatfixlib/float_pkg_c.vhd(108): (vcom-1167) Index value -23 (of type std.STANDARD.NATURAL) is out of range 0 to 2147483647.
+
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/rotador3d_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/rotador3d_tb.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Loading package float_pkg
+-- Loading package cordic_lib
+-- Compiling entity rotador3d_tb
+-- Compiling architecture rotador3d_tb_arq of rotador3d_tb
+-- Loading entity rotador3d
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_loader.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_loader.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity data_loader
+-- Compiling architecture data_loader_arch of data_loader
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/timing.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/timing.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity timing
+-- Compiling architecture timing of timing
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/std_logic_1164_additions.vhdl {2 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/std_logic_1164_additions.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package std_logic_1164_additions
+-- Compiling package body std_logic_1164_additions
+-- Loading package std_logic_1164_additions
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/std_logic_1164_additions.vhdl(954): (vcom-1246) Range 2 to 1 is null.
+
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/cordic_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/cordic_tb.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Loading package float_pkg
+-- Loading package cordic_lib
+-- Compiling entity cordic_tb
+-- Compiling architecture cordic_tb_arq of cordic_tb
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/VGActrl.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/VGActrl.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity vga_ctrl
+-- Compiling architecture vga_ctrl_arq of vga_ctrl
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/Video_RAM/video_ram.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/Video_RAM/video_ram.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity video_ram
+-- Compiling architecture video_ram_arch of video_ram
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_capture_module.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/data_capture_module.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity data_acq_unit
+-- Compiling architecture arch of data_acq_unit
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/numeric_std_unsigned_c.vhdl {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/numeric_std_unsigned_c.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package NUMERIC_STD_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Loading package numeric_std_additions
+-- Compiling package body NUMERIC_STD_UNSIGNED
+-- Loading package NUMERIC_STD_UNSIGNED
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/numeric_std_additions.vhdl {2 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/numeric_std_additions.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package numeric_std_additions
+-- Compiling package body numeric_std_additions
+-- Loading package numeric_std_additions
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/numeric_std_additions.vhdl(491): (vcom-1246) Range 0 downto 1 is null.
+
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/numeric_std_additions.vhdl(492): (vcom-1246) Range 0 downto 1 is null.
+
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/numeric_std_additions.vhdl(2078): (vcom-1246) Range 2 to 1 is null.
+
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/receive.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/receive.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity receive
+-- Compiling architecture arch of receive
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package uart_comps
+-- Compiling entity uart
+-- Compiling architecture arch of uart
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/det_angulos.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/det_angulos.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Loading package float_pkg
+-- Loading package cordic_lib
+-- Compiling entity det_angulos
+-- Compiling architecture det_angulos_arq of det_angulos
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/gen_dirs.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/gen_dirs.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Loading package float_pkg
+-- Loading package cordic_lib
+-- Compiling entity gen_dirs
+-- Compiling architecture gen_dirs_arq of gen_dirs
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart_comps.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/uart_comps.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package uart_comps
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Loading package float_pkg
+-- Loading package cordic_lib
+-- Compiling entity ram_interna
+-- Compiling architecture ram_interna_arq of ram_interna
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/standard_additions_c.vhdl {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/standard_additions_c.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Compiling package standard_additions
+-- Loading package TEXTIO
+-- Compiling package body standard_additions
+-- Loading package standard_additions
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl {2 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Compiling package float_pkg
+-- Compiling package body float_pkg
+-- Loading package float_pkg
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl(1029): (vcom-1246) Range 0 downto 1 is null.
+
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl(1030): (vcom-1246) Range 0 downto 1 is null.
+
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl(6198): (vcom-1246) Range 2 to 1 is null.
+
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/transmit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/UART/data_adq/transmit.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity transmit
+-- Compiling architecture arch of transmit
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_float_types_c.vhdl {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_float_types_c.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Compiling package fixed_float_types
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl {2 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Compiling package fixed_pkg
+-- Loading package MATH_REAL
+-- Compiling package body fixed_pkg
+-- Loading package fixed_pkg
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl(1476): (vcom-1246) Range 0 downto 1 is null.
+
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl(1477): (vcom-1246) Range 0 downto 1 is null.
+
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl(1478): (vcom-1246) Range 0 downto 1 is null.
+
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl(6879): (vcom-1246) Range 2 to 1 is null.
+
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/det_angulos_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/det_angulos_tb.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Loading package float_pkg
+-- Loading package cordic_lib
+-- Compiling entity det_angulos_tb
+-- Compiling architecture det_angulos_tb_arq of det_angulos_tb
+-- Loading entity det_angulos
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/rotador3d.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/rotador3d.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package fixed_float_types
+-- Loading package fixed_pkg
+-- Loading package float_pkg
+-- Loading package cordic_lib
+-- Compiling entity rotador3d
+-- Compiling architecture rotador3d_arq of rotador3d
+
+} {} {}} C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/standard_textio_additions_c.vhdl {2 {vcom -work work -2002 -explicit -stats=none C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/standard_textio_additions_c.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Compiling package standard_textio_additions
+-- Loading package standard_additions
+-- Compiling package body standard_textio_additions
+-- Loading package standard_textio_additions
+** Warning: C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/standard_textio_additions_c.vhdl(62): (vcom-1246) Range 2 to 1 is null.
+
+
+} {} {}}

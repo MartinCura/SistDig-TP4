@@ -1,0 +1,854 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> Reading design: tester_ram_interna.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "tester_ram_interna.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "tester_ram_interna"
+Output Format                      : NGC
+Target Device                      : xc3s500e-5-fg320
+
+---- Source Options
+Top Module Name                    : tester_ram_interna
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_float_types_c.vhdl" in Library floatfixlib.
+Compiling vhdl file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl" in Library floatfixlib.
+WARNING:HDLParsers:3350 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl" Line 1476. Null range: 0 downto 1
+WARNING:HDLParsers:3350 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl" Line 1477. Null range: 0 downto 1
+WARNING:HDLParsers:3350 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/fixed_pkg_c.vhdl" Line 1478. Null range: 0 downto 1
+Architecture fixed_pkg of Entity fixed_pkg is up to date.
+Compiling vhdl file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl" in Library floatfixlib.
+WARNING:HDLParsers:3350 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl" Line 1029. Null range: 0 downto 1
+WARNING:HDLParsers:3350 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl" Line 1030. Null range: 0 downto 1
+Architecture float_pkg of Entity float_pkg is up to date.
+Compiling vhdl file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/cordic_lib.vhd" in Library work.
+Architecture cordic_lib of Entity cordic_lib is up to date.
+Compiling vhdl file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd" in Library work.
+Entity <ram_interna> compiled.
+Entity <ram_interna> (Architecture <ram_interna_arq>) compiled.
+Compiling vhdl file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd" in Library work.
+Architecture tester_ram_interna_arq of Entity tester_ram_interna is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <tester_ram_interna> in library <work> (architecture <tester_ram_interna_arq>) with generics.
+	N_BITS_COORD = 32
+
+Analyzing hierarchy for entity <ram_interna> in library <work> (architecture <ram_interna_arq>) with generics.
+	CANT_P = 40
+	N_BITS = 32
+	REFR_R = 100
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing generic Entity <tester_ram_interna> in library <work> (Architecture <tester_ram_interna_arq>).
+	N_BITS_COORD = 32
+    Set user-defined property "LOC =  B8" for signal <clk_i> in unit <tester_ram_interna>.
+INFO:Xst:1749 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd" line 104: report: Report statement with non static report message
+INFO:Xst:1749 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd" line 106: report: Report statement with non static report message
+INFO:Xst:1749 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd" line 108: report: Report statement with non static report message
+WARNING:Xst:1610 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl" line 4011: Width mismatch. <fpvar> has a width of 32 bits but assigned expression is 16-bit wide.
+WARNING:Xst:1610 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl" line 4011: Width mismatch. <fpvar0> has a width of 32 bits but assigned expression is 16-bit wide.
+WARNING:Xst:1610 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/fix_floating_point_files/float_pkg_c.vhdl" line 4011: Width mismatch. <fpvar1> has a width of 32 bits but assigned expression is 16-bit wide.
+Entity <tester_ram_interna> analyzed. Unit <tester_ram_interna> generated.
+
+Analyzing generic Entity <ram_interna> in library <work> (Architecture <ram_interna_arq>).
+	CANT_P = 40
+	N_BITS = 32
+	REFR_R = 100
+WARNING:Xst:790 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd" line 61: Index value(s) does not match array range, simulation mismatch.
+INFO:Xst:1433 - Contents of array <ram> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+WARNING:Xst:819 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd" line 49: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <rst>
+Entity <ram_interna> analyzed. Unit <ram_interna> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <ram_interna>.
+    Related source file is "C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd".
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_4>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_40>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_35>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_5>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_41>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_36>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_6>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_42>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_37>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_100>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_7>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_43>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_38>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_101>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_8>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_44>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_39>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_102>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_9>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_50>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_45>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_103>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_46>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_51>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_104>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_47>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_52>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_105>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_110>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_48>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_53>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_106>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_111>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_49>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_54>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 31-bit latch for signal <j_in>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_112>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_107>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_55>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_60>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_108>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_113>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_56>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_61>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_109>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_114>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_57>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_62>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_115>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_120>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_58>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_63>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_116>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_59>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_64>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_117>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_65>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_70>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_118>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_66>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_71>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_119>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_67>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_72>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_68>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_73>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_69>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_74>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_75>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_80>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_76>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_81>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 32-bit latch for signal <n>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_77>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_82>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_78>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_83>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_10>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_79>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_84>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_11>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_85>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_90>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_12>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_86>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_91>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_13>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_87>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_92>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_14>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_88>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_93>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_15>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_20>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_89>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_94>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_16>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_21>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_95>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_17>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_22>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_96>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_18>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_23>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_97>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_19>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_24>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_98>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_25>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_30>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_99>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_26>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_31>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_1>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_32>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_27>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_2>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_33>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_28>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_3>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_34>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 16-bit latch for signal <ram_29>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit register for signal <barrido>.
+    Found 1-bit register for signal <Rdy>.
+    Found 31-bit adder for signal <add0000$add0000> created at line 85.
+    Found 31-bit adder for signal <barrido$add0000> created at line 75.
+    Found 32-bit comparator greater for signal <barrido$cmp_gt0000> created at line 79.
+    Found 32-bit comparator greater for signal <barrido$cmp_gt0001> created at line 86.
+    Found 48-bit register for signal <Dout_aux>.
+    Found 32-bit comparator lessequal for signal <Dout_aux_1$cmp_le0000> created at line 79.
+    Found 31-bit up counter for signal <i>.
+    Found 31-bit adder for signal <j_in$add0000> created at line 62.
+    Found 31-bit comparator greater for signal <j_in$cmp_gt0000> created at line 58.
+    Found 31-bit register for signal <j_out>.
+    Found 32-bit adder for signal <n$addsub0000> created at line 64.
+    Found 32-bit comparator less for signal <n$cmp_lt0000> created at line 63.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  81 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   5 Comparator(s).
+Unit <ram_interna> synthesized.
+
+
+Synthesizing Unit <tester_ram_interna>.
+    Related source file is "C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd".
+    Found 40x16-bit ROM for signal <Dout_uart$mux0000> created at line 94.
+    Found 16-bit register for signal <Dout_uart>.
+    Found 31-bit up counter for signal <i>.
+    Found 31-bit up counter for signal <j>.
+    Found 31-bit adder for signal <j$addsub0000> created at line 96.
+    Found 31-bit comparator greatequal for signal <j$cmp_ge0000> created at line 97.
+    Found 1-bit register for signal <RxRdy>.
+    Found 31-bit adder for signal <RxRdy$add0000> created at line 91.
+    Found 31-bit comparator greater for signal <RxRdy$cmp_gt0000> created at line 92.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   2 Counter(s).
+	inferred  17 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+Unit <tester_ram_interna> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 40x16-bit ROM                                         : 1
+# Adders/Subtractors                                   : 6
+ 31-bit adder                                          : 5
+ 32-bit adder                                          : 1
+# Counters                                             : 3
+ 31-bit up counter                                     : 3
+# Registers                                            : 8
+ 1-bit register                                        : 3
+ 16-bit register                                       : 4
+ 31-bit register                                       : 1
+# Latches                                              : 122
+ 16-bit latch                                          : 120
+ 31-bit latch                                          : 1
+ 32-bit latch                                          : 1
+# Comparators                                          : 7
+ 31-bit comparator greatequal                          : 1
+ 31-bit comparator greater                             : 2
+ 32-bit comparator greater                             : 2
+ 32-bit comparator less                                : 1
+ 32-bit comparator lessequal                           : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1426 - The value init of the FF/Latch RxRdy hinder the constant cleaning in the block tester_ram_interna.
+   You should achieve better results by setting this init to 1.
+
+Synthesizing (advanced) Unit <tester_ram_interna>.
+INFO:Xst:3044 - The ROM <Mrom_Dout_uart_mux0000> will be implemented as a read-only BLOCK RAM, absorbing the register: <Dout_uart>.
+INFO:Xst:3225 - The RAM <Mrom_Dout_uart_mux0000> will be implemented as BLOCK RAM
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 40-word x 16-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk_i>         | rise     |
+    |     enA            | connected to signal <RxRdy_cmp_gt0000> | high     |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <j>             |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <Dout_uart>     |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <tester_ram_interna> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 40x16-bit single-port block RAM                       : 1
+# Adders/Subtractors                                   : 6
+ 31-bit adder                                          : 5
+ 32-bit adder                                          : 1
+# Counters                                             : 3
+ 31-bit up counter                                     : 3
+# Registers                                            : 82
+ Flip-Flops                                            : 82
+# Latches                                              : 122
+ 16-bit latch                                          : 120
+ 31-bit latch                                          : 1
+ 32-bit latch                                          : 1
+# Comparators                                          : 7
+ 31-bit comparator greatequal                          : 1
+ 31-bit comparator greater                             : 2
+ 32-bit comparator greater                             : 2
+ 32-bit comparator less                                : 1
+ 32-bit comparator lessequal                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1426 - The value init of the FF/Latch RxRdy hinder the constant cleaning in the block tester_ram_interna.
+   You should achieve better results by setting this init to 1.
+
+Optimizing unit <tester_ram_interna> ...
+
+Optimizing unit <ram_interna> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block tester_ram_interna, actual ratio is 53.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 175
+ Flip-Flops                                            : 175
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : tester_ram_interna.ngr
+Top Level Output File Name         : tester_ram_interna
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 100
+
+Cell Usage :
+# BELS                             : 5190
+#      GND                         : 1
+#      INV                         : 19
+#      LUT1                        : 243
+#      LUT2                        : 174
+#      LUT2_L                      : 18
+#      LUT3                        : 55
+#      LUT4                        : 3117
+#      LUT4_D                      : 118
+#      LUT4_L                      : 788
+#      MUXCY                       : 379
+#      VCC                         : 1
+#      XORCY                       : 277
+# FlipFlops/Latches                : 2158
+#      FDE                         : 81
+#      FDR                         : 63
+#      FDRE                        : 31
+#      LDC                         : 30
+#      LDCE                        : 1920
+#      LDE_1                       : 32
+#      LDP                         : 1
+# RAMS                             : 1
+#      RAMB16_S18                  : 1
+# Clock Buffers                    : 3
+#      BUFG                        : 2
+#      BUFGP                       : 1
+# IO Buffers                       : 99
+#      IBUF                        : 1
+#      OBUF                        : 98
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-5 
+
+ Number of Slices:                     2442  out of   4656    52%  
+ Number of Slice Flip Flops:           2158  out of   9312    23%  
+ Number of 4 input LUTs:               4532  out of   9312    48%  
+ Number of IOs:                         100
+ Number of bonded IOBs:                 100  out of    232    43%  
+ Number of BRAMs:                         1  out of     20     5%  
+ Number of GCLKs:                         3  out of     24    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+---------------------------------------------------------+----------------------------+-------+
+Clock Signal                                             | Clock buffer(FF name)      | Load  |
+---------------------------------------------------------+----------------------------+-------+
+clk_i                                                    | BUFGP                      | 176   |
+RxRdy1                                                   | BUFG                       | 31    |
+rst_i                                                    | IBUF+BUFG                  | 32    |
+ram_int/ram_4_cmp_eq0000(ram_int/ram_4_cmp_eq00001:O)    | NONE(*)(ram_int/ram_4_15)  | 16    |
+ram_int/ram_40_cmp_eq0000(ram_int/ram_40_cmp_eq00001:O)  | NONE(*)(ram_int/ram_40_15) | 16    |
+ram_int/ram_35_cmp_eq0000(ram_int/ram_35_cmp_eq00001:O)  | NONE(*)(ram_int/ram_35_15) | 16    |
+ram_int/ram_5_cmp_eq0000(ram_int/ram_5_cmp_eq00001:O)    | NONE(*)(ram_int/ram_5_15)  | 16    |
+ram_int/ram_41_cmp_eq0000(ram_int/ram_41_cmp_eq00001:O)  | NONE(*)(ram_int/ram_41_15) | 16    |
+ram_int/ram_36_cmp_eq0000(ram_int/ram_36_cmp_eq00001:O)  | NONE(*)(ram_int/ram_36_15) | 16    |
+ram_int/ram_6_cmp_eq0000(ram_int/ram_6_cmp_eq00001:O)    | NONE(*)(ram_int/ram_6_15)  | 16    |
+ram_int/ram_42_cmp_eq0000(ram_int/ram_42_cmp_eq00001:O)  | NONE(*)(ram_int/ram_42_15) | 16    |
+ram_int/ram_37_cmp_eq0000(ram_int/ram_37_cmp_eq00001:O)  | NONE(*)(ram_int/ram_37_15) | 16    |
+ram_int/ram_100_cmp_eq0000(ram_int/ram_100_cmp_eq00001:O)| NONE(*)(ram_int/ram_100_15)| 16    |
+ram_int/ram_7_cmp_eq0000(ram_int/ram_7_cmp_eq00001:O)    | NONE(*)(ram_int/ram_7_15)  | 16    |
+ram_int/ram_43_cmp_eq0000(ram_int/ram_43_cmp_eq00001:O)  | NONE(*)(ram_int/ram_43_15) | 16    |
+ram_int/ram_38_cmp_eq0000(ram_int/ram_38_cmp_eq00001:O)  | NONE(*)(ram_int/ram_38_15) | 16    |
+ram_int/ram_101_cmp_eq0000(ram_int/ram_101_cmp_eq00001:O)| NONE(*)(ram_int/ram_101_15)| 16    |
+ram_int/ram_8_cmp_eq0000(ram_int/ram_8_cmp_eq00001:O)    | NONE(*)(ram_int/ram_8_15)  | 16    |
+ram_int/ram_44_cmp_eq0000(ram_int/ram_44_cmp_eq00001:O)  | NONE(*)(ram_int/ram_44_15) | 16    |
+ram_int/ram_39_cmp_eq0000(ram_int/ram_39_cmp_eq00001:O)  | NONE(*)(ram_int/ram_39_15) | 16    |
+ram_int/ram_102_cmp_eq0000(ram_int/ram_102_cmp_eq00001:O)| NONE(*)(ram_int/ram_102_15)| 16    |
+ram_int/ram_9_cmp_eq0000(ram_int/ram_9_cmp_eq00001:O)    | NONE(*)(ram_int/ram_9_15)  | 16    |
+ram_int/ram_50_cmp_eq0000(ram_int/ram_50_cmp_eq00001:O)  | NONE(*)(ram_int/ram_50_15) | 16    |
+ram_int/ram_45_cmp_eq0000(ram_int/ram_45_cmp_eq00001:O)  | NONE(*)(ram_int/ram_45_15) | 16    |
+ram_int/ram_103_cmp_eq0000(ram_int/ram_103_cmp_eq00001:O)| NONE(*)(ram_int/ram_103_15)| 16    |
+ram_int/ram_46_cmp_eq0000(ram_int/ram_46_cmp_eq00001:O)  | NONE(*)(ram_int/ram_46_15) | 16    |
+ram_int/ram_51_cmp_eq0000(ram_int/ram_51_cmp_eq00001:O)  | NONE(*)(ram_int/ram_51_15) | 16    |
+ram_int/ram_104_cmp_eq0000(ram_int/ram_104_cmp_eq00001:O)| NONE(*)(ram_int/ram_104_15)| 16    |
+ram_int/ram_47_cmp_eq0000(ram_int/ram_47_cmp_eq00001:O)  | NONE(*)(ram_int/ram_47_15) | 16    |
+ram_int/ram_52_cmp_eq0000(ram_int/ram_52_cmp_eq00001:O)  | NONE(*)(ram_int/ram_52_15) | 16    |
+ram_int/ram_105_cmp_eq0000(ram_int/ram_105_cmp_eq00001:O)| NONE(*)(ram_int/ram_105_15)| 16    |
+ram_int/ram_110_cmp_eq0000(ram_int/ram_110_cmp_eq00001:O)| NONE(*)(ram_int/ram_110_15)| 16    |
+ram_int/ram_48_cmp_eq0000(ram_int/ram_48_cmp_eq00001:O)  | NONE(*)(ram_int/ram_48_15) | 16    |
+ram_int/ram_53_cmp_eq0000(ram_int/ram_53_cmp_eq00001:O)  | NONE(*)(ram_int/ram_53_15) | 16    |
+ram_int/ram_106_cmp_eq0000(ram_int/ram_106_cmp_eq00001:O)| NONE(*)(ram_int/ram_106_15)| 16    |
+ram_int/ram_111_cmp_eq0000(ram_int/ram_111_cmp_eq00001:O)| NONE(*)(ram_int/ram_111_15)| 16    |
+ram_int/ram_49_cmp_eq0000(ram_int/ram_49_cmp_eq00001:O)  | NONE(*)(ram_int/ram_49_15) | 16    |
+ram_int/ram_54_cmp_eq0000(ram_int/ram_54_cmp_eq00001:O)  | NONE(*)(ram_int/ram_54_15) | 16    |
+ram_int/ram_112_cmp_eq0000(ram_int/ram_112_cmp_eq00001:O)| NONE(*)(ram_int/ram_112_15)| 16    |
+ram_int/ram_107_cmp_eq0000(ram_int/ram_107_cmp_eq00001:O)| NONE(*)(ram_int/ram_107_15)| 16    |
+ram_int/ram_55_cmp_eq0000(ram_int/ram_55_cmp_eq00001:O)  | NONE(*)(ram_int/ram_55_15) | 16    |
+ram_int/ram_60_cmp_eq0000(ram_int/ram_60_cmp_eq00001:O)  | NONE(*)(ram_int/ram_60_15) | 16    |
+ram_int/ram_108_cmp_eq0000(ram_int/ram_108_cmp_eq00001:O)| NONE(*)(ram_int/ram_108_15)| 16    |
+ram_int/ram_113_cmp_eq0000(ram_int/ram_113_cmp_eq00001:O)| NONE(*)(ram_int/ram_113_15)| 16    |
+ram_int/ram_56_cmp_eq0000(ram_int/ram_56_cmp_eq00001:O)  | NONE(*)(ram_int/ram_56_15) | 16    |
+ram_int/ram_61_cmp_eq0000(ram_int/ram_61_cmp_eq00001:O)  | NONE(*)(ram_int/ram_61_15) | 16    |
+ram_int/ram_109_cmp_eq0000(ram_int/ram_109_cmp_eq00001:O)| NONE(*)(ram_int/ram_109_15)| 16    |
+ram_int/ram_114_cmp_eq0000(ram_int/ram_114_cmp_eq00001:O)| NONE(*)(ram_int/ram_114_15)| 16    |
+ram_int/ram_57_cmp_eq0000(ram_int/ram_57_cmp_eq00001:O)  | NONE(*)(ram_int/ram_57_15) | 16    |
+ram_int/ram_62_cmp_eq0000(ram_int/ram_62_cmp_eq00001:O)  | NONE(*)(ram_int/ram_62_15) | 16    |
+ram_int/ram_115_cmp_eq0000(ram_int/ram_115_cmp_eq00001:O)| NONE(*)(ram_int/ram_115_15)| 16    |
+ram_int/ram_120_cmp_eq0000(ram_int/ram_120_cmp_eq00001:O)| NONE(*)(ram_int/ram_120_15)| 16    |
+ram_int/ram_58_cmp_eq0000(ram_int/ram_58_cmp_eq00001:O)  | NONE(*)(ram_int/ram_58_15) | 16    |
+ram_int/ram_63_cmp_eq0000(ram_int/ram_63_cmp_eq00001:O)  | NONE(*)(ram_int/ram_63_15) | 16    |
+ram_int/ram_116_cmp_eq0000(ram_int/ram_116_cmp_eq00001:O)| NONE(*)(ram_int/ram_116_15)| 16    |
+ram_int/ram_59_cmp_eq0000(ram_int/ram_59_cmp_eq00001:O)  | NONE(*)(ram_int/ram_59_15) | 16    |
+ram_int/ram_64_cmp_eq0000(ram_int/ram_64_cmp_eq00001:O)  | NONE(*)(ram_int/ram_64_15) | 16    |
+ram_int/ram_117_cmp_eq0000(ram_int/ram_117_cmp_eq00001:O)| NONE(*)(ram_int/ram_117_15)| 16    |
+ram_int/ram_65_cmp_eq0000(ram_int/ram_65_cmp_eq00001:O)  | NONE(*)(ram_int/ram_65_15) | 16    |
+ram_int/ram_70_cmp_eq0000(ram_int/ram_70_cmp_eq00001:O)  | NONE(*)(ram_int/ram_70_15) | 16    |
+ram_int/ram_118_cmp_eq0000(ram_int/ram_118_cmp_eq00001:O)| NONE(*)(ram_int/ram_118_15)| 16    |
+ram_int/ram_66_cmp_eq0000(ram_int/ram_66_cmp_eq00001:O)  | NONE(*)(ram_int/ram_66_15) | 16    |
+ram_int/ram_71_cmp_eq0000(ram_int/ram_71_cmp_eq00001:O)  | NONE(*)(ram_int/ram_71_15) | 16    |
+ram_int/ram_119_cmp_eq0000(ram_int/ram_119_cmp_eq00001:O)| NONE(*)(ram_int/ram_119_15)| 16    |
+ram_int/ram_67_cmp_eq0000(ram_int/ram_67_cmp_eq00001:O)  | NONE(*)(ram_int/ram_67_15) | 16    |
+ram_int/ram_72_cmp_eq0000(ram_int/ram_72_cmp_eq00001:O)  | NONE(*)(ram_int/ram_72_15) | 16    |
+ram_int/ram_68_cmp_eq0000(ram_int/ram_68_cmp_eq00001:O)  | NONE(*)(ram_int/ram_68_15) | 16    |
+ram_int/ram_73_cmp_eq0000(ram_int/ram_73_cmp_eq00001:O)  | NONE(*)(ram_int/ram_73_15) | 16    |
+ram_int/ram_69_cmp_eq0000(ram_int/ram_69_cmp_eq00001:O)  | NONE(*)(ram_int/ram_69_15) | 16    |
+ram_int/ram_74_cmp_eq0000(ram_int/ram_74_cmp_eq00001:O)  | NONE(*)(ram_int/ram_74_15) | 16    |
+ram_int/ram_75_cmp_eq0000(ram_int/ram_75_cmp_eq00001:O)  | NONE(*)(ram_int/ram_75_15) | 16    |
+ram_int/ram_80_cmp_eq0000(ram_int/ram_80_cmp_eq00001:O)  | NONE(*)(ram_int/ram_80_15) | 16    |
+ram_int/ram_76_cmp_eq0000(ram_int/ram_76_cmp_eq00001:O)  | NONE(*)(ram_int/ram_76_15) | 16    |
+ram_int/ram_81_cmp_eq0000(ram_int/ram_81_cmp_eq00001:O)  | NONE(*)(ram_int/ram_81_15) | 16    |
+ram_int/ram_77_cmp_eq0000(ram_int/ram_77_cmp_eq00001:O)  | NONE(*)(ram_int/ram_77_15) | 16    |
+ram_int/ram_82_cmp_eq0000(ram_int/ram_82_cmp_eq00001:O)  | NONE(*)(ram_int/ram_82_15) | 16    |
+ram_int/ram_78_cmp_eq0000(ram_int/ram_78_cmp_eq00001:O)  | NONE(*)(ram_int/ram_78_15) | 16    |
+ram_int/ram_83_cmp_eq0000(ram_int/ram_83_cmp_eq00001:O)  | NONE(*)(ram_int/ram_83_15) | 16    |
+ram_int/ram_10_cmp_eq0000(ram_int/ram_10_cmp_eq00001:O)  | NONE(*)(ram_int/ram_10_15) | 16    |
+ram_int/ram_79_cmp_eq0000(ram_int/ram_79_cmp_eq00001:O)  | NONE(*)(ram_int/ram_79_15) | 16    |
+ram_int/ram_84_cmp_eq0000(ram_int/ram_84_cmp_eq00001:O)  | NONE(*)(ram_int/ram_84_15) | 16    |
+ram_int/ram_11_cmp_eq0000(ram_int/ram_11_cmp_eq00001:O)  | NONE(*)(ram_int/ram_11_15) | 16    |
+ram_int/ram_85_cmp_eq0000(ram_int/ram_85_cmp_eq00001:O)  | NONE(*)(ram_int/ram_85_15) | 16    |
+ram_int/ram_90_cmp_eq0000(ram_int/ram_90_cmp_eq00001:O)  | NONE(*)(ram_int/ram_90_15) | 16    |
+ram_int/ram_12_cmp_eq0000(ram_int/ram_12_cmp_eq00001:O)  | NONE(*)(ram_int/ram_12_15) | 16    |
+ram_int/ram_86_cmp_eq0000(ram_int/ram_86_cmp_eq00001:O)  | NONE(*)(ram_int/ram_86_15) | 16    |
+ram_int/ram_91_cmp_eq0000(ram_int/ram_91_cmp_eq00001:O)  | NONE(*)(ram_int/ram_91_15) | 16    |
+ram_int/ram_13_cmp_eq0000(ram_int/ram_13_cmp_eq00001:O)  | NONE(*)(ram_int/ram_13_15) | 16    |
+ram_int/ram_87_cmp_eq0000(ram_int/ram_87_cmp_eq00001:O)  | NONE(*)(ram_int/ram_87_15) | 16    |
+ram_int/ram_92_cmp_eq0000(ram_int/ram_92_cmp_eq00001:O)  | NONE(*)(ram_int/ram_92_15) | 16    |
+ram_int/ram_14_cmp_eq0000(ram_int/ram_14_cmp_eq00001:O)  | NONE(*)(ram_int/ram_14_15) | 16    |
+ram_int/ram_88_cmp_eq0000(ram_int/ram_88_cmp_eq00001:O)  | NONE(*)(ram_int/ram_88_15) | 16    |
+ram_int/ram_93_cmp_eq0000(ram_int/ram_93_cmp_eq00001:O)  | NONE(*)(ram_int/ram_93_15) | 16    |
+ram_int/ram_15_cmp_eq0000(ram_int/ram_15_cmp_eq00001:O)  | NONE(*)(ram_int/ram_15_15) | 16    |
+ram_int/ram_20_cmp_eq0000(ram_int/ram_20_cmp_eq00001:O)  | NONE(*)(ram_int/ram_20_15) | 16    |
+ram_int/ram_89_cmp_eq0000(ram_int/ram_89_cmp_eq00001:O)  | NONE(*)(ram_int/ram_89_15) | 16    |
+ram_int/ram_94_cmp_eq0000(ram_int/ram_94_cmp_eq00001:O)  | NONE(*)(ram_int/ram_94_15) | 16    |
+ram_int/ram_16_cmp_eq0000(ram_int/ram_16_cmp_eq00001:O)  | NONE(*)(ram_int/ram_16_15) | 16    |
+ram_int/ram_21_cmp_eq0000(ram_int/ram_21_cmp_eq00001:O)  | NONE(*)(ram_int/ram_21_15) | 16    |
+ram_int/ram_95_cmp_eq0000(ram_int/ram_95_cmp_eq00001:O)  | NONE(*)(ram_int/ram_95_15) | 16    |
+ram_int/ram_17_cmp_eq0000(ram_int/ram_17_cmp_eq00001:O)  | NONE(*)(ram_int/ram_17_15) | 16    |
+ram_int/ram_22_cmp_eq0000(ram_int/ram_22_cmp_eq00001:O)  | NONE(*)(ram_int/ram_22_15) | 16    |
+ram_int/ram_96_cmp_eq0000(ram_int/ram_96_cmp_eq00001:O)  | NONE(*)(ram_int/ram_96_15) | 16    |
+ram_int/ram_18_cmp_eq0000(ram_int/ram_18_cmp_eq00001:O)  | NONE(*)(ram_int/ram_18_15) | 16    |
+ram_int/ram_23_cmp_eq0000(ram_int/ram_23_cmp_eq00001:O)  | NONE(*)(ram_int/ram_23_15) | 16    |
+ram_int/ram_97_cmp_eq0000(ram_int/ram_97_cmp_eq00001:O)  | NONE(*)(ram_int/ram_97_15) | 16    |
+ram_int/ram_19_cmp_eq0000(ram_int/ram_19_cmp_eq00001:O)  | NONE(*)(ram_int/ram_19_15) | 16    |
+ram_int/ram_24_cmp_eq0000(ram_int/ram_24_cmp_eq00001:O)  | NONE(*)(ram_int/ram_24_15) | 16    |
+ram_int/ram_98_cmp_eq0000(ram_int/ram_98_cmp_eq00001:O)  | NONE(*)(ram_int/ram_98_15) | 16    |
+ram_int/ram_25_cmp_eq0000(ram_int/ram_25_cmp_eq00001:O)  | NONE(*)(ram_int/ram_25_15) | 16    |
+ram_int/ram_30_cmp_eq0000(ram_int/ram_30_cmp_eq00001:O)  | NONE(*)(ram_int/ram_30_15) | 16    |
+ram_int/ram_99_cmp_eq0000(ram_int/ram_99_cmp_eq00001:O)  | NONE(*)(ram_int/ram_99_15) | 16    |
+ram_int/ram_26_cmp_eq0000(ram_int/ram_26_cmp_eq00001:O)  | NONE(*)(ram_int/ram_26_15) | 16    |
+ram_int/ram_31_cmp_eq0000(ram_int/ram_31_cmp_eq00001:O)  | NONE(*)(ram_int/ram_31_15) | 16    |
+ram_int/ram_1_cmp_eq0000(ram_int/ram_1_cmp_eq00001:O)    | NONE(*)(ram_int/ram_1_15)  | 16    |
+ram_int/ram_32_cmp_eq0000(ram_int/ram_32_cmp_eq00001:O)  | NONE(*)(ram_int/ram_32_15) | 16    |
+ram_int/ram_27_cmp_eq0000(ram_int/ram_27_cmp_eq00001:O)  | NONE(*)(ram_int/ram_27_15) | 16    |
+ram_int/ram_2_cmp_eq0000(ram_int/ram_2_cmp_eq00001:O)    | NONE(*)(ram_int/ram_2_15)  | 16    |
+ram_int/ram_33_cmp_eq0000(ram_int/ram_33_cmp_eq00001:O)  | NONE(*)(ram_int/ram_33_15) | 16    |
+ram_int/ram_28_cmp_eq0000(ram_int/ram_28_cmp_eq00001:O)  | NONE(*)(ram_int/ram_28_15) | 16    |
+ram_int/ram_3_cmp_eq0000(ram_int/ram_3_cmp_eq00001:O)    | NONE(*)(ram_int/ram_3_15)  | 16    |
+ram_int/ram_34_cmp_eq0000(ram_int/ram_34_cmp_eq00001:O)  | NONE(*)(ram_int/ram_34_15) | 16    |
+ram_int/ram_29_cmp_eq0000(ram_int/ram_29_cmp_eq00001:O)  | NONE(*)(ram_int/ram_29_15) | 16    |
+---------------------------------------------------------+----------------------------+-------+
+(*) These 120 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst_i                              | IBUF                   | 1951  |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 9.544ns (Maximum Frequency: 104.777MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 4.040ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_i'
+  Clock period: 9.544ns (frequency: 104.777MHz)
+  Total number of paths / destination ports: 187436 / 386
+-------------------------------------------------------------------------
+Delay:               9.544ns (Levels of Logic = 7)
+  Source:            ram_int/j_out_3 (FF)
+  Destination:       ram_int/Dout_aux_3_15 (FF)
+  Source Clock:      clk_i rising
+  Destination Clock: clk_i rising
+
+  Data Path: ram_int/j_out_3 to ram_int/Dout_aux_3_15
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             17   0.514   1.045  ram_int/j_out_3 (ram_int/j_out_3)
+     LUT4_D:I0->O          7   0.612   0.605  ram_int/Dout_aux_1_cmp_eq003221 (ram_int/N96)
+     LUT4_D:I3->O         47   0.612   1.107  ram_int/Dout_aux_1_cmp_eq00321 (ram_int/Dout_aux_1_cmp_eq0032)
+     LUT4:I2->O            1   0.612   0.426  ram_int/Dout_aux_3_mux0000<8>218 (ram_int/Dout_aux_3_mux0000<8>218)
+     LUT4:I1->O            1   0.612   0.509  ram_int/Dout_aux_3_mux0000<8>250 (ram_int/Dout_aux_3_mux0000<8>250)
+     LUT4:I0->O            1   0.612   0.426  ram_int/Dout_aux_3_mux0000<8>418 (ram_int/Dout_aux_3_mux0000<8>418)
+     LUT2:I1->O            1   0.612   0.360  ram_int/Dout_aux_3_mux0000<8>427 (ram_int/Dout_aux_3_mux0000<8>427)
+     LUT4:I3->O            1   0.612   0.000  ram_int/Dout_aux_3_mux0000<8>819 (ram_int/Dout_aux_3_mux0000<8>)
+     FDE:D                     0.268          ram_int/Dout_aux_3_8
+    ----------------------------------------
+    Total                      9.544ns (5.066ns logic, 4.478ns route)
+                                       (53.1% logic, 46.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'RxRdy1'
+  Clock period: 7.733ns (frequency: 129.315MHz)
+  Total number of paths / destination ports: 15872 / 31
+-------------------------------------------------------------------------
+Delay:               7.733ns (Levels of Logic = 39)
+  Source:            ram_int/j_in_4 (LATCH)
+  Destination:       ram_int/j_in_30 (LATCH)
+  Source Clock:      RxRdy1 falling
+  Destination Clock: RxRdy1 falling
+
+  Data Path: ram_int/j_in_4 to ram_int/j_in_30
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDC:G->Q             10   0.588   0.819  ram_int/j_in_4 (ram_int/j_in_4)
+     LUT4:I1->O            1   0.612   0.000  ram_int/Mcompar_j_in_cmp_gt0000_lut<1> (ram_int/Mcompar_j_in_cmp_gt0000_lut<1>)
+     MUXCY:S->O            1   0.404   0.000  ram_int/Mcompar_j_in_cmp_gt0000_cy<1> (ram_int/Mcompar_j_in_cmp_gt0000_cy<1>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Mcompar_j_in_cmp_gt0000_cy<2> (ram_int/Mcompar_j_in_cmp_gt0000_cy<2>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Mcompar_j_in_cmp_gt0000_cy<3> (ram_int/Mcompar_j_in_cmp_gt0000_cy<3>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Mcompar_j_in_cmp_gt0000_cy<4> (ram_int/Mcompar_j_in_cmp_gt0000_cy<4>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Mcompar_j_in_cmp_gt0000_cy<5> (ram_int/Mcompar_j_in_cmp_gt0000_cy<5>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Mcompar_j_in_cmp_gt0000_cy<6> (ram_int/Mcompar_j_in_cmp_gt0000_cy<6>)
+     MUXCY:CI->O          45   0.399   1.228  ram_int/Mcompar_j_in_cmp_gt0000_cy<7> (ram_int/Mcompar_j_in_cmp_gt0000_cy<7>)
+     LUT2:I0->O            1   0.612   0.000  ram_int/j_in_mux0000<1>11 (ram_int/j_in_mux0000<1>1)
+     MUXCY:S->O            1   0.404   0.000  ram_int/Madd_j_in_add0000_cy<1> (ram_int/Madd_j_in_add0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_j_in_add0000_cy<2> (ram_int/Madd_j_in_add0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_j_in_add0000_cy<3> (ram_int/Madd_j_in_add0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_j_in_add0000_cy<4> (ram_int/Madd_j_in_add0000_cy<4>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_j_in_add0000_cy<5> (ram_int/Madd_j_in_add0000_cy<5>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_j_in_add0000_cy<6> (ram_int/Madd_j_in_add0000_cy<6>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_j_in_add0000_cy<7> (ram_int/Madd_j_in_add0000_cy<7>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_j_in_add0000_cy<8> (ram_int/Madd_j_in_add0000_cy<8>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_j_in_add0000_cy<9> (ram_int/Madd_j_in_add0000_cy<9>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<10> (ram_int/Madd_j_in_add0000_cy<10>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<11> (ram_int/Madd_j_in_add0000_cy<11>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<12> (ram_int/Madd_j_in_add0000_cy<12>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<13> (ram_int/Madd_j_in_add0000_cy<13>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<14> (ram_int/Madd_j_in_add0000_cy<14>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<15> (ram_int/Madd_j_in_add0000_cy<15>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<16> (ram_int/Madd_j_in_add0000_cy<16>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<17> (ram_int/Madd_j_in_add0000_cy<17>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<18> (ram_int/Madd_j_in_add0000_cy<18>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<19> (ram_int/Madd_j_in_add0000_cy<19>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<20> (ram_int/Madd_j_in_add0000_cy<20>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<21> (ram_int/Madd_j_in_add0000_cy<21>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<22> (ram_int/Madd_j_in_add0000_cy<22>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<23> (ram_int/Madd_j_in_add0000_cy<23>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<24> (ram_int/Madd_j_in_add0000_cy<24>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<25> (ram_int/Madd_j_in_add0000_cy<25>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<26> (ram_int/Madd_j_in_add0000_cy<26>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<27> (ram_int/Madd_j_in_add0000_cy<27>)
+     MUXCY:CI->O           1   0.051   0.000  ram_int/Madd_j_in_add0000_cy<28> (ram_int/Madd_j_in_add0000_cy<28>)
+     MUXCY:CI->O           0   0.051   0.000  ram_int/Madd_j_in_add0000_cy<29> (ram_int/Madd_j_in_add0000_cy<29>)
+     XORCY:CI->O           1   0.699   0.000  ram_int/Madd_j_in_add0000_xor<30> (ram_int/j_in_add0000<30>)
+     LDC:D                     0.268          ram_int/j_in_30
+    ----------------------------------------
+    Total                      7.733ns (5.686ns logic, 2.047ns route)
+                                       (73.5% logic, 26.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'rst_i'
+  Clock period: 5.753ns (frequency: 173.809MHz)
+  Total number of paths / destination ports: 1488 / 32
+-------------------------------------------------------------------------
+Delay:               5.753ns (Levels of Logic = 33)
+  Source:            ram_int/n_1 (LATCH)
+  Destination:       ram_int/n_31 (LATCH)
+  Source Clock:      rst_i rising
+  Destination Clock: rst_i rising
+
+  Data Path: ram_int/n_1 to ram_int/n_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDE_1:G->Q            4   0.588   0.651  ram_int/n_1 (ram_int/n_1)
+     LUT1:I0->O            1   0.612   0.000  ram_int/Madd_n_addsub0000_cy<1>_rt (ram_int/Madd_n_addsub0000_cy<1>_rt)
+     MUXCY:S->O            1   0.404   0.000  ram_int/Madd_n_addsub0000_cy<1> (ram_int/Madd_n_addsub0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<2> (ram_int/Madd_n_addsub0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<3> (ram_int/Madd_n_addsub0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<4> (ram_int/Madd_n_addsub0000_cy<4>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<5> (ram_int/Madd_n_addsub0000_cy<5>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<6> (ram_int/Madd_n_addsub0000_cy<6>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<7> (ram_int/Madd_n_addsub0000_cy<7>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<8> (ram_int/Madd_n_addsub0000_cy<8>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<9> (ram_int/Madd_n_addsub0000_cy<9>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<10> (ram_int/Madd_n_addsub0000_cy<10>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<11> (ram_int/Madd_n_addsub0000_cy<11>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<12> (ram_int/Madd_n_addsub0000_cy<12>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<13> (ram_int/Madd_n_addsub0000_cy<13>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<14> (ram_int/Madd_n_addsub0000_cy<14>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<15> (ram_int/Madd_n_addsub0000_cy<15>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<16> (ram_int/Madd_n_addsub0000_cy<16>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<17> (ram_int/Madd_n_addsub0000_cy<17>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<18> (ram_int/Madd_n_addsub0000_cy<18>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<19> (ram_int/Madd_n_addsub0000_cy<19>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<20> (ram_int/Madd_n_addsub0000_cy<20>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<21> (ram_int/Madd_n_addsub0000_cy<21>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<22> (ram_int/Madd_n_addsub0000_cy<22>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<23> (ram_int/Madd_n_addsub0000_cy<23>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<24> (ram_int/Madd_n_addsub0000_cy<24>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<25> (ram_int/Madd_n_addsub0000_cy<25>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<26> (ram_int/Madd_n_addsub0000_cy<26>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<27> (ram_int/Madd_n_addsub0000_cy<27>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<28> (ram_int/Madd_n_addsub0000_cy<28>)
+     MUXCY:CI->O           1   0.052   0.000  ram_int/Madd_n_addsub0000_cy<29> (ram_int/Madd_n_addsub0000_cy<29>)
+     MUXCY:CI->O           0   0.052   0.000  ram_int/Madd_n_addsub0000_cy<30> (ram_int/Madd_n_addsub0000_cy<30>)
+     XORCY:CI->O           1   0.699   0.426  ram_int/Madd_n_addsub0000_xor<31> (ram_int/n_addsub0000<31>)
+     LUT3:I1->O            1   0.612   0.000  ram_int/n_mux0002<31>1 (ram_int/n_mux0002<31>)
+     LDE_1:D                   0.268          ram_int/n_31
+    ----------------------------------------
+    Total                      5.753ns (4.677ns logic, 1.077ns route)
+                                       (81.3% logic, 18.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_i'
+  Total number of paths / destination ports: 50 / 50
+-------------------------------------------------------------------------
+Offset:              4.040ns (Levels of Logic = 1)
+  Source:            ram_int/barrido (FF)
+  Destination:       ram_int_refresh (PAD)
+  Source Clock:      clk_i rising
+
+  Data Path: ram_int/barrido to ram_int_refresh
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.514   0.357  ram_int/barrido (ram_int/barrido)
+     OBUF:I->O                 3.169          ram_int_refresh_OBUF (ram_int_refresh)
+    ----------------------------------------
+    Total                      4.040ns (3.683ns logic, 0.357ns route)
+                                       (91.2% logic, 8.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 46.00 secs
+Total CPU time to Xst completion: 46.58 secs
+ 
+--> 
+
+Total memory usage is 484628 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  134 (   0 filtered)
+Number of infos    :    7 (   0 filtered)
+

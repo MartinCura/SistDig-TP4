@@ -1,0 +1,6 @@
+vhdl floatfixlib "../fix_floating_point_files/fixed_float_types_c.vhdl"
+vhdl floatfixlib "../fix_floating_point_files/fixed_pkg_c.vhdl"
+vhdl floatfixlib "../fix_floating_point_files/float_pkg_c.vhdl"
+vhdl isim_temp "../rotador/cordic_lib.vhd"
+vhdl isim_temp "../rotador/rotador3d.vhd"
+vhdl isim_temp "../testers/rotador3d_tb.vhd"

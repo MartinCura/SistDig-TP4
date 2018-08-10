@@ -1,0 +1,40 @@
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/rotador3d_tb_isim_beh.exe -prj C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/rotador3d_tb_beh.prj work.rotador3d_tb 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_float_types_c.vhdl" into library floatfixlib
+Parsing VHDL file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" into library floatfixlib
+Parsing VHDL file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" into library floatfixlib
+Parsing VHDL file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../rotador/cordic_lib.vhd" into library work
+Parsing VHDL file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../rotador/rotador3d.vhd" into library work
+Parsing VHDL file "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../testers/rotador3d_tb.vhd" into library work
+Starting static elaboration
+WARNING:HDLCompiler:746 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" Line 1476: Range is empty (null range)
+WARNING:HDLCompiler:746 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" Line 1477: Range is empty (null range)
+WARNING:HDLCompiler:746 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" Line 1478: Range is empty (null range)
+WARNING:HDLCompiler:746 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/fixed_pkg_c.vhdl" Line 6879: Range is empty (null range)
+WARNING:HDLCompiler:746 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" Line 1029: Range is empty (null range)
+WARNING:HDLCompiler:746 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" Line 1030: Range is empty (null range)
+WARNING:HDLCompiler:746 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" Line 6198: Range is empty (null range)
+WARNING:HDLCompiler:746 - "N:/P.20131013/rtf/vhdl/src/ieee/numeric_std.vhd" Line 3314: Range is empty (null range)
+WARNING:HDLCompiler:220 - "N:/P.20131013/rtf/vhdl/src/ieee/numeric_std.vhd" Line 3314: Assignment ignored
+WARNING:HDLCompiler:746 - "C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/../fix_floating_point_files/float_pkg_c.vhdl" Line 3851: Range is empty (null range)
+Completed static elaboration
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling package textio
+Compiling package fixed_float_types
+Compiling package math_real
+Compiling package fixed_pkg
+Compiling package float_pkg
+Compiling package cordic_lib
+Compiling architecture rotador3d_arq of entity rotador3d [rotador3d_default]
+Compiling architecture rotador3d_tb_arq of entity rotador3d_tb
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 12 VHDL Units
+Built simulation executable C:/Users/Martin/Documents/SistDig/SistDig-TP4/test_Impl/rotador3d_tb_isim_beh.exe
+Fuse Memory Usage: 58264 KB
+Fuse CPU Usage: 2121 ms
