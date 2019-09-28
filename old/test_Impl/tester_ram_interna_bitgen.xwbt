@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=C:\Users\Martin\Documents\SistDig\SistDig-TP4\test_Impl\tester_ram_interna.ncd
-OUTFILE=C:\Users\Martin\Documents\SistDig\SistDig-TP4\test_Impl\tester_ram_interna.bit
-FAMILY=Spartan3E
-PART=xc3s500e-5fg320
-WORKINGDIR=C:\Users\Martin\Documents\SistDig\SistDig-TP4\test_Impl
-LICENSE=WebPack
-USER_INFO=211557112_0_0_638

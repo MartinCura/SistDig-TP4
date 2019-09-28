@@ -1,6 +1,0 @@
-vhdl floatfixlib "C:\Users\Martin\Documents\SistDig\SistDig-TP4\fix_floating_point_files\fixed_float_types_c.vhdl"
-vhdl floatfixlib "C:\Users\Martin\Documents\SistDig\SistDig-TP4\fix_floating_point_files\fixed_pkg_c.vhdl"
-vhdl floatfixlib "C:\Users\Martin\Documents\SistDig\SistDig-TP4\fix_floating_point_files\float_pkg_c.vhdl"
-vhdl work "C:\Users\Martin\Documents\SistDig\SistDig-TP4\rotador\cordic_lib.vhd"
-vhdl work "C:\Users\Martin\Documents\SistDig\SistDig-TP4\ram_interna.vhd"
-vhdl work "C:\Users\Martin\Documents\SistDig\SistDig-TP4\testers\tester_ram_interna.vhd"

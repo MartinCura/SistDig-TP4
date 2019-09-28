@@ -1,6 +1,0 @@
-vhdl floatfixlib "../fix_floating_point_files/fixed_float_types_c.vhdl"
-vhdl floatfixlib "../fix_floating_point_files/fixed_pkg_c.vhdl"
-vhdl floatfixlib "../fix_floating_point_files/float_pkg_c.vhdl"
-vhdl work "../rotador/cordic_lib.vhd"
-vhdl work "../det_angulos.vhd"
-vhdl work "../testers/det_angulos_tb.vhd"

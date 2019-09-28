@@ -1,6 +1,0 @@
-EN tester_ram_interna NULL C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd sub00/vhpl04 1531110927
-EN ram_interna NULL C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd sub00/vhpl02 1531110925
-AR ram_interna ram_interna_arq C:/Users/Martin/Documents/SistDig/SistDig-TP4/ram_interna.vhd sub00/vhpl03 1531110926
-PH cordic_lib NULL C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/cordic_lib.vhd sub00/vhpl00 1531110923
-PB cordic_lib cordic_lib C:/Users/Martin/Documents/SistDig/SistDig-TP4/rotador/cordic_lib.vhd sub00/vhpl01 1531110924
-AR tester_ram_interna tester_ram_interna_arq C:/Users/Martin/Documents/SistDig/SistDig-TP4/testers/tester_ram_interna.vhd sub00/vhpl05 1531110928
